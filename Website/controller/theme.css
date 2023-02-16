@@ -227,8 +227,9 @@ a:visited {
     margin-bottom: 10px;
 }
 
-/* Comment Section css*/
+/* Discussion Section css*/
 #commentHeader {
+    position:relative;
     padding-top: 10px; 
     padding-bottom:10px;
     background: #2C5F2D;
@@ -237,7 +238,9 @@ a:visited {
     font-size: 20px;
     font-weight: bold;
 }
+/* Comment Section css*/
 .comment_container {
+    display: flex;
     margin-top: 5px;
     border: 1px solid #2C5F2D;
 }
@@ -247,6 +250,8 @@ a:visited {
     width: 200px;
     min-height:200px;
     height: auto;
+    float:none;
+    border-right: 1px solid black;
 }
 .comment_user_info_group {
     padding-top: 5px;
@@ -255,7 +260,72 @@ a:visited {
 .comment_user_info_username {
     padding-top: 5px;
 }
-/* Comment Section css ends */
+.comment_content_container {
+    flex:1;
+    align-self: flex-start;
+    height: auto;
+    min-height: 200px;
+}
+.comment_content_header {
+    height: 18px;
+    text-align: right;
+    font-size: 14px;
+    padding-top: 5px;
+    padding-bottom: 4px;
+    padding-right: 10px;
+    border-bottom: 1px solid #2C5F2D;
+}
+.comment_content_main{
+    min-height: 132px;
+    text-align: left;
+    padding: 20px;
+}
+
+/*Comment css Section ends*/
+/*Comment Reply css Section starts */
+.comment_reply_container {
+    display: flex;
+    margin-top: 5px;
+    border: 1px solid #2C5F2D;
+    margin-left: 50px;
+}
+.comment_reply_user_info_container {
+    border-right: 1px solid #2C5F2D;
+    background: #2C5F2D;
+    width: 200px;
+    min-height:200px;
+    height: auto;
+    float:none;
+    border-right: 1px solid black;
+}
+.comment_reply_user_info_group {
+    padding-top: 5px;
+    margin-bottom: 5px;
+}
+.comment_reply_user_info_username {
+    padding-top: 5px;
+}
+.comment_reply_content_container {
+    flex:1;
+    align-self: flex-start;
+    height: auto;
+    min-height: 200px;
+}
+.comment_reply_content_header {
+    height: 18px;
+    text-align: right;
+    font-size: 14px;
+    padding-top: 5px;
+    padding-bottom: 4px;
+    padding-right: 10px;
+    border-bottom: 1px solid #2C5F2D;
+}
+.comment_reply_content_main{
+    min-height: 132px;
+    text-align: left;
+    padding: 20px;
+}
+/* Comment Reply Section css ends */
 /*wiki page css ends*/
 #table_players {
     border: 1px solid #030603;
