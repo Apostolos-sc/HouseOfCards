@@ -1,4 +1,9 @@
 <?php
+    //Author            : Apostolos Scondrianis
+    //Date Created      : 12-02-2023
+    //Last Edited     	: 15-02-2023
+    //Filename          : left-menu.php
+    //Version           : 1.0
 ?>
                 <div class="left">
                     <div class="menu-header">

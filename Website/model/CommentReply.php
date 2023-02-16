@@ -5,21 +5,21 @@
     //Filename          : CommentReply.php
     //Version           : 1.0
     //Class CommentReply
-    classs CommentReply {
+    class CommentReply {
         private int $replyID;
         private int $commentID;
         private int $positionID;
-        private int $userID
+        private int $userID;
 
-        //constructor
-        public function __construct(int $replyIDm, int $commentID, int $positionID, int $userID){
+        //Constructor
+        public function __construct(int $replyID, int $commentID, int $positionID, int $userID) {
             $this->replyID = $replyID;
             $this->commentID = $commentID;
             $this->positionID = $positionID;
             $this->userID = $userID;
         }
 
-        // setters
+        //Setters
         function setReplyID(int $replyID){
             $this->replyID = $replyID;
         }
@@ -33,18 +33,18 @@
             $this->userID = $userID;
         } 
 
-        // getters
+        //Getters
         function getReplyID(){
-            return($this->replyID);
+            return $this->replyID;
         }
         function getCommentID(){
-            return($this->commentID);
+            return $this->commentID;
         }
         function getPositionID(){
-            return($this->positionID);
+            return $this->positionID;
         }
-        fucntion getUserID(){
-            return($this->userID);
+        function getUserID(){
+            return $this->userID;
         }
     }
 ?>

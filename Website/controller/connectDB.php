@@ -1,5 +1,10 @@
 <?php
-    include 'include/functions.php';
+    //Author            : Apostolos Scondrianis
+    //Date Created      : 12-02-2023
+    //Last Edited     	: 15-02-2023
+    //Filename          : connectDB.php
+    //Version           : 1.0
+    include 'controller/functions.php';
     session_start();
     //setcookie("admin", "Godlike", time()+3600);
     $db = new Database();

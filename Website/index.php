@@ -1,7 +1,12 @@
 <?php
-    include 'include/connectDB.php';
-    include 'include/header.php';
-    include 'include/left-menu.php';
+    //Author            : Apostolos Scondrianis
+    //Date Created      : 12-02-2023
+    //Last Edited     	: 15-02-2023
+    //Filename          : index.php
+    //Version           : 1.0
+    include 'controller/connectDB.php';
+    include 'controller/header.php';
+    include 'controller/left-menu.php';
 ?>
                 <div class="center">
                     <div id="center-content">
@@ -9,6 +14,6 @@
                     </div>
                 </div>
 <?php
-    include 'include/right-menu.php';
-    include 'include/footer.php';
+    include 'controller/right-menu.php';
+    include 'controller/footer.php';
 ?>

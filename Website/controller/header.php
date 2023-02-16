@@ -1,9 +1,14 @@
 <?php
+    //Author            : Apostolos Scondrianis
+    //Date Created      : 12-02-2023
+    //Last Edited     	: 15-02-2023
+    //Filename          : header.php
+    //Version           : 1.0
 ?>
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="include/theme.css">
+        <link rel="stylesheet" href="controller/theme.css">
         <link rel="icon" type="image/png" href="https://goldenagesolutions.ca/HouseOfCards/images/cardgame.png">
         <title>
             Welcome to House Cards Wiki

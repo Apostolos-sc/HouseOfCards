@@ -1,3 +1,10 @@
+<!--
+    Author            : Apostolos Scondrianis
+    Date Created      : 12-02-2023
+    Last Edited       : 15-02-2023
+    Filename          : right-menu.php
+    Version           : 1.0 
+-->
                 <div class="right">
                     <div class="menu-header">
                         User Info
