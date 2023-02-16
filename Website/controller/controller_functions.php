@@ -11,7 +11,7 @@
     //include('../model/Favorite.php);
     //include('../model/Comment.php);
     //include('../model/CommentReply.php);
-
+    //include('../view/view_functions.php);
     //This line forces return types on functions
     declare(strict_types=1);
 
@@ -35,8 +35,8 @@
         return $array;
     }
 
-    function getWikiPage(int $pageName) :  WikiEntry {
-        $entry = 0;
+    function getWikiEntries() :  Array {
+        $entry = [0,1,2];
         return $entry;
     }
 
@@ -53,5 +53,15 @@
     function getUserRatings(int $userID) : array {
         $array = [0,1,2];
         return $array;
+    }
+    function getWikiPageGuestView(WikiEntry $wikiEntry, array $gameList) {
+        $gameCardEntries = getWikiEntries();
+        $gameList = array();
+        
+        foreach($gameCardEntries as $gameCardEntry) {
+            array_push($gamelist, $gameCardEntry.gameName);
+        }
+        $wikiPageGuestView = generateWikiPageGuestUser($wikiEntry);
+        return $wikiPageGuestView;
     }
 ?>
