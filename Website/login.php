@@ -1,5 +1,10 @@
 <?php
-    include 'include/connectDB.php';
+    //Author            : Apostolos Scondrianis
+    //Date Created      : 12-02-2023
+    //Last Edited     	: 15-02-2023
+    //Filename          : login.php
+    //Version           : 1.0
+    include 'controller/connectDB.php';
 
     if(isset($_COOKIE['admin']) && isset($_COOKIE['password'])) {
         header("Location: index.php");
@@ -25,8 +30,8 @@
     } else {
         $process = false;
     }
-    include 'include/header.php';
-    include 'include/left-menu.php';
+    include 'controller/header.php';
+    include 'controller/left-menu.php';
 ?>
                 <div class="center">
                     <div id="center-content">
@@ -78,6 +83,6 @@
                     </div>
                 </div>
 <?php
-    include 'include/right-menu.php';
-    include 'include/footer.php';
+    include 'controller/right-menu.php';
+    include 'controller/footer.php';
 ?>
