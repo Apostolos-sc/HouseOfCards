@@ -11,7 +11,7 @@
 
     //Completed by Apostolos Scondrianis
     //Function that generates the View of a Wiki Page for the Guest Users
-    function generateWikiPageGuestUser(WikiPage $wikiPage, array $gameList): string {
+    function generateWikiPageGuestUser(WikiEntry $wikiPage, array $gameList): string {
         $view = "<div id=\"card-game-body\">
                     <div id=\"wikiTitle\">
                     Card Games Wiki Pages

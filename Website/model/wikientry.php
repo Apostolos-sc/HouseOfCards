@@ -1,9 +1,10 @@
 <?php
     //Author            : Nicholas Lam
     //Date Created      : 12-15-2023
-    //Last Edited     	: 12-18-2023
+    //Last Edit By      : Apostolos Scondrianis
+    //Last Edited     	: 12-20-2023
     //Filename          : wikientry.php
-    //Version           : 1.0
+    //Version           : 1.1
     //Class User
     class WikiEntry {
         //Properties
@@ -35,85 +36,85 @@
         }
 
         //Setters
-        function set_entryID(int $entryID) {
+        function setEntryID(int $entryID) {
             $this->entryID = $entryID;
         }
 
-        function set_gameName(String $gameName) {
+        function setGameName(String $gameName) {
             $this->gameName = $gameName;
         }
 
-        function set_description(String $description) {
+        function setDescription(String $description) {
             $this->description = $description;
         }
 
-        function set_rules(String $rules) {
+        function setRules(String $rules) {
             $this->rules = $rules;
         }
 
-        function set_lastEdit(Date $lastEdit) {
+        function setLastEdit(Date $lastEdit) {
             $this->lastEdit = $lastEdit;
         }
 
-        function set_lastEditUser(int $lastEditUser) {
-            $this->lastEditUser = $lastEditUser;
+        function setLastEditedByUserID(int $lastEditedByUserID) {
+            $this->lastEditedByUserID = $lastEditedByUserID;
         }
 
-        function set_comments(Array $comments) {
+        function setComments(Array $comments) {
             $this->comments = $comments;
         }
 
-        function set_ratings(Array $ratings) {
+        function setRatings(Array $ratings) {
             $this->ratings = $ratings;
         }
 
-        function set_minPlayers(int $minPlayers) {
+        function setMinPlayers(int $minPlayers) {
             $this->minPlayers = $minPlayers;
         }
         
-        function set_maxPlayers(int $maxPlayers) {
+        function setMaxPlayers(int $maxPlayers) {
             $this->maxPlayers = $maxPlayers;
         }
 
 
         //Getters
-        function get_entryID() {
+        function getEntryID() {
             return $this->entryID;
         }
 
-        function get_gameName() {
+        function getGameName() {
             return $this->gameName;
         }
 
-        function get_description() {
+        function getDescription() {
             return $this->description;
         }
 
-        function get_rules() {
+        function getRules() {
             return $this->rules;
         }
 
-        function get_lastEdit() {
+        function getLastEdit() {
             return $this->lastEdit;
         }
 
-        function get_lastEditUser() {
-            return $this->lastEditUser;
+        function getLastEditUser() {
+            return $this->lastEditedByUserID;
         }
 
-        function get_comments() {
+        function getComments() {
             return $this->comments;
         }
 
-        function get_ratings() {
+        function getRatings() {
             return $this->ratings;
         }
 
-        function get_minPlayers() {
+        function getMinPlayers() {
             return $this->minPlayers;
         }
         
-        function get_maxPlayers() {
+        function getMaxPlayers() {
             return $this->maxPlayers;
         }
     }

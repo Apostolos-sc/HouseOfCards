@@ -1,67 +1,76 @@
 <?php
-    //Author            : Team 31
+    //Author            : Apostolos Scondrianis
     //Date Created      : 16-02-2023
-    //Last Edited     	: ----------
+    //Last Edit By      : Apostolos Scondrianis
+    //Last Edited     	: 20-02-2023
     //Filename          : controller.php
-    //Version           : 0.0 - Stub File
+    //Version           : 0.2 - Stub File
     //include php files of model
-    //include('../model/User.php);
-    //include('../model/WikiPage.php');
+    
     //include('../model/Rating.php);
     //include('../model/Favorite.php);
     //include('../model/Comment.php);
     //include('../model/CommentReply.php);
     //include('../view/view_functions.php);
     //This line forces return types on functions
-    declare(strict_types=1);
 
+    declare(strict_types=1);
+    include('../model/User.php');
+    include('../controller/functions.php');
+    include('../model/wikientry.php');
     //Stub Functions
     //The idea here is to have static functions inside each class of the Model that
     //access the db and then return the information needed.
-    function getUsers() : array {
-        //Call to static method of class User providing a db object 
-        //in order to be able to access the db. User.getUsers(Database $dbObject)
-        $array = [1, 2, 3];
-        return $array;
+
+    //returns null 
+    function getUsers(Database $dbConnection) : ?array {
+        $users = User::getUsers($dbConnection);
+        return $users;
     }
 
-    function getComments(int $wikiEntryID): array {
-        $array = [1,2,3];
-        return $array;
+
+    function getComments(Database $dbConnection, int $wikiEntryID): ?array {
+        $comments = Comments::getComments($dbConnection, $wikiEntryID);
+        return $comments;
     }
 
-    function getCommentReplies(int $commentReplyID): array {
-        $array = [1,2,3];
-        return $array;
+    function getCommentReplies(Database $dbConnection, int $commentID): ?array {
+        $commentReplies = CommentReply::getCommentReplies($dbConnection, $commentReply);
+        return $commentReplies;
     }
 
-    function getWikiEntries() :  Array {
-        $entry = [0,1,2];
-        return $entry;
+    function getWikiEntries(Database $dbConnection) : ?array {
+        $entries = getWikiEntries($dbConnection);
+        return $entries;
     }
 
-    function getFavorites(int $userID) : array {
-        $array = [0,1,2];
-        return $array;
+    function getFavorites(Database $dbConnection, int $userID) : array {
+        $favorites = Favorite::getFavorites($dbConnection);
+        return $favorites;
     }
 
-    function getEntryRatings(int $wikiEntryID) : array{
-        $array = [0, 1, 2];
-        return $array;
+    function getEntryRatings(Database $dbConnection, int $wikiEntryID) : array{
+        $ratings = Rating::getEntryRatings($dbConnection, $wikiEntryID);
+        return $ratings;
     }
 
-    function getUserRatings(int $userID) : array {
-        $array = [0,1,2];
-        return $array;
+    function getUserRatings(Database $dbConnection, int $userID) : array {
+        $ratings = User::getUserRatings($dbConnection, $userID);
+        return $ratings;
     }
     function getWikiPageGuestView(WikiEntry $wikiEntry, array $gameList) {
-        $gameCardEntries = getWikiEntries();
+        $wikiPageGuestView = generateWikiPageGuestUser($wikiEntry, $gameList);
+        return $wikiPageGuestView;
+    }
+
+    //This function needs to be tested. Can't remember if it should be $wikiEntry->getGameName() or
+    //if it should be $wikiEntry.getGameName()
+    function getGameList(array $wikiEntries) : array {
         $gameList = array();
         
-        foreach($gameCardEntries as $gameCardEntry) {
-            array_push($gamelist, $gameCardEntry.gameName);
+        foreach($wikiEntries as $wikiEntry) {
+            array_push($gamelist, $wikiEntry->getGameName());
         }
-        $wikiPageGuestView = generateWikiPageGuestUser($wikiEntry);
-        return $wikiPageGuestView;
+        return $gameList;
     }
 ?>

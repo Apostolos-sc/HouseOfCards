@@ -3,99 +3,125 @@
     //Date Created      : 12-02-2023
     //Last Edited     	: 12-02-2023
     //Filename          : user.php
-    //Version           : 1.0
+    //Version           : 1.1
     //Class User
     class User {
         //properties
         private int $userID;
         private UserType $userGroup;
-        private String $fname;
-        private String $lname;
+        private String $firstName;
+        private String $lastName;
         private String $email;
         private String $username;
         private String $password;
-        private Date $bdate;
+        private Date $bod;
         private Favorite $favorites = array();
 
         //Constructor
-        public function __construct(int $userID, UserType $userGroup, String $fname, String $lname, 
-                                    String $email, String $username, String $password, Date $bdate,
+        public function __construct(int $userID, UserType $userGroup, String $firstName, String $lastName, 
+                                    String $email, String $username, String $password, Date $bod,
                                     Array $favorites) {
             $this->userID = $userID;
             $this->userGroup = $userGroup;
-            $this->fname = $fname;
-            $this->lname = $lname;
+            $this->firstName = $firstName;
+            $this->lastName = $lastName;
             $this->email = $email;
             $this->username = $username;
             $this->password = $password;
-            $this->bdate = $bdate;
+            $this->bod = $bod;
             $this->favorites = $favorites;
         }
 
         //Setters
-        function set_userID(int $userID) {
+        public function setUserID(int $userID) {
             $this->userID = $userID;
         }
 
-        function set_userGroup(userType $userGroup) {
+        public function setUserGroup(userType $userGroup) {
             $this->userGroup = $userGroup;
         }
 
-        function set_fname(String $fname) {
-            $this->fname = $fname;
+        public function setFname(String $fname) {
+            $this->firstName = $fname;
         }
 
-        function set_lname(String $lname) {
-            $this->lname = $lname;
+        public function setLastName(String $lastName) {
+            $this->lastName = $lastName;
         }
 
-        function set_email(String $email) {
+        public function setEmail(String $email) {
             $this->email = $email;
         }
 
-        function set_password(String $password) {
+        public function setUsername(String $username) {
+            $this->username = $username;
+        }
+
+        public function setPassword(String $password) {
             $this->password = $password;
         }
 
-        function set_bdate(Date $bdate) {
-            $this->bdate = $bdate;
+        public function setBod(Date $bod) {
+            $this->bod = $bod;
         }
 
-        function set_favorites(Array $favorites) {
+        public function setFavorites(Array $favorites) {
             $this->favorites = $favorites;
         }
         //Getters
 
-        function get_userID() {
+        public function getUserID() {
             return $this->userID;
         }
 
-        function get_userGroup() {
+        public function getUserGroup() {
             return $this->userGroup;
         }
 
-        function get_fname() {
-            return $this->fname;
+        public function getFirstName() {
+            return $this->firstName;
         }
 
-        function get_lname() {
-            return $this->lname;
+        public function getLastName() {
+            return $this->lastName;
         }
 
-        function get_email() {
+        public function getEmail() {
             return $this->email;
         }
 
-        function get_password() {
+        public function getUsername() {
+            return $this->username;
+        }
+        public function getPassword() {
             return $this->password;
         }
 
-        function get_bdate() {
-            return $this->bdate;
+        public function getBod() {
+            return $this->bod;
         }
 
-        function get_favorites() {
+        public function getFavorites() {
             return $this->favorites;
         }
-    }
+        //Database Access Function stubs
+        
+        //stubs for functions that access db
+        public static function getUserByID(int $userID, Database $dbConnection) : ?User {
+            //request a user by ID, returns null if not found
+            $user = null;
+            return $user;
+        }
+
+        public static function getUserByUsername(String $username, Database $dbConnection) : ?User {
+            //request a user by ID, returns null if not found
+            $user = null;
+            return $user;
+        }
+
+        public static function getUsers(Database $dbConnection) : ?array {
+            $users = [];
+            return $users;
+        }
+    }            
 ?>
