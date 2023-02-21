@@ -1,0 +1,400 @@
+/*
+Author       : Apostolos Scondrianis
+Date Created : 12-02-2023
+Last Edited  : 15-02-2023
+Filename     : theme.css
+Version      : 1.1
+*/
+html {
+    height: 100%;
+    color: #030603;
+    background-color:#97BC62FF;
+}
+body { 
+    min-height: 100%;
+    margin: 0;
+}
+/* grid layout for website */
+.top {
+    grid-area: header;
+    border:1px solid #030603;
+    margin-left: 20px;
+    margin-right: 20px;
+    min-height: 100px;
+}
+/* Header div */
+#web-header {
+    padding: 20px;
+    font-size: 30px;
+    font-weight: bold;
+}
+/*left menu area*/
+.left {
+    margin-left: 20px;
+    grid-area: left-menu;
+    border:1px solid #030603;
+}
+/*center grid area */
+.center {
+    grid-area: main;
+    border:1px solid #030603;
+    min-height:  70vh;
+}
+/* content div in the center area */
+#center-content {
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom:20px;
+    width: 100%;
+    text-align: center;
+
+}
+/*right menu*/
+.right {
+    grid-area: right-menu;
+    border:1px solid #030603;
+    margin-right: 20px;
+}
+/* footer area */
+.bottom {
+    grid-area: footer;
+    border:1px solid #030603;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    font-style: italic;
+    font-weight: bold;
+}
+.text_wrapper {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 16px;
+}
+/* grid set up */
+.grid-container {
+    display: grid;
+    grid-template-areas:
+    'header header header header header header'
+    'left-menu main main main main right-menu'
+    'footer footer footer footer footer footer';
+    grid-gap: 10px;
+    background-color:#97BC62FF;
+    margin-top: 10px;
+}
+.grid-container > div {
+    background-color:#2C5F2D;
+    text-align: center;
+    padding: 0px;
+    font-size: 16px;
+}
+
+/* menu css */
+.menu-header {
+    background-color:#030603;
+    color:#97BC62FF;
+}
+.menu-content {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+
+/* unvisited link */
+a:link {
+    color: #030603;
+}
+
+/* visited link */
+a:visited {
+    color: #030603;
+}
+
+/*wiki page css */
+/* wiki game content table */
+#wiki_table {
+    border: 1px solid #2C5F2D;
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom:auto;
+}
+#wiki_table_title {
+    padding-top: 10px; 
+    padding-bottom:10px; 
+    font-weight:bold; 
+    font-size: 20px;
+    background-color:#2C5F2D;
+    color:#97BC62FF;
+    border: 1px solid #2C5F2D;
+}
+.wiki_table_data_left {
+    border: 1px solid #2C5F2D;
+    margin: 0;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width : 30%;
+    font-size: 16px;
+}
+.wiki_table_data_right {
+    border: 1px solid #2C5F2D;
+    margin: 0;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width : 70%;
+    font-size: 16px;
+}
+.wiki_table_row {
+    border: 1px solid #2C5F2D;
+}
+/* wiki content table */
+/* card wiki page */
+/* grid layout for the wiki page taken from https://www.quackit.com/html/templates/css_grid_templates.cfm */
+/*grid container for the wiki */
+#card-game-body {
+    display: grid;
+    grid-template-areas: 
+      "nav header"
+      "nav article"
+      "nav info"
+      "comments comments";
+    grid-template-rows: auto 1fr auto auto;  
+    grid-template-columns: auto 1fr;
+    grid-row-gap: 0px;
+    grid-column-gap: 10px;
+    height: 100%;
+    margin: auto;
+    max-width: 90%;
+}
+#wikiTitle {
+    grid-area: header;
+    padding-top: 10px; 
+    padding-bottom:10px;
+    background: #2C5F2D;
+    color:#97BC62FF;
+    border: 1px solid #030603;
+    border-bottom: 0px;
+    margin-right:5px;
+    font-size: 20px;
+    font-weight: bold;
+}
+#wikiComments {
+    grid-area: comments;
+    padding: 1.2em;
+    background: #97BC62FF;
+    border: 1px solid #030603;
+    margin-right:5px;
+    margin-left:5px;
+}
+#wikiContent { 
+    grid-area: article;     
+    padding: 1.2em;
+    background: #97BC62FF;
+    border: 1px solid #030603;
+    border-top:0px;
+    margin-right:5px;
+    margin-bottom:10px;
+}
+#wikiNav { 
+    grid-area: nav; 
+    background: #97BC62FF;
+    border: 1px solid #030603;
+    margin-left: 5px;
+    margin-bottom: 10px;
+}
+#wikiNavTitle {
+    padding-top: 10px; 
+    padding-bottom:10px; 
+    font-weight:bold; 
+    font-size: 20px;
+    background-color:#2C5F2D;
+    color:#97BC62FF;
+}
+#wikiNavContent {
+    margin-left: 1.2em;
+    margin-right: 1.2em;
+    margin-top: 0.5em;
+}
+#pageInfo { 
+    grid-area: info; 
+    padding: 1.2em;
+    background: #97BC62FF;
+    border: 1px solid #030603;
+    margin-right:5px;
+    margin-bottom: 10px;
+}
+
+/* Discussion Section css*/
+#commentHeader {
+    position:relative;
+    padding-top: 10px; 
+    padding-bottom:10px;
+    background: #2C5F2D;
+    color:#97BC62FF;
+    border: 1px solid #030603;
+    font-size: 20px;
+    font-weight: bold;
+}
+/* Comment Section css*/
+.comment_container {
+    display: flex;
+    margin-top: 5px;
+    border: 1px solid #2C5F2D;
+}
+.comment_user_info_container {
+    border-right: 1px solid #2C5F2D;
+    background: #2C5F2D;
+    width: 200px;
+    min-height:200px;
+    height: auto;
+    float:none;
+    border-right: 1px solid black;
+}
+.comment_user_info_group {
+    padding-top: 5px;
+    margin-bottom: 5px;
+}
+.comment_user_info_username {
+    padding-top: 5px;
+}
+.comment_content_container {
+    flex:1;
+    align-self: flex-start;
+    height: auto;
+    min-height: 200px;
+}
+.comment_content_header {
+    height: 18px;
+    text-align: right;
+    font-size: 14px;
+    padding-top: 5px;
+    padding-bottom: 4px;
+    padding-right: 10px;
+    border-bottom: 1px solid #2C5F2D;
+}
+.comment_content_main{
+    min-height: 132px;
+    text-align: left;
+    padding: 20px;
+}
+
+/*Comment css Section ends*/
+/*Comment Reply css Section starts */
+.comment_reply_container {
+    display: flex;
+    margin-top: 5px;
+    border: 1px solid #2C5F2D;
+    margin-left: 50px;
+}
+.comment_reply_user_info_container {
+    border-right: 1px solid #2C5F2D;
+    background: #2C5F2D;
+    width: 200px;
+    min-height:200px;
+    height: auto;
+    float:none;
+    border-right: 1px solid black;
+}
+.comment_reply_user_info_group {
+    padding-top: 5px;
+    margin-bottom: 5px;
+}
+.comment_reply_user_info_username {
+    padding-top: 5px;
+}
+.comment_reply_content_container {
+    flex:1;
+    align-self: flex-start;
+    height: auto;
+    min-height: 200px;
+}
+.comment_reply_content_header {
+    height: 18px;
+    text-align: right;
+    font-size: 14px;
+    padding-top: 5px;
+    padding-bottom: 4px;
+    padding-right: 10px;
+    border-bottom: 1px solid #2C5F2D;
+}
+.comment_reply_content_main{
+    min-height: 132px;
+    text-align: left;
+    padding: 20px;
+}
+/* Comment Reply Section css ends */
+/*wiki page css ends*/
+#table_players {
+    border: 1px solid #030603;
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom:auto;
+}
+#table_character_stats {
+    border: 1px solid #030603;
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom:auto;
+}
+#table_players_title {
+    padding-top: 10px; 
+    padding-bottom:10px; 
+    font-weight:bold; 
+    font-size: 20px;
+    background-color:#030603;
+    color:#2C5F2D;
+    
+}
+#table_character_title_stats {
+    padding-top: 10px; 
+    padding-bottom:10px; 
+    font-weight:bold; 
+    font-size: 20px;
+    background-color:#030603;
+    color:#2C5F2D;
+    
+}
+.table_players_header_data {
+    border: 1px solid #030603;
+    margin: 0;
+    padding: 0;
+    width : 60%;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: underline;
+}
+.table_players_rows {
+    border: 1px solid #030603;
+}
+.table_players_data {
+    border: 1px solid #030603;
+    margin: 0;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width : 60%;
+    font-size: 16px;
+}
+.buttons {
+    width: 200px;
+    height: 500px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.input-fields {
+    background-color:#030603;
+    border: 1px solid #97BC62FF;
+    color: #97BC62FF;
+    text-align: center;
+    margin: 5px;
+}
+.submit-inputs {
+    background-color:#030603;
+    color: #97BC62FF;
+    text-align: center;
+    width: 140px;
+}
