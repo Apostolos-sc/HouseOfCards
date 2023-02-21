@@ -1,12 +1,13 @@
 <?php
     //Author            : Apostolos Scondrianis
     //Date Created      : 12-02-2023
-    //Last Edited     	: 12-02-2023
+    //Last Edited     	: 21-02-2023
     //Filename          : user.php
-    //Version           : 1.1
+    //Version           : 1.2
     //Class User
     class User {
-        //properties
+
+        //Properties
         private int $userID;
         private UserType $userGroup;
         private String $firstName;
@@ -14,13 +15,13 @@
         private String $email;
         private String $username;
         private String $password;
-        private Date $bod;
-        private Favorite $favorites = array();
+        private Date $dob;
+        private Favourite $favourites = array();
 
         //Constructor
         public function __construct(int $userID, UserType $userGroup, String $firstName, String $lastName, 
-                                    String $email, String $username, String $password, Date $bod,
-                                    Array $favorites) {
+                                    String $email, String $username, String $password, Date $dob,
+                                    Array $favourites) {
             $this->userID = $userID;
             $this->userGroup = $userGroup;
             $this->firstName = $firstName;
@@ -28,8 +29,8 @@
             $this->email = $email;
             $this->username = $username;
             $this->password = $password;
-            $this->bod = $bod;
-            $this->favorites = $favorites;
+            $this->dob = $dob;
+            $this->favourites = $favourites;
         }
 
         //Setters
@@ -61,15 +62,15 @@
             $this->password = $password;
         }
 
-        public function setBod(Date $bod) {
-            $this->bod = $bod;
+        public function setDOB(Date $dob) {
+            $this->dob = $dob;
         }
 
-        public function setFavorites(Array $favorites) {
-            $this->favorites = $favorites;
+        public function setFavourites(Array $favourites) {
+            $this->favourites = $favourites;
         }
+
         //Getters
-
         public function getUserID() {
             return $this->userID;
         }
@@ -93,19 +94,20 @@
         public function getUsername() {
             return $this->username;
         }
+
         public function getPassword() {
             return $this->password;
         }
 
-        public function getBod() {
-            return $this->bod;
+        public function getDOB() {
+            return $this->dob;
         }
 
-        public function getFavorites() {
-            return $this->favorites;
+        public function getFavourites() {
+            return $this->favourites;
         }
+
         //Database Access Function stubs
-        
         //stubs for functions that access db
         public static function getUserByID(int $userID, Database $dbConnection) : ?User {
             //request a user by ID, returns null if not found
@@ -123,5 +125,5 @@
             $users = [];
             return $users;
         }
-    }            
+    }
 ?>
