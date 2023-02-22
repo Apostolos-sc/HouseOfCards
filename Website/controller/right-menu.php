@@ -1,9 +1,10 @@
 <!--
     Author            : Apostolos Scondrianis
     Date Created      : 12-02-2023
-    Last Edited       : 15-02-2023
+    Last Edited By    : Apostolos Scondrianis
+    Last Edited On    : 21-02-2023
     Filename          : right-menu.php
-    Version           : 1.0 
+    Version           : 1.1
 -->
                 <div class="right">
                     <div class="menu-header">
@@ -11,25 +12,23 @@
                     </div>
                     <div class="menu-content">
                     <?php
-                        if(isset($_COOKIE["admin"]) && isset($_COOKIE['password'])) {
-                                echo "Welcome ".$_COOKIE["admin"]."!<br/>";
+                        if(isset($_SESSION["username"]) && isset($_SESSION["password"])) {
+                                echo "Welcome ".$_SESSION["username"]."!<br/>";
                                 echo "<a href='logout.php'>Logout</a>";
                                 echo "
                                     <div class='menu-header'>
-                                        Admin Panel
+                                        User Panel
                                     </div>                    
                                     <div class='menu-content'>
-                                        <a href='createwikipage.php'>Create Wiki Entry</a><br>
-                                        <a href='editwikipage.php'>Edit Wiki Entry</a><br>
-                                        <a href='selecteditguild.php'>Edit Guild</a><br>
+                                        <a href='profile.php'>View My Profile</a><br>
+                                        <a href='editprofile.php'>Edit My Profile</a><br>
+                                        <a href='favorites.php'>My Favorites</a><br>
                                     </div>
                                     ";
                         } else {
                             echo "Welcome, Guest.<br>
                             <a href='login.php'>Login</a><br>
-                            <a href='profile.php'>View My Profile</a><br>
-                            <a href='editprofile.php'>Edit My Profile</a><br>
-                            <a href='favorites.php'>My Favorites</a><br>
+                            <a href='register.php'>Register</a><br>
                             ";
                             
                         }

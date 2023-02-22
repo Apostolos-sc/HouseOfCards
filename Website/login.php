@@ -1,12 +1,14 @@
 <?php
     //Author            : Apostolos Scondrianis
     //Date Created      : 12-02-2023
-    //Last Edited     	: 15-02-2023
+    //Last Edited By    : Apostolos Scondrianis
+    //Last Edited     	: 21-02-2023
     //Filename          : login.php
-    //Version           : 1.0
+    //Version           : 1.1
+    $GLOBALS["title"] = "Welcome to House of Cards Wiki - Login";
     include 'controller/connectDB.php';
 
-    if(isset($_COOKIE['admin']) && isset($_COOKIE['password'])) {
+    if(isset($_SESSION['username']) && isset($_COOKIE['password'])) {
         header("Location: index.php");
         exit();
     }
@@ -14,7 +16,7 @@
     if(isset($_POST['username']) && isset($_POST['password'])) {
         //$_POST['username'] represents account ID only for this page.
         $process = true;
-        $stmt = $db->connection->prepare('SELECT * FROM USERS, ADMINS WHERE Acct_ID = Admin_ID AND USERS.Acct_ID = ? AND USERS.Password = ?');
+        $stmt = $db->connection->prepare('SELECT * FROM users WHERE users.username = ? AND users.password = ?');
         $stmt->bind_param('ss', $_POST['username'], $_POST['password']); // 's' specifies the variable type => 'string'
     
         $stmt->execute();
@@ -24,8 +26,10 @@
         } else {
             $account = $result->fetch_row();
             $success = true;
-            setcookie('admin', $account[3], time()+3600);
-            setcookie('password', $account[4], time()+3600);
+            $_SESSION["userID"] = $account[0];
+            $_SESSION["username"] = $account[1];
+            $_SESSION["password"] = $account[2];
+            $_SESSION["accessLevel"] = $account[3];
         }
     } else {
         $process = false;
