@@ -2,9 +2,9 @@
     //Author            : Carter Marcelo
     //Date Created      : 19-02-2023
     //Last Edited By    : Apostolos Scondrianis
-    //Last Edited On    : 21-02-2023
+    //Last Edited On    : 22-02-2023
     //Filename          : userType.php
-    //Version           : 1.2
+    //Version           : 1.3
     class UserType{
         
         //Properties
@@ -18,12 +18,12 @@
         }
 
         //Getters
-        public function getUserGrpoup() {
-            return $this->userGroup;
-        }
-
         public function getAccessLevel() {
             return $this->accessLevel;
+        }
+        
+        public function getUserGrpoup() {
+            return $this->userGroup;
         }
 
         //Setters
@@ -31,8 +31,8 @@
             $this->$accessLevel = $accessLevel;
         }
     
-        public function setUserClass(string $userClass) {
-            $this->$userClass = $userClass;
+        public function setUserGroup(string $userGroup) {
+            $this->$userGroup = $userGroup;
         }
 
         //Database access stubs

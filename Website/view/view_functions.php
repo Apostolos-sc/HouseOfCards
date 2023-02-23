@@ -11,6 +11,7 @@
 
     //Completed by Apostolos Scondrianis
     //Function that generates the View of a Wiki Page for the Guest Users
+    
     function generateWikiPageGuestUser(WikiEntry $wikiPage, array $gameList): string {
         $view = "<div id=\"card-game-body\">
                     <div id=\"wikiTitle\">
@@ -20,7 +21,7 @@
                         <table id='wiki_table'>
                             <tr class='wiki_table_row'>
                                 <td id='wiki_table_title' colspan='2' >
-                                    ".$wikiPage.gameName." <img src=\"https://goldenagesolutions.ca/HouseOfCards/images/star2.png\" style=\"vertical-align:middle;height:20px;width:120px;\"/>
+                                    ". $wikiPage->getGameName() ." <img src=\"https://goldenagesolutions.ca/HouseOfCards/images/star2.png\" style=\"vertical-align:middle;height:20px;width:120px;\"/>
                                 </td>
                             </tr>
                             <tr class='wiki_table_row' colspan=2>
@@ -28,7 +29,7 @@
                                     # of Players :
                                 </td>
                                 <td class='wiki_table_data_right'>
-                                    ".$wikiPage.minPlayers." - ".$wikiPage.maxPlayers."
+                                    ".$wikiPage->getMinPlayers()." - ".$wikiPage->getMaxPlayers()."
                                 </td>
                             </tr>
                             <tr class='wiki_table_row' colspan=2>
@@ -36,7 +37,7 @@
                                     Required Items :
                                 </td>
                                 <td class='wiki_table_data_right'>
-                                    ".$wikiPage.requiredItems."
+                                    ".$wikiPage->getRequiredItems()."
                                 </td>
                             </tr>
                             <tr class='wiki_table_row'colspan=2>
@@ -44,7 +45,7 @@
                                     Objective :
                                 </td>
                                 <td class='wiki_table_data_right'>
-                                    ".$wikiPage.objective."    
+                                    ".$wikiPage->getObjective()."    
                                 </td>
                             </tr>
                             <tr class='wiki_table_row'>
@@ -52,7 +53,7 @@
                                     Set Up :
                                 </td>
                                 <td class='wiki_table_data_right'>
-                                    ".$wikiPage.setUp."
+                                    ".$wikiPage->getSetUp()."
                                 </td>
                             </tr>
                             <tr class='wiki_table_row' colspan=2>
@@ -60,7 +61,7 @@
                                     Play :
                                 </td>
                                 <td class='wiki_table_data_right'>
-                                    ".$wikiPage.gamePlay."
+                                    ".$wikiPage->getGamePlay()."
                                 </td>
                             </tr>
                             <tr class='wiki_table_row' colspan=2>
@@ -68,7 +69,7 @@
                                     Rules :
                                 </td>
                                 <td class='wiki_table_data_right'>
-                                    ".$wikiPage.gameplay."                                     
+                                    ".$wikiPage->getRules()."                                     
                                 </td>
                             </tr>
                         </table>
@@ -87,58 +88,58 @@
                         </div>
                     </div>
                     <div id=\"pageInfo\">
-                        Last Edit By : <a href>".$wikiPage.LastEditedBy.username."</a> - Last Edit On : ".$wikiPage.LastEditOn.generateDateTimeString()."
+                        Last Edit By : <a href>".$wikiPage->getLastEditedBy()->getUsername()."</a> - Last Edit On : ".$wikiPage->getLastEditedOn()->generateDateTimeString()."
                     </div>
                     <div id=\"wikiComments\">
                         <div id=\"commentHeader\">
                             Discussion Board <a href=\"\"><img style=\"position: absolute; bottom: 0; right: 0; height:30px; width:30px;\" src=\"https://goldenagesolutions.ca/HouseOfCards/images/reply.png\"/></a>
                         </div>";
         //generate HTML code for each comment of the wiki page
-        foreach($wikiPage.comments as $comment) {
+        foreach($wikiPage->getComments() as $comment) {
             $view = $view + "
                         <div class=\"comment_container\">
                             <div class=\"comment_user_info_container\">
                                 <div class=\"comment_user_info_group\">
-                                    ".$comment.user.userType.userClass."
+                                    ".$comment->getUser()->getUserType()->getUserGroup()."
                                 </div>
                                 <div class=\"comment_user_info_image\">
                                     <img src=\"https://goldenagesolutions.ca/HouseOfCards/images/beans.jpg\"/>
                                 </div>
                                 <div class=\"comment_user_info_username\">
-                                    <a href=\"\">".$comment.user.username."</a>
+                                    <a href=\"\">".$comment->getUser()->getUsername()."</a>
                                 </div>
                             </div>
                             <div class=\"comment_content_container\">
                                 <div class=\"comment_content_header\">
-                                    #".$comment.positionID." Posted on <i>Monday, February 15th 2023, 7:15:25 PM MT</i>
+                                    #".$comment->getPositionID()." Posted on <i>Monday, February 15th 2023, 7:15:25 PM MT</i>
                                 </div>
                                 <div style=\"position:relative\" class=\"comment_content_main\">
-                                    ".$comment.content."
+                                    ".$comment->getContent()."
                                     <a href=\"\"><img style=\"position: absolute; bottom: 0; right: 0; height:30px; width:30px;\" src=\"https://goldenagesolutions.ca/HouseOfCards/images/reply.png\"/></a>
                                 </div>
                             </div>
                         </div>";
             //generate code for each comment reply posted to each comment of the wiki page
-            foreach($comment.replies as $reply) {
+            foreach($comment->getCommentReplies() as $reply) {
                 $view = $view + "
                         <div class=\"comment_reply_container\">
                             <div class=\"comment_reply_user_info_container\">
                                 <div class=\"comment_reply_user_info_group\">
-                                    ".$reply.user.userGroup.userClass."
+                                    ".$reply->getUser()->getUserGroup()->getUserGroup()."
                                 </div>
                                 <div class=\"comment_reply_user_info_image\">
                                     <img src=\"https://goldenagesolutions.ca/HouseOfCards/images/beans.jpg\"/>
                                 </div>
                                 <div class=\"comment_reply_user_info_username\">
-                                    <a href=\"\">".$reply.user.username."</a>
+                                    <a href=\"\">".$reply->getUser()->getUsername()."</a>
                                 </div>
                             </div>
                             <div class=\"comment_reply_content_container\">
                                 <div class=\"comment_reply_content_header\">
-                                        #".$comment.positionID."-".$reply.positionID." Posted on <i>".$reply.postedDate."</i>
+                                        #".$comment->getPositionID()."-".$reply->getPositionID()." Posted on <i>".$reply->getPostedOn()->generateDateTimeString()."</i>
                                 </div>
                                 <div style=\"position:relative\" class=\"comment_reply_content_main\">
-                                    ".$reply.content."    
+                                    ".$reply->getContent()."    
                                 </div>
                             </div>
                         </div>        
@@ -148,9 +149,7 @@
         $view = $view+ "
                     </div>
                 </div>
-                /*
-
-                */";
+                ";
         return $view;
     }
 ?>
