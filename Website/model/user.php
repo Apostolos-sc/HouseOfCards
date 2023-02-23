@@ -121,7 +121,8 @@
             return $user;
         }
 
-        public static function getUsers(Database $dbConnection) : ?array {
+        public static function getUsers(Database $dbConnection) : array {
+            //Query database to return all users.
             $users = [];
             return $users;
         }

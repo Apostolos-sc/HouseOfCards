@@ -2,9 +2,9 @@
     //Author            : Ethan Winters
     //Date Created      : 15-02-2023
     //Last Edited By    : Apostolos Scodnrianis
-    //Last Edited On 	: 21-02-2023
+    //Last Edited On 	: 22-02-2023
     //Filename          : commentReply.php
-    //Version           : 1.1
+    //Version           : 1.3
 
     //Class CommentReply
     class CommentReply {
@@ -45,8 +45,6 @@
         function setPostedOn(Date $postedOn) {
             $this->postedOn = $postedOn;
         }
-    
-
 
         //Getters
         function getReplyID(){
@@ -69,5 +67,17 @@
             return $this->postedOn;
         }
 
+        //Database Stubs
+        public static function fetchCommentRepliesByCommentID(Database $dbConnection, int $commentID) : Array {
+            //Query db to find CommentReplies for a Comment whose ID = $commentID
+            $commentReplies = [];
+            return $commentReplies;
+        }
+
+        public static function fetchCommentRepliesByUserID(Database $dbConnection, int $userID) : Array {
+            //Query db to find CommentReplies by a user whose ID = $userID
+            $commentReplies = [];
+            return $commentReplies;
+        }
     }
 ?>

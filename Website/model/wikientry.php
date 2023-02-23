@@ -2,15 +2,18 @@
     //Author            : Nicholas Lam
     //Date Created      : 12-15-2023
     //Last Edit By      : Apostolos Scondrianis
-    //Last Edited     	: 12-20-2023
+    //Last Edited     	: 22-20-2023
     //Filename          : wikientry.php
-    //Version           : 1.1
+    //Version           : 1.2
     //Class User
     class WikiEntry {
         //Properties
         private int $entryID;
         private String $gameName;
-        private String $description;
+        private String $requiredItems;
+        private String $objective;
+        private String $setUp;
+        private String $gamePlay;
         private String $rules;
         private Date $lastEdit;
         private int $lastEditedByUserID;
@@ -20,12 +23,15 @@
         private int $maxPlayers;
 
         //Constructor
-        public function __construct(int $entryID, String $gameName, String $description, 
-                                    String $rules, Date $lastEdit, int $lastEditedByUserID, Array $comments,
-                                    Array $ratings, int $minPlayers, int $maxPlayers) {
+        public function __construct(int $entryID, String $gameName, String $requiredItems, String $objective,
+                                    String $setUp, String $gamePlay, String $rules, Date $lastEdit, int $lastEditedByUserID, 
+                                    Array $comments, Array $ratings, int $minPlayers, int $maxPlayers) {
             $this->entryID = $entryID;
             $this->gameName = $gameName;
-            $this->description = $description;
+            $this->requiredItems = $requiredItems;
+            $this->objective = $objective;
+            $this->setUp = $setUp;
+            $this->gamePlay = $gamePlay;
             $this->rules = $rules;
             $this->lastEdit = $lastEdit;
             $this->lastEditedByUserID = $lastEditedByUserID;
@@ -36,65 +42,89 @@
         }
 
         //Setters
-        function setEntryID(int $entryID) {
+        public function setEntryID(int $entryID) {
             $this->entryID = $entryID;
         }
 
-        function setGameName(String $gameName) {
+        public function setGameName(String $gameName) {
             $this->gameName = $gameName;
         }
 
-        function setDescription(String $description) {
-            $this->description = $description;
+        public function setRequiredItems(String $requiredItems) {
+            $this->requiredItems = $requiredItems;
         }
 
-        function setRules(String $rules) {
+        public function setObjective(String $objective) {
+            $this->objective = $objective;
+        }
+
+        public function setSetUp(String $setUp) {
+            $this->setUp = $setUp;
+        } 
+
+        public function setGamePlay(String $gamePlay) {
+            $this->gamePlay = $gamePlay;
+        }
+
+        public function setRules(String $rules) {
             $this->rules = $rules;
         }
 
-        function setLastEdit(Date $lastEdit) {
+        public function setLastEdit(Date $lastEdit) {
             $this->lastEdit = $lastEdit;
         }
 
-        function setLastEditedByUserID(int $lastEditedByUserID) {
+        public function setLastEditedByUserID(int $lastEditedByUserID) {
             $this->lastEditedByUserID = $lastEditedByUserID;
         }
 
-        function setComments(Array $comments) {
+        public function setComments(Array $comments) {
             $this->comments = $comments;
         }
 
-        function setRatings(Array $ratings) {
+        public function setRatings(Array $ratings) {
             $this->ratings = $ratings;
         }
 
-        function setMinPlayers(int $minPlayers) {
+        public function setMinPlayers(int $minPlayers) {
             $this->minPlayers = $minPlayers;
         }
         
-        function setMaxPlayers(int $maxPlayers) {
+        public function setMaxPlayers(int $maxPlayers) {
             $this->maxPlayers = $maxPlayers;
         }
 
 
         //Getters
-        function getEntryID() {
+        public function getEntryID() {
             return $this->entryID;
         }
 
-        function getGameName() {
+        public function getGameName() {
             return $this->gameName;
         }
 
-        function getDescription() {
-            return $this->description;
+        public function getRequiredItems() {
+            return $this->requiredItems;
         }
 
-        function getRules() {
+        public function getObjective() {
+            return $this->objective;
+        }
+
+        public function getSetUp() {
+            return $this->setUp;
+        } 
+
+        public function getGamePlay() {
+            return $this->gamePlay;
+        }
+
+        public function getRules() {
             return $this->rules;
         }
 
-        function getLastEdit() {
+        public function getLastEdit() {
             return $this->lastEdit;
         }
 
@@ -102,20 +132,34 @@
             return $this->lastEditedByUserID;
         }
 
-        function getComments() {
+        public function getComments() {
             return $this->comments;
         }
 
-        function getRatings() {
+        public function getRatings() {
             return $this->ratings;
         }
 
-        function getMinPlayers() {
+        public function getMinPlayers() {
             return $this->minPlayers;
         }
         
-        function getMaxPlayers() {
+        public function getMaxPlayers() {
             return $this->maxPlayers;
+        }
+
+        //Database Access Stubs
+        public static function fetchWikiEntries(Database $dbConnection) : Array {
+            //access the database and for each row of wiki entries, populate one WikiEntry object.
+            //Return all the wiki entries of the database in the form of an array
+            $entries = [];
+            return $entries;
+        }
+        
+        public static function fetchWikiEntry(Database $dbConnection, int $entryID) : ?WikiEntry {
+            //Query the database for a wiki entry that corresponds to one with an ID of $entryID.
+            //If it doesn't exist in the database return null.
+            return null;
         }
     }
 ?>

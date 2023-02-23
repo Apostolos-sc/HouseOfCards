@@ -4,7 +4,7 @@
     //Last Edited By    : Apostolos Scondrianis
     //Last Edited On    : 21-02-2023
     //Filename          : userType.php
-    //Version           : 1.1
+    //Version           : 1.2
     class UserType{
         
         //Properties
@@ -33,6 +33,20 @@
     
         public function setUserClass(string $userClass) {
             $this->$userClass = $userClass;
+        }
+
+        //Database access stubs
+        public static function fetchUserTypes(Database $dbConnection) : Array {
+            //access the database and for each row of userTypes, populate one user Type object.
+            //Return all the user types of the database in the form of an array
+            $userTypes = [];
+            return $userTypes;
+        }
+
+        public static function fetchUserType(Database $dbConnection, int $userAccessLevel) : ?UserType {
+            //Query the database for a wiki entry that corresponds to one with an ID of $wikiEntryID.
+            //If it doesn't exist in the database return null.
+            return null;
         }
     }
 ?>
