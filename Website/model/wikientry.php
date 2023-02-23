@@ -150,6 +150,21 @@
         }
 
         //Database Access Stubs
+        /*
+            DB Table Schema
+            `id` int(10) NOT NULL,
+            `gameName` varchar(200) NOT NULL,
+            `requiredItems` varchar(200) NOT NULL,
+            `objective` varchar(200) NOT NULL,
+            `setUp` varchar(200) NOT NULL,
+            `gamePlay` varchar(200) NOT NULL,
+            `rules` varchar(200) NOT NULL,
+            `lastEditedBy` int(10) NOT NULL,
+            `lastEditedDate` date,
+            `lastEditedTime` time(6) DEFAULT NULL
+            `minPlayer` int(10) NOT NULL,
+            `maxPlayer` int(10) NOT NULL
+        */
         public static function fetchWikiEntries(Database $dbConnection) : Array {
             //access the database and for each row of wiki entries, populate one WikiEntry object.
             //Return all the wiki entries of the database in the form of an array

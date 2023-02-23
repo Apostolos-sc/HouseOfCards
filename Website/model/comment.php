@@ -8,7 +8,7 @@
 
     //Class Comment
     class Comment {
-        
+
         //Properties
         private int $commentID;
         private int $entryID;
@@ -89,6 +89,16 @@
         }
 
         //Database Access stubs
+        /*
+            DB Table Schema - Updated
+            `id` int(10) NOT NULL,
+            `content` varchar(200) NOT NULL,
+            `entryID` int(10) NOT NULL,
+            `userID` int(10) NOT NULL,
+            `positionID` int(10) NOT NULL,
+            `postedOnDate` date,
+            `postedOnTime` time(6) DEFAULT NULL
+        */
         public static function fetchCommentsByEntryID(Database $dbConnection, int $entryID) : Array {
             //Query db for comments of the wiki entry whose ID = $entryID
             $comments = [];

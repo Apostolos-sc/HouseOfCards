@@ -58,6 +58,13 @@
         }
 
         //Database stubs
+        /*
+            DB Table Schema
+            `id` int(10) NOT NULL,
+            `entryID` int(10) NOT NULL,
+            `userID` int(10) NOT NULL,
+            `rating` int(10) NOT NULL
+        */
         public static function fetchRatingsByUserID(Database $dbConnection, int $userID) : Array {
             //Query db for the ratings a user has given.
             $ratings = [];

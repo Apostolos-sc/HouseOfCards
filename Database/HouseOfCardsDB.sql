@@ -31,7 +31,9 @@ CREATE TABLE `Comment` (
   `id` int(10) NOT NULL,
   `content` varchar(200) NOT NULL,
   `entryID` int(10) NOT NULL,
-  `UserID` int(10) NOT NULL
+  `userID` int(10) NOT NULL,
+  `postedOnDate` date,
+  `postedOnTime` time(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -58,9 +60,12 @@ INSERT INTO `Comment` (`id`, `content`, `entryID`, `UserID`) VALUES
 
 CREATE TABLE `CommentReply` (
   `id` int(10) NOT NULL,
-  `content` varchar(200) NOT NULL,
   `commentID` int(10) NOT NULL,
-  `UserID` int(10) NOT NULL
+  `positionID` int(10) NOT NULL,
+  `userID` int(10) NOT NULL,
+  `content` varchar(200) NOT NULL,
+  `postedOnDate` date,
+  `postedOnTime` time(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -114,13 +119,17 @@ INSERT INTO `Rating` (`id`, `entryID`, `userID`, `rating`) VALUES
 
 CREATE TABLE `wikiEntry` (
   `id` int(10) NOT NULL,
-  `GameName` varchar(200) NOT NULL,
-  `Description` varchar(200) NOT NULL,
-  `Rules` varchar(200) NOT NULL,
-  `LastEdit` varchar(200) NOT NULL,
-  `EditedBy` int(10) NOT NULL,
-  `MinPlayer` int(10) NOT NULL,
-  `MaxPlayer` int(10) NOT NULL
+  `gameName` varchar(200) NOT NULL,
+  `requiredItems` varchar(200) NOT NULL,
+  `objective` varchar(200) NOT NULL,
+  `setUp` varchar(200) NOT NULL,
+  `gamePlay` varchar(200) NOT NULL,
+  `rules` varchar(200) NOT NULL,
+  `lastEditedBy` int(10) NOT NULL,
+  `lastEditedDate` date,
+  `lastEditedTime` time(6) DEFAULT NULL
+  `minPlayer` int(10) NOT NULL,
+  `maxPlayer` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -147,15 +156,15 @@ INSERT INTO `wikiEntry` (`id`, `GameName`, `Description`, `Rules`, `LastEdit`, `
 --
 
 CREATE TABLE `UserType` (
-  `accesslevel` int(10) NOT NULL,
-  `UserClass` varchar(200) DEFAULT NULL
+  `accessLevel` int(10) NOT NULL,
+  `userGroup` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `UserType`
 --
 
-INSERT INTO `UserType` (`accesslevel`, `UserClass`) VALUES
+INSERT INTO `UserType` (`accessLevel`, `userGroup`) VALUES
 (1, 'Unregistered'),
 (2, 'Logged In'),
 (3, 'Admin');
@@ -170,18 +179,18 @@ CREATE TABLE `users` (
   `id` int(10) NOT NULL,
   `username` varchar(200) NOT NULL,
   `email` varchar(200) NOT NULL,
-  `useraccesslevel` varchar(200) DEFAULT NULL,
+  `userAccessLevel` varchar(200) DEFAULT NULL,
   `fname` varchar(200) DEFAULT NULL,
   `lname` varchar(200) DEFAULT NULL,
   `password` varchar(200) NOT NULL,
-  `bdate` varchar(200) NOT NULL
+  `dob` date
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `email`, `useraccesslevel`, `fname`, `lname`, `password`, `bdate`) VALUES
+INSERT INTO `users` (`id`, `username`, `email`, `userAccessLevel`, `fname`, `lname`, `password`, `dob`) VALUES
 (1, 'adminsayma', 'sayma@gmail.com', '3', 'Sayma', 'Haque', 'adminpass', '09/17/01'),
 (2, 'adminapostolos', 'apostolos@gmail.com', '3', 'Apostolos', 'Lname', 'adminpass', '09/17/01'),
 (3, 'admincarter', 'carter@ucalgary.ca', '3', 'Carter', 'Lname', 'adminpass', '09/17/01'),
@@ -199,14 +208,14 @@ INSERT INTO `users` (`id`, `username`, `email`, `useraccesslevel`, `fname`, `lna
 
 CREATE TABLE `Favourite` (
   `userID` int(10) NOT NULL,
-  `EntryID` int(10) NOT NULL
+  `entryID` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `Favourite`
 --
 
-INSERT INTO `Favourite` (`userID`, `EntryID`) VALUES
+INSERT INTO `Favourite` (`userID`, `entryID`) VALUES
 (1, 3),
 (2, 5),
 (3, 2);
@@ -256,7 +265,7 @@ ALTER TABLE `Favourite`
 -- Indexes for table `UserType`
 --
 ALTER TABLE `UserType`
-  ADD PRIMARY KEY (`accesslevel`);
+  ADD PRIMARY KEY (`accessLevel`);
 
 --
 -- AUTO_INCREMENT for dumped tables

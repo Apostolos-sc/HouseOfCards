@@ -38,6 +38,11 @@
         }
 
         //Database Stubs
+        /*
+            DB Table Schema
+            `userID` int(10) NOT NULL,
+            `entryID` int(10) NOT NULL
+        */
         public static function fetchFavouritesByUserID(Database $dbConnection, int $userID) : Array {
             //Query db to see which entries did a user with ID = $userID favourite
             $favourites = [];

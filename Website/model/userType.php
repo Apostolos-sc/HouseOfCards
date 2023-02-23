@@ -36,6 +36,11 @@
         }
 
         //Database access stubs
+        /*
+            DB Schema Table - Updated
+            `accessLevel` int(10) NOT NULL,
+            `userGroup` varchar(200) DEFAULT NULL
+        */
         public static function fetchUserTypes(Database $dbConnection) : Array {
             //access the database and for each row of userTypes, populate one user Type object.
             //Return all the user types of the database in the form of an array

@@ -108,6 +108,17 @@
         }
 
         //Database Access Function stubs
+        /*
+            DB Table Schema - Updated
+            `id` int(10) NOT NULL,
+            `username` varchar(200) NOT NULL,
+            `email` varchar(200) NOT NULL,
+            `userAccessLevel` varchar(200) DEFAULT NULL,
+            `fname` varchar(200) DEFAULT NULL,
+            `lname` varchar(200) DEFAULT NULL,
+            `password` varchar(200) NOT NULL,
+            `dob` date
+        */
         //stubs for functions that access db
         public static function fetchUserByID(Database $dbConnection, int $userID) : ?User {
             //request a user by ID, returns null if not found
