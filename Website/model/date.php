@@ -76,5 +76,10 @@
         public function getSeconds() {
             return $this->seconds;
         }
+
+        public function generateDateTimeString() {
+            $date_time = $this->day."/".$this->month."/".$this->year." - ".$this->hours.":".$this->minutes.":".$this->seconds;
+            return $date_time;
+        }
     }
 ?>

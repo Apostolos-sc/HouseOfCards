@@ -12,16 +12,16 @@
         //Properties
         private int $commentID;
         private int $entryID;
-        private int $userID;
+        private User $postedBy;
         private int $positionID;
         private Date $postedOn;
         private string $content;
 
         //Constructor
-        public function __construct(int $commentID, int $entryID, int $userID, int $positionID, Date $postedOn, string $content) {
+        public function __construct(int $commentID, int $entryID, User $postedBy, int $positionID, Date $postedOn, string $content) {
             $this->commentID = $commentID;
             $this->entryID = $entryID;
-            $this->userID = $userID;
+            $this->postedBy= $postedBy;
             $this->positionID = $positionID;
             $this->postedOn = $postedOn;
             $this->content = $content;
@@ -36,8 +36,8 @@
             $this->entryID = $entryID;
         }
 
-        public function setUserID(int $userID) {
-            $this->userID = $userID;
+        public function setPostedBy(User $postedBy) {
+            $this->postedBy = $postedBy;
         }
 
         public function setPositionID(int $positionID) {
@@ -61,8 +61,8 @@
             return $this->entryID;
         }
 
-        public function getUserID() {
-            return $this->userID;
+        public function getPostedBy() {
+            return $this->postedBy;
         }
 
         public function getPositionID() {

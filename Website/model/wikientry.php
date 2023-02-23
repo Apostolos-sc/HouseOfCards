@@ -16,7 +16,7 @@
         private String $setUp;
         private String $gamePlay;
         private String $rules;
-        private Date $lastEditOn;
+        private Date $lastEditedOn;
         private User $lastEditedBy;
         private Comment $comments = array();
         private Rating $ratings = array();
@@ -25,7 +25,7 @@
 
         //Constructor
         public function __construct(int $entryID, String $gameName, String $requiredItems, String $objective,
-                                    String $setUp, String $gamePlay, String $rules, Date $lastEditOn, int $lastEditedBy, 
+                                    String $setUp, String $gamePlay, String $rules, Date $lastEditedOn, int $lastEditedBy, 
                                     Array $comments, Array $ratings, int $minPlayers, int $maxPlayers) {
             $this->entryID = $entryID;
             $this->gameName = $gameName;
@@ -34,7 +34,7 @@
             $this->setUp = $setUp;
             $this->gamePlay = $gamePlay;
             $this->rules = $rules;
-            $this->lastEditOn = $lastEditOn;
+            $this->lastEditedOn = $lastEditedOn;
             $this->lastEditedBy = $lastEditedBy;
             $this->comments = $comments;
             $this->ratings = $ratings;
@@ -71,8 +71,8 @@
             $this->rules = $rules;
         }
 
-        public function setLastEditOn(Date $lastEditOn) {
-            $this->lastEditOn = $lastEditOn;
+        public function setLastEditedOn(Date $lastEditedOn) {
+            $this->lastEditedOn = $lastEditedOn;
         }
 
         public function setLastEditedByUserID(User $lastEditedBy) {
@@ -125,8 +125,8 @@
             return $this->rules;
         }
 
-        public function getLastEditOn() {
-            return $this->lastEditOn;
+        public function getLastEditedOn() {
+            return $this->lastEditedOn;
         }
 
         function getLastEditedBy() {

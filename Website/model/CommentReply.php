@@ -13,15 +13,15 @@
         private int $replyID;
         private int $commentID;
         private int $positionID;
-        private int $userID;
+        private User $postedBy;
         private Date $postedOn;
 
         //Constructor
-        public function __construct(int $replyID, int $commentID, int $positionID, int $userID, Date $postedOn) {
+        public function __construct(int $replyID, int $commentID, int $positionID, User $postedBy, Date $postedOn) {
             $this->replyID = $replyID;
             $this->commentID = $commentID;
             $this->positionID = $positionID;
-            $this->userID = $userID;
+            $this->postedBy = $postedBy;
             $this->postedOn = $postedOn;
         }
 
@@ -38,8 +38,8 @@
             $this->positionID = $positionID;
         }
 
-        function setUserID(int $userID){
-            $this->userID = $userID;
+        function setPostedBy(User $postedBy){
+            $this->postedBy = $postedBy;
         }
 
         function setPostedOn(Date $postedOn) {
@@ -59,8 +59,8 @@
             return $this->positionID;
         }
 
-        function getUserID(){
-            return $this->userID;
+        function getPostedBy(){
+            return $this->postedBy;
         }
 
         function getPostedOn() {
