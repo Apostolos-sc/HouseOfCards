@@ -2,7 +2,7 @@
     //Author            : Ethan Winters
     //Date Created      : 21-02-2023
     //Last Edited By    : Ethan Winters
-    //Last Edited On 	: 21-02-2023
+    //Last Edited On 	: 22-02-2023
     //Filename          : comment.php
     //Version           : 1.0
 
@@ -75,6 +75,25 @@
 
         public function getContent() {
             return $this->content;
+        }
+
+        //Database Access stubs
+        public static function fetchCommentsByEntryID(Database $dbConnection, int $entryID) : Array {
+            //Query db for comments of the wiki entry whose ID = $entryID
+            $comments = [];
+            return $comments;
+        }
+
+        public static function fetchCommentsByUserID(Database $dbConnection, int $userID) : Array {
+            //Query db for comments posted by user whose ID = $userID
+            $comments = [];
+            return $comments;
+        }
+
+        public static function fetchComments(Database $dbConnection) : Array {
+            //Query db for all comments in the database
+            $comments = [];
+            return $comments;
         }
     }
 ?>
