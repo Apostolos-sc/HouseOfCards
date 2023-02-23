@@ -4,7 +4,8 @@
     //Last Edit By      : Apostolos Scondrianis
     //Last Edited     	: 22-20-2023
     //Filename          : wikientry.php
-    //Version           : 1.2
+    //Version           : 1.3
+
     //Class User
     class WikiEntry {
         //Properties
@@ -15,8 +16,8 @@
         private String $setUp;
         private String $gamePlay;
         private String $rules;
-        private Date $lastEdit;
-        private int $lastEditedByUserID;
+        private Date $lastEditOn;
+        private User $lastEditedBy;
         private Comment $comments = array();
         private Rating $ratings = array();
         private int $minPlayers;
@@ -24,7 +25,7 @@
 
         //Constructor
         public function __construct(int $entryID, String $gameName, String $requiredItems, String $objective,
-                                    String $setUp, String $gamePlay, String $rules, Date $lastEdit, int $lastEditedByUserID, 
+                                    String $setUp, String $gamePlay, String $rules, Date $lastEditOn, int $lastEditedBy, 
                                     Array $comments, Array $ratings, int $minPlayers, int $maxPlayers) {
             $this->entryID = $entryID;
             $this->gameName = $gameName;
@@ -33,8 +34,8 @@
             $this->setUp = $setUp;
             $this->gamePlay = $gamePlay;
             $this->rules = $rules;
-            $this->lastEdit = $lastEdit;
-            $this->lastEditedByUserID = $lastEditedByUserID;
+            $this->lastEditOn = $lastEditOn;
+            $this->lastEditedBy = $lastEditedBy;
             $this->comments = $comments;
             $this->ratings = $ratings;
             $this->minPlayers = $minPlayers;
@@ -70,12 +71,12 @@
             $this->rules = $rules;
         }
 
-        public function setLastEdit(Date $lastEdit) {
-            $this->lastEdit = $lastEdit;
+        public function setLastEditOn(Date $lastEditOn) {
+            $this->lastEditOn = $lastEditOn;
         }
 
-        public function setLastEditedByUserID(int $lastEditedByUserID) {
-            $this->lastEditedByUserID = $lastEditedByUserID;
+        public function setLastEditedByUserID(User $lastEditedBy) {
+            $this->lastEditedBy = $lastEditedBy;
         }
 
         public function setComments(Array $comments) {
@@ -124,12 +125,12 @@
             return $this->rules;
         }
 
-        public function getLastEdit() {
-            return $this->lastEdit;
+        public function getLastEditOn() {
+            return $this->lastEditOn;
         }
 
-        function getLastEditUser() {
-            return $this->lastEditedByUserID;
+        function getLastEditedBy() {
+            return $this->lastEditedBy;
         }
 
         public function getComments() {
