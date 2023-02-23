@@ -109,19 +109,19 @@
 
         //Database Access Function stubs
         //stubs for functions that access db
-        public static function getUserByID(int $userID, Database $dbConnection) : ?User {
+        public static function fetchUserByID(Database $dbConnection, int $userID) : ?User {
             //request a user by ID, returns null if not found
             $user = null;
             return $user;
         }
 
-        public static function getUserByUsername(String $username, Database $dbConnection) : ?User {
+        public static function fetchUserByUsername(Database $dbConnection, String $username) : ?User {
             //request a user by ID, returns null if not found
             $user = null;
             return $user;
         }
 
-        public static function getUsers(Database $dbConnection) : array {
+        public static function fetchUsers(Database $dbConnection) : array {
             //Query database to return all users.
             $users = [];
             return $users;

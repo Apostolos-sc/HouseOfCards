@@ -63,7 +63,7 @@
             $ratings = [];
             return $ratings;
         }
-        public static function fetchRatinsgByEntryID(Database $dbConnection, int $entryID) : Array {
+        public static function fetchRatingsByEntryID(Database $dbConnection, int $entryID) : Array {
             //Query db for the ratings a wiki entry whose ID is $entryID.
             $ratings = [];
             return $ratings;

@@ -24,18 +24,17 @@
 
     //returns null 
     function getUsers(Database $dbConnection) : ?array {
-        $users = User::getUsers($dbConnection);
+        $users = User::fetchUsers($dbConnection);
         return $users;
     }
 
-
-    function getComments(Database $dbConnection, int $wikiEntryID): ?array {
-        $comments = Comments::getComments($dbConnection, $wikiEntryID);
+    function getCommentsByEntryID(Database $dbConnection, int $wikiEntryID): ?array {
+        $comments = Comment::fetchComments($dbConnection, $wikiEntryID);
         return $comments;
     }
 
-    function getCommentReplies(Database $dbConnection, int $commentID): ?array {
-        $commentReplies = CommentReply::getCommentReplies($dbConnection, $commentReply);
+    function getCommentRepliesByCommentID(Database $dbConnection, int $commentID): array {
+        $commentReplies = CommentReply::fetchCommentRepliesByCommentID($dbConnection, $commentID);
         return $commentReplies;
     }
 
@@ -44,18 +43,18 @@
         return $entries;
     }
 
-    function getFavorites(Database $dbConnection, int $userID) : array {
-        $favorites = Favorite::getFavorites($dbConnection);
+    function getFavouritesByUserID(Database $dbConnection, int $userID) : array {
+        $favorites = Favourite::fetchFavouritesByUserID($dbConnection, $userID);
         return $favorites;
     }
 
-    function getEntryRatings(Database $dbConnection, int $wikiEntryID) : array{
-        $ratings = Rating::getEntryRatings($dbConnection, $wikiEntryID);
+    function getRatingsByEntryID(Database $dbConnection, int $wikiEntryID) : array{
+        $ratings = Rating::fetchRatingsByEntryID($dbConnection, $wikiEntryID);
         return $ratings;
     }
 
-    function getUserRatings(Database $dbConnection, int $userID) : array {
-        $ratings = User::getUserRatings($dbConnection, $userID);
+    function getUserByID(Database $dbConnection, int $userID) : ?User {
+        $ratings = User::fetchUserByID($dbConnection, $userID);
         return $ratings;
     }
     function getWikiPageGuestView(WikiEntry $wikiEntry, array $gameList) {
