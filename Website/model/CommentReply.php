@@ -1,10 +1,10 @@
 <?php
     //Author            : Ethan Winters
     //Date Created      : 15-02-2023
-    //Last Edited By    : Apostolos Scodnrianis
-    //Last Edited On 	: 22-02-2023
+    //Last Edited By    : Ethan Winters
+    //Last Edited On 	: 23-02-2023
     //Filename          : commentReply.php
-    //Version           : 1.3
+    //Version           : 1.4
 
     //Class CommentReply
     class CommentReply {
@@ -16,6 +16,12 @@
         private String $content;
         private User $postedBy;
         private Date $postedOn;
+
+        //Database Credidentials
+        $hostname = ;
+        $username = ;
+        $password = ;
+        $dbname = "HouseOfCardsDB";
 
         //Constructor
         public function __construct(int $replyID, int $commentID, int $positionID, String $content, User $postedBy, Date $postedOn) {
@@ -76,7 +82,7 @@
             return $this->postedOn;
         }
 
-        //Database Stubs
+        //Database Access Stubs
         /*
             Database Schema - Updated
             `id` int(10) NOT NULL,
@@ -89,13 +95,33 @@
         */
         public static function fetchCommentRepliesByCommentID(Database $dbConnection, int $commentID) : Array {
             //Query db to find CommentReplies for a Comment whose ID = $commentID
-            $commentReplies = [];
+            mysqli_connect($hostname,$username, $password) or die ("<html>script language='JavaScript'>alert('Unable to connect to database'),history.go(-1)<script></html>");
+            mysqli_select_db($dbname); // connect to the MySQL server and select the correct database
+            $query = "SELECT * FROM CommentReply WHERE commentID == $commentID";
+            $results = mysqli_query($query); // compile and execute the query to select the entries
+            $commentReplies = array();
+            if($results){
+                while($entry = mysqli_fetch_array($results)){ // fill the array
+                    array_push($commentReplies, $entry);
+                }
+            }
+            mysql_close(); // close the database connection
             return $commentReplies;
         }
 
         public static function fetchCommentRepliesByUserID(Database $dbConnection, int $userID) : Array {
             //Query db to find CommentReplies by a user whose ID = $userID
-            $commentReplies = [];
+            mysqli_connect($hostname,$username, $password) or die ("<html>script language='JavaScript'>alert('Unable to connect to database'),history.go(-1)<script></html>");
+            mysqli_select_db($dbname); // connect to the MySQL server and select the correct database
+            $query = "SELECT * FROM CommentReply WHERE userID == $userID";
+            $results = mysqli_query($query); // compile and execute the query to select the entries
+            $commentReplies = array();
+            if($results){
+                while($entry = mysqli_fetch_array($results)){ // fill the array
+                    array_push($commentReplies, $entry);
+                }
+            }
+            mysql_close(); // close the database connection
             return $commentReplies;
         }
     }

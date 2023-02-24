@@ -2,9 +2,9 @@
     //Author            : Ethan Winters
     //Date Created      : 21-02-2023
     //Last Edited By    : Ethan Winters
-    //Last Edited On 	: 22-02-2023
+    //Last Edited On 	: 23-02-2023
     //Filename          : comment.php
-    //Version           : 1.1
+    //Version           : 1.2
 
     //Class Comment
     class Comment {
@@ -18,6 +18,11 @@
         private string $content;
         private Array $commentReplies = [];
 
+        //Database Credidentials
+        $hostname = ;
+        $username = ;
+        $password = ;
+        $dbname = "HouseOfCardsDB";
 
         //Constructor
         public function __construct(int $commentID, int $entryID, User $postedBy, int $positionID, Date $postedOn, string $content, Array $commentReplies) {
@@ -100,20 +105,50 @@
             `postedOnTime` time(6) DEFAULT NULL
         */
         public static function fetchCommentsByEntryID(Database $dbConnection, int $entryID) : Array {
-            //Query db for comments of the wiki entry whose ID = $entryID
-            $comments = [];
+            //Query db to find Comments whose entryID = $entryID
+            mysqli_connect($hostname,$username, $password) or die ("<html>script language='JavaScript'>alert('Unable to connect to database'),history.go(-1)<script></html>");
+            mysqli_select_db($dbname); // connect to the MySQL server and select the correct database
+            $query = "SELECT * FROM Comment WHERE entryID == $entryID"; 
+            $results = mysqli_query($query); // compile and execute the query to select the entries with the correct entryID
+            $comments = array();
+            if($results){
+                while($entry = mysqli_fetch_array($results)){ // fill the array
+                    array_push($comments, $entry);
+                }
+            }
+            mysql_close(); // close the database connection
             return $comments;
         }
 
         public static function fetchCommentsByUserID(Database $dbConnection, int $userID) : Array {
-            //Query db for comments posted by user whose ID = $userID
-            $comments = [];
+            //Query db to find Comments whose ID = $userID
+            mysqli_connect($hostname, $username, $password) or die ("<html>script language='JavaScript'>alert('Unable to connect to database'),history.go(-1)<script></html>");
+            mysqli_select_db($dbname); // connect to the MySQL server and select the correct database
+            $query = "SELECT * FROM Comment WHERE id == $userID";
+            $results = mysqli_query($query); // compile and execute the query to select the entries with the correct userID
+            $comments = array();
+            if($results){
+                while($entry = mysqli_fetch_array($results)){ // fill the array
+                    array_push($comments, $entry);
+                }
+            }
+            mysql_close();
             return $comments;
         }
 
         public static function fetchComments(Database $dbConnection) : Array {
-            //Query db for all comments in the database
-            $comments = [];
+            //Query db to select all comments in the database
+            mysqli_connect($hostname, $username, $password) or die ("<html>script language='JavaScript'>alert('Unable to connect to database'),history.go(-1)<script></html>");
+            mysqli_select_db($dbname); // connect to the MySQL server and select the correct database
+            $query = "SELECT * FROM Comment";
+            $results = mysqli_query($query); // compile and execute the query to select the entries
+            $comments = array();
+            if($results){
+                while($entry = mysqli_fetch_array($results)){ // fill the array
+                    array_push($comments, $entry);
+                }
+            }
+            mysql_close(); // close the database connection
             return $comments;
         }
     }
