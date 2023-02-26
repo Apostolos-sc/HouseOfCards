@@ -1,10 +1,10 @@
 <?php
     //Author            : Ethan Winters
     //Date Created      : 21-02-2023
-    //Last Edited By    : Ethan Winters
-    //Last Edited On 	: 23-02-2023
+    //Last Edited By    : Apostolos Scondrianis
+    //Last Edited On 	: 26-02-2023
     //Filename          : comment.php
-    //Version           : 1.2
+    //Version           : 1.3
 
     //Class Comment
     class Comment {
@@ -17,12 +17,6 @@
         private Date $postedOn;
         private string $content;
         private Array $commentReplies = [];
-
-        //Database Credidentials
-        $hostname = ;
-        $username = ;
-        $password = ;
-        $dbname = "HouseOfCardsDB";
 
         //Constructor
         public function __construct(int $commentID, int $entryID, User $postedBy, int $positionID, Date $postedOn, string $content, Array $commentReplies) {
@@ -104,52 +98,121 @@
             `postedOnDate` date,
             `postedOnTime` time(6) DEFAULT NULL
         */
-        public static function fetchCommentsByEntryID(Database $dbConnection, int $entryID) : Array {
+        public static function fetchCommentsByEntryID(Database $dbConnection, int $entryID) : ?Array {
             //Query db to find Comments whose entryID = $entryID
-            mysqli_connect($hostname,$username, $password) or die ("<html>script language='JavaScript'>alert('Unable to connect to database'),history.go(-1)<script></html>");
-            mysqli_select_db($dbname); // connect to the MySQL server and select the correct database
-            $query = "SELECT * FROM Comment WHERE entryID == $entryID"; 
-            $results = mysqli_query($query); // compile and execute the query to select the entries with the correct entryID
-            $comments = array();
-            if($results){
-                while($entry = mysqli_fetch_array($results)){ // fill the array
-                    array_push($comments, $entry);
+            $comments = [];
+            if($dbConnection->is_connected()) {
+                $stmt = $dbConnection->connection->prepare('SELECT * FROM Comment WHERE Comment.entryID=?');
+                $stmt->bind_param('i', $entryID);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                if($result->num_rows == 0) {
+                    //no result. Return an empty array.
+                    return $comments;
+                } else {
+                    //get rows of the table one by one to process in an associative manner
+                    while($row = $result->fetch_assoc()) {
+                        //create the user object
+                        $user = User::fetchUserByID($dbConnection, $row['userID']);
+                        //Maria DB time format is YYYY-MM-DD
+                        //Create an array of strings using - as a delimeter.
+                        $date_arr = explode ("-", $row['postedOnDate']);
+                        //Create an array of strings using : as a delimiter
+                        $time_arr = explode(":", $row['postedOnTime']);
+                        //Adding an integer, i.e. 0, does an implicit String conversion from String to integer
+                        //Create Date object
+                        $date = new Date($date_arr[2]+0, $date_arr[1] + 0, $date_arr[0], $time_arr[0]+0, $time_arr[1]+0, $time_arr[2] + 0);
+                        //get CommentReplies of the Comment
+                        $commentReplies = CommentReply::fetchCommentRepliesByCommentID($dbConnection, $row['id']);
+                        //create Comment object from the fetched information
+                        $comment = new Comment($row['id'], $row['entryID'], $user,  $row['positionID'], $date, $row['content'], $commentReplies);
+                        //add the comment to the comment array
+                        $comments[] = $comment;
+                    }
+                    return $comments;
                 }
+            } else {
+                //database connection provided is invalid, return null
+                return null;
             }
-            mysql_close(); // close the database connection
-            return $comments;
         }
 
-        public static function fetchCommentsByUserID(Database $dbConnection, int $userID) : Array {
+        public static function fetchCommentsByUserID(Database $dbConnection, int $userID) : ?Array {
             //Query db to find Comments whose ID = $userID
-            mysqli_connect($hostname, $username, $password) or die ("<html>script language='JavaScript'>alert('Unable to connect to database'),history.go(-1)<script></html>");
-            mysqli_select_db($dbname); // connect to the MySQL server and select the correct database
-            $query = "SELECT * FROM Comment WHERE id == $userID";
-            $results = mysqli_query($query); // compile and execute the query to select the entries with the correct userID
-            $comments = array();
-            if($results){
-                while($entry = mysqli_fetch_array($results)){ // fill the array
-                    array_push($comments, $entry);
+            $comments = [];
+            if($dbConnection->is_connected()) {
+                $stmt = $dbConnection->connection->prepare('SELECT * FROM Comment WHERE Comment.userID=?');
+                $stmt->bind_param('i', $userID);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                if($result->num_rows == 0) {
+                    //no result. Return an empty array.
+                    return $comments;
+                } else {
+                    //get rows of the table one by one to process in an associative manner
+                    while($row = $result->fetch_assoc()) {
+                        //create the user object
+                        $user = User::fetchUserByID($dbConnection, $row['userID']);
+                        //Maria DB time format is YYYY-MM-DD
+                        //Create an array of strings using - as a delimeter.
+                        $date_arr = explode ("-", $row['postedOnDate']);
+                        //Create an array of strings using : as a delimiter
+                        $time_arr = explode(":", $row['postedOnTime']);
+                        //Adding an integer, i.e. 0, does an implicit String conversion from String to integer
+                        //Create Date object
+                        $date = new Date($date_arr[2]+0, $date_arr[1] + 0, $date_arr[0], $time_arr[0]+0, $time_arr[1]+0, $time_arr[2] + 0);
+                        //get CommentReplies of the Comment
+                        $commentReplies = CommentReply::fetchCommentRepliesByCommentID($dbConnection, $row['id']);
+                        //create Comment object from the fetched information
+                        $comment = new Comment($row['id'], $row['entryID'], $user,  $row['positionID'], $date, $row['content'], $commentReplies);
+                        //add the comment to the comment array
+                        $comments[] = $comment;
+                    }
+                    return $comments;
                 }
+            } else {
+                //database connection provided is invalid, return null
+                return null;
             }
-            mysql_close();
-            return $comments;
         }
 
         public static function fetchComments(Database $dbConnection) : Array {
             //Query db to select all comments in the database
-            mysqli_connect($hostname, $username, $password) or die ("<html>script language='JavaScript'>alert('Unable to connect to database'),history.go(-1)<script></html>");
-            mysqli_select_db($dbname); // connect to the MySQL server and select the correct database
-            $query = "SELECT * FROM Comment";
-            $results = mysqli_query($query); // compile and execute the query to select the entries
-            $comments = array();
-            if($results){
-                while($entry = mysqli_fetch_array($results)){ // fill the array
-                    array_push($comments, $entry);
+            //Query db to find Comments whose entryID = $entryID
+            $comments = [];
+            if($dbConnection->is_connected()) {
+                $stmt = $dbConnection->connection->prepare('SELECT * FROM Comment');
+                $stmt->execute();
+                $result = $stmt->get_result();
+                if($result->num_rows == 0) {
+                    //no result. Return an empty array.
+                    return $comments;
+                } else {
+                    //get rows of the table one by one to process in an associative manner
+                    while($row = $result->fetch_assoc()) {
+                        //create the user object
+                        $user = User::fetchUserByID($dbConnection, $row['userID']);
+                        //Maria DB time format is YYYY-MM-DD
+                        //Create an array of strings using - as a delimeter.
+                        $date_arr = explode ("-", $row['postedOnDate']);
+                        //Create an array of strings using : as a delimiter
+                        $time_arr = explode(":", $row['postedOnTime']);
+                        //Adding an integer, i.e. 0, does an implicit String conversion from String to integer
+                        //Create Date object
+                        $date = new Date($date_arr[2]+0, $date_arr[1] + 0, $date_arr[0], $time_arr[0]+0, $time_arr[1]+0, $time_arr[2] + 0);
+                        //get CommentReplies of the Comment
+                        $commentReplies = CommentReply::fetchCommentRepliesByCommentID($dbConnection, $row['id']);
+                        //create Comment object from the fetched information
+                        $comment = new Comment($row['id'], $row['entryID'], $user,  $row['positionID'], $date, $row['content'], $commentReplies);
+                        //add the comment to the comment array
+                        $comments[] = $comment;
+                    }
+                    return $comments;
                 }
+            } else {
+                //database connection provided is invalid, return null
+                return null;
             }
-            mysql_close(); // close the database connection
-            return $comments;
         }
     }
 ?>
