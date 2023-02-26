@@ -17,7 +17,7 @@
         private User $postedBy;
         private Date $postedOn;
 
-        //Database Credidentials
+        //Database Credentials
         $hostname = ;
         $username = ;
         $password = ;
