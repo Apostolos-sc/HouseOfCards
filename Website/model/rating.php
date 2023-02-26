@@ -15,12 +15,6 @@
         private int $userID;
         private int $rating;
 
-        //Database Credidentials
-        $hostname = ;
-        $username = ;
-        $password = ;
-        $dbname = "HouseOfCardsDB";
-
         //Constructor
         public function _construct(int $ratingID, int $entryID, int $userID, int $rating){
             $this->ratingID = $ratingID;
@@ -71,50 +65,83 @@
             `userID` int(10) NOT NULL,
             `rating` int(10) NOT NULL
         */
-        public static function fetchRatingsByUserID(Database $dbConnection, int $userID) : Array {
+        public static function fetchRatingsByUserID(Database $dbConnection, int $userID) : ?Array {
             //Query db for the ratings a user has given.
-            mysqli_connect($hostname, $username, $password) or die ("<html>script language='JavaScript'>alert('Unable to connect to database'),history.go(-1)<script></html>");
-            mysqli_select_db($dbname); // connect to the MySQL server and select the correct database
-            $query = "SELECT * FROM Rating WHERE userID == $userID";
-            $results = mysqli_query($query); // compile and execute the query to select the entries
-            $ratings = array();
-            if($results){
-                while($entry = mysqli_fetch_array($results)){ // fill the array
-                    array_push($comments, $entry);
+            $ratings = [];
+            if($dbConnection->is_connected()) {
+                $stmt = $dbConnection->connection->prepare('SELECT * FROM Rating WHERE Rating.userID=?');
+                $stmt->bind_param('i', $userID);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                if($result->num_rows == 0) {
+                    //no result. Return an empty array.
+                    return $ratings;
+                } else {
+                    //get rows of the table one by one to process in an associative manner
+                    while($row = $result->fetch_assoc()) {
+                        //create Rating object from the fetched information
+                        $rating = new Rating($row['id'], $row['entryID'], $row['userID'], $row['rating']);
+                        //add the comment to the comment array
+                        $ratings[] = $rating;
+                    }
+                    return $ratings;
                 }
+            } else {
+                //database connection provided is invalid, return null
+                return null;
             }
-            mysql_close();
-            return $ratings;
         }
-        public static function fetchRatingsByEntryID(Database $dbConnection, int $entryID) : Array {
+        public static function fetchRatingsByEntryID(Database $dbConnection, int $entryID) : ?Array {
             //Query db for the ratings a wiki entry whose ID is $entryID.
-            mysqli_connect($hostname, $username, $password) or die ("<html>script language='JavaScript'>alert('Unable to connect to database'),history.go(-1)<script></html>");
-            mysqli_select_db($dbname); // connect to the MySQL server and select the correct database
-            $query = "SELECT * FROM Rating WHERE entryID == $entryID";
-            $results = mysqli_query($query); // compile and execute the query to select the entries
-            $ratings = array();
-            if($results){
-                while($entry = mysqli_fetch_array($results)){ // fill the array
-                    array_push($comments, $entry);
+            $ratings = [];
+            if($dbConnection->is_connected()) {
+                $stmt = $dbConnection->connection->prepare('SELECT * FROM Rating WHERE Rating.entryID=?');
+                $stmt->bind_param('i', $entryID);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                if($result->num_rows == 0) {
+                    //no result. Return an empty array.
+                    return $ratings;
+                } else {
+                    //get rows of the table one by one to process in an associative manner
+                    while($row = $result->fetch_assoc()) {
+                        //create Rating object from the fetched information
+                        $rating = new Rating($row['id'], $row['entryID'], $row['userID'], $row['rating']);
+                        //add the comment to the comment array
+                        $ratings[] = $rating;
+                    }
+                    return $ratings;
                 }
+            } else {
+                //database connection provided is invalid, return null
+                return null;
             }
-            mysql_close();
             return $ratings;
         }
-        public static function fetchRatings(Database $dbConnection) : Array {
+        public static function fetchRatings(Database $dbConnection) : ?Array {
             //Query db and return all ratings for all entries
-            mysqli_connect($hostname, $username, $password) or die ("<html>script language='JavaScript'>alert('Unable to connect to database'),history.go(-1)<script></html>");
-            mysqli_select_db($dbname); // connect to the MySQL server and select the correct database
-            $query = "SELECT * FROM Rating";
-            $results = mysqli_query($query); // compile and execute the query to select the entries
-            $ratings = array();
-            if($results){
-                while($entry = mysqli_fetch_array($results)){ // fill the array
-                    array_push($comments, $entry);
+            $ratings = [];
+            if($dbConnection->is_connected()) {
+                $stmt = $dbConnection->connection->prepare('SELECT * FROM Rating');
+                $stmt->execute();
+                $result = $stmt->get_result();
+                if($result->num_rows == 0) {
+                    //no result. Return an empty array.
+                    return $ratings;
+                } else {
+                    //get rows of the table one by one to process in an associative manner
+                    while($row = $result->fetch_assoc()) {
+                        //create Rating object from the fetched information
+                        $rating = new Rating($row['id'], $row['entryID'], $row['userID'], $row['rating']);
+                        //add the comment to the comment array
+                        $ratings[] = $rating;
+                    }
+                    return $ratings;
                 }
+            } else {
+                //database connection provided is invalid, return null
+                return null;
             }
-            mysql_close();
-            return $ratings;
         }
     }
 ?>

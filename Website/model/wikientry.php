@@ -2,9 +2,9 @@
     //Author            : Nicholas Lam
     //Date Created      : 12-15-2023
     //Last Edit By      : Apostolos Scondrianis
-    //Last Edited     	: 22-20-2023
+    //Last Edited     	: 26-20-2023
     //Filename          : wikientry.php
-    //Version           : 1.3
+    //Version           : 1.4
 
     //Class User
     class WikiEntry {
@@ -182,7 +182,6 @@
                     while ($row = $result->fetch_assoc()) {
                         //instead of using array_push, use array[] faster operation
                         $user = User::fetchUserByID($dbConnection, $row['lastEditedBy']);
-                        //need to implement date conversion function
                         //Maria DB time format is YYYY-MM-DD
                         //Create an array of strings using - as a delimeter.
                         $date_arr = explode ("-", $row['lastEditedDate']);

@@ -176,7 +176,7 @@
             }
         }
 
-        public static function fetchComments(Database $dbConnection) : Array {
+        public static function fetchComments(Database $dbConnection) : ?Array {
             //Query db to select all comments in the database
             //Query db to find Comments whose entryID = $entryID
             $comments = [];

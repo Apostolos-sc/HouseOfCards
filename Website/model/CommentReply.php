@@ -124,7 +124,7 @@
             }
         }
 
-        public static function fetchCommentRepliesByUserID(Database $dbConnection, int $userID) : Array {
+        public static function fetchCommentRepliesByUserID(Database $dbConnection, int $userID) : ?Array {
             //Query db to find CommentReplies by a user whose ID = $userID
             $commentReplies = [];
             //check if we have a valid database connection
