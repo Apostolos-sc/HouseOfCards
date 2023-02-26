@@ -25,7 +25,7 @@
 
         //Constructor
         public function __construct(int $entryID, String $gameName, String $requiredItems, String $objective,
-                                    String $setUp, String $gamePlay, String $rules, Date $lastEditedOn, int $lastEditedBy, 
+                                    String $setUp, String $gamePlay, String $rules, Date $lastEditedOn, User $lastEditedBy, 
                                     Array $comments, Array $ratings, int $minPlayers, int $maxPlayers) {
             $this->entryID = $entryID;
             $this->gameName = $gameName;
@@ -165,17 +165,87 @@
             `minPlayer` int(10) NOT NULL,
             `maxPlayer` int(10) NOT NULL
         */
-        public static function fetchWikiEntries(Database $dbConnection) : Array {
+        public static function fetchWikiEntries(Database $dbConnection) : ?Array {
             //access the database and for each row of wiki entries, populate one WikiEntry object.
             //Return all the wiki entries of the database in the form of an array
+            //Check to see if the db object has a valid connection
             $entries = [];
-            return $entries;
+            if($dbConnection->is_connected()) {
+                $stmt = $dbConnection->connection->prepare('SELECT * FROM wikiEntry');
+                $stmt->execute();
+                $result = $stmt->get_result();
+                if($result->num_rows == 0) {
+                    //no result. Return an empty array.
+                    return $entries;
+                } else {
+                    //fetch associatively a row. Use $row to get the data needed.
+                    while ($row = $result->fetch_assoc()) {
+                        //instead of using array_push, use array[] faster operation
+                        $user = User::fetchUserByID($dbConnection, $row['lastEditedBy']);
+                        //need to implement date conversion function
+                        //Maria DB time format is YYYY-MM-DD
+                        //Create an array of strings using - as a delimeter.
+                        $date_arr = explode ("-", $row['lastEditedDate']);
+                        //Create an array of strings using : as a delimiter
+                        $time_arr = explode(":", $row['lastEditedTime']);
+                        //Adding an integer, i.e. 0, does an implicit String conversion from String to integer
+                        //Create Date object
+                        $date = new Date($date_arr[2]+0, $date_arr[1] + 0, $date_arr[0], $time_arr[0]+0, $time_arr[1]+0, $time_arr[2] + 0);
+                        //Get ratings of the entry
+                        $ratings = Rating::fetchRatingsByEntryID($dbConnection, $row['id']);
+                        //get comments of the rating
+                        $comments = Comment::fetchCommentsByEntryID($dbConnection, $row['id'], $row['id']);
+                        $wikiEntry = new WikiEntry($row['id'], $row['gameName'], $row['requiredItems'], $row['objective'], 
+                                                    $row['setUp'], $row['gamePlay'], $row['rules'], $date, $user, $comments, $ratings, $row['minPlayer'], $row['maxPlayer']);
+                        //Add the entry to the next slot of the array. This is the fastest way to do it. Don't use "array_push" function
+                        $entries[] = $wikiEntry;
+                    }
+                    //Done fetching rows, return array
+                    return $entries;
+                }
+            } else {
+                //db object is not connected. Return Null.
+                return null;
+            }
         }
         
         public static function fetchWikiEntry(Database $dbConnection, int $entryID) : ?WikiEntry {
             //Query the database for a wiki entry that corresponds to one with an ID of $entryID.
             //If it doesn't exist in the database return null.
-            return null;
+            if($dbConnection->is_connected()) {
+                $stmt = $dbConnection->connection->prepare('SELECT * FROM wikiEntry WHERE wikiEntry.id=?');
+                $stmt->bind_param('i', $entryID);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                if($result->num_rows == 0) {
+                    //no result. Return an empty array.
+                    return null;
+                } else {
+                    //fetch associatively a row. Use $row to get the data needed.
+                    $row = $result->fetch_assoc();
+                    //instead of using array_push, use array[] faster operation
+                    $user = User::fetchUserByID($dbConnection, $row['lastEditedBy']);
+                    //need to implement date conversion function
+                    //Maria DB time format is YYYY-MM-DD
+                    //Create an array of strings using - as a delimeter.
+                    $date_arr = explode ("-", $row['lastEditedDate']);
+                    //Create an array of strings using : as a delimiter
+                    $time_arr = explode(":", $row['lastEditedTime']);
+                    //Adding an integer, i.e. 0, does an implicit String conversion from String to integer
+                    //Create Date object
+                    $date = new Date($date_arr[2]+0, $date_arr[1] + 0, $date_arr[0], $time_arr[0]+0, $time_arr[1]+0, $time_arr[2] + 0);
+                    //Get ratings of the entry
+                    $ratings = Rating::fetchRatingsByEntryID($dbConnection, $row['id']);
+                    //get comments of the rating
+                    $comments = Comment::fetchCommentsByEntryID($dbConnection, $row['id'], $row['id']);
+                    $wikiEntry = new WikiEntry($row['id'], $row['gameName'], $row['requiredItems'], $row['objective'], 
+                                                $row['setUp'], $row['gamePlay'], $row['rules'], $date, $user, $comments, $ratings, $row['minPlayer'], $row['maxPlayer']);
+                    return $wikiEntry;
+                }
+            } else {
+                //db object is not connected. Return Null.
+                return null;
+            }
         }
     }
 ?>
