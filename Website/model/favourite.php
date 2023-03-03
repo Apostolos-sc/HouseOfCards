@@ -2,9 +2,9 @@
     //Author            : Carter Marcelo
     //Date Created      : 19-02-2023
     //Last Edited By    : Apostolos Scondrianis
-    //Last Edited On    : 22-02-2023
+    //Last Edited On    : 03-03-2023
     //Filename          : favourite.php
-    //Version           : 1.2
+    //Version           : 1.3
 
     //Class Favourite
     class Favourite {
@@ -43,15 +43,57 @@
             `userID` int(10) NOT NULL,
             `entryID` int(10) NOT NULL
         */
-        public static function fetchFavouritesByUserID(Database $dbConnection, int $userID) : Array {
-            //Query db to see which entries did a user with ID = $userID favourite
+        public static function fetchFavouritesByUserID(Database $dbConnection, int $userID) : ?Array {
+            //Query db to see which entries did a user with userID = $userID favourite
             $favourites = [];
-            return $favourites;
+            if($dbConnection->is_connected()) {
+                $stmt = $dbConnection->connection->prepare('SELECT * FROM Favourite WHERE Favourite.userID=?');
+                $stmt->bind_param('i', $userID);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                if($result->num_rows == 0) {
+                    //no result. Return an empty array.
+                    return $favourites;
+                } else {
+                    //get rows of the table one by one to process in an associative manner
+                    while($row = $result->fetch_assoc()) {
+                        //create userType object from the fetched information
+                        $favourite = new Favourite($row['userID'], $row['entryID']);
+                        //add the userType to the favourites array
+                        $favourites[] = $favourite;
+                    }
+                    return $favourites;
+                }
+            } else {
+                //database connection provided is invalid, return null
+                return null;
+            }
         }
-        public static function fetchFavouritesByEntryID(Database $dbConnection, int $entryID) : Array {
-            //Query db to see who has favourited a specific wiki entry whose ID = $entryID
+        public static function fetchFavouritesByEntryID(Database $dbConnection, int $entryID) : ?Array {
+            //Query db to see who has favourited a specific wiki entry whose entryID = $entryID
             $favourites = [];
-            return $favourites;
+            if($dbConnection->is_connected()) {
+                $stmt = $dbConnection->connection->prepare('SELECT * FROM Favourite WHERE Favourite.entryID=?');
+                $stmt->bind_param('i', $entryID);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                if($result->num_rows == 0) {
+                    //no result. Return an empty array.
+                    return $favourites;
+                } else {
+                    //get rows of the table one by one to process in an associative manner
+                    while($row = $result->fetch_assoc()) {
+                        //create Favourite object from the fetched information
+                        $favourite = new Favourite($row['userID'], $row['entryID']);
+                        //add the Favourite to the favourites array
+                        $favourites[] = $favourite;
+                    }
+                    return $favourites;
+                }
+            } else {
+                //database connection provided is invalid, return null
+                return null;
+            }
         }
     }
 ?>
