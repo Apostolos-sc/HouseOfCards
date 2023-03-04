@@ -3,7 +3,7 @@
 -- Last Edited By : Apostolos Scondrianis
 -- Last Edited On : 03-03-2023
 -- Filename       : HouseOfCardsDB.sql
--- Version        : 1.3
+-- Version        : 1.4
 -- phpMyAdmin SQL Dump
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
@@ -55,7 +55,7 @@ INSERT INTO `Comment` (`id`, `content`, `entryID`, `userID`, `positionID`, `post
 (4, 'get a life', 2, 2, 2, '2023-02-02', '23:15:15'),
 (5, 'actually i agree with capital punishment', 2, 3, 3, '2023-02-03', '07:21:12'),
 (6, 'pog', 2, 4, 4, '2023-02-04', '09:24:15'),
-(7, 'pls send bob vagen', 3, 1 ,1 '2023-03-05', '07:15:21'),
+(7, 'pls send bob vagen', 3, 1 ,1, '2023-03-05', '07:15:21'),
 (8, 'k.', 3, 2, 2, '2023-03-06', '16:23:15');
 
 
@@ -126,15 +126,15 @@ INSERT INTO `Rating` (`id`, `entryID`, `userID`, `rating`) VALUES
 
 CREATE TABLE `wikiEntry` (
   `id` int(10) NOT NULL,
-  `gameName` varchar(200) NOT NULL,
+  `gameName` varchar(50) NOT NULL,
   `requiredItems` varchar(200) NOT NULL,
-  `objective` varchar(200) NOT NULL,
-  `setUp` varchar(200) NOT NULL,
-  `gamePlay` varchar(200) NOT NULL,
-  `rules` varchar(200) NOT NULL,
+  `objective` varchar(400) NOT NULL,
+  `setUp` varchar(400) NOT NULL,
+  `gamePlay` varchar(1500) NOT NULL,
+  `rules` varchar(500) NOT NULL,
   `lastEditedBy` int(10) NOT NULL,
   `lastEditedDate` date,
-  `lastEditedTime` time(6) DEFAULT NULL
+  `lastEditedTime` time(6) DEFAULT NULL,
   `minPlayer` int(10) NOT NULL,
   `maxPlayer` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -144,7 +144,7 @@ CREATE TABLE `wikiEntry` (
 --
 
 INSERT INTO `wikiEntry` (`id`, `gameName`, `requiredItems`, `objective`, `setUp`, `gamePlay`, `rules`, `lastEditedBy`, `lastEditedDate`, `lastEditedTime`, `minPlayer`, `maxPlayer`) VALUES
-(0, 'Go Fish', '52 card deck', 'To win, a player must have the most sets of four matching number cards.', 'Deal seven cards (2-3 players) to each player or five cards (4-5 players), then place rest of the deck is placed between all players with additional room for placing the matching sets of cards.', `During a players turn, the player may ask another player if they have a card, specifying the number. The player who was asked must give all cards of the number specified to the player who asked. If they do not have any cards of the specified number, they must say ""Gold Fish"", and the player who asked must draw a card from the deck. If a player does recieve one or more cards of that they asked for, their turn continues and they can ask any player for cards of a specific number again./nWhen a player obtains all four cards of a number, they must place the set of cards face up in front of them for other players to see. The game ends when all thirteen sets of cards are placed face up, and the player with the most sets wins.`, `The cards rank from ace (high) to two (low). Suits are not important for this game.`, 6, '2009-01-17', '15:15:15', 2, 5),
+(0, 'Go Fish', '52 card deck', 'To win, a player must have the most sets of four matching number cards.', 'Deal seven cards (2-3 players) to each player or five cards (4-5 players), then place rest of the deck is placed between all players with additional room for placing the matching sets of cards.', 'During a players turn, the player may ask another player if they have a card, specifying the number. The player who was asked must give all cards of the number specified to the player who asked. If they do not have any cards of the specified number, they must say ""Gold Fish"", and the player who asked must draw a card from the deck. If a player does recieve one or more cards of that they asked for, their turn continues and they can ask any player for cards of a specific number again./nWhen a player obtains all four cards of a number, they must place the set of cards face up in front of them for other players to see. The game ends when all thirteen sets of cards are placed face up, and the player with the most sets wins.', 'The cards rank from ace (high) to two (low). Suits are not important for this game.', 6, '2009-01-17', '15:15:15', 2, 5),
 (1, 'Blackjack', '52 card deck', 'Each player attempts to beat the dealer by having a hand that adds up as close to 21 as possible, without going over 21.', 'One player must be designated as dealer. The dealer deals two cards face up to each player, however the dealer has one face up and one face down.', 'Each player must decide if they would like to get dealt another card (Hit) or remain with the cards they have (Stand). The dealer must deal out a card to any player who asks for a Hit, but if a player recieves a card and the total of their hand exceeds 21, they Bust, and lose the round. Once every player has Stand or has Bust, the dealer flips their face down card. If the dealers hand totals 16 or less, they must draw another card until their total is above 16. If the dealer Bust, each player who has not Bust wins the round. If there is a tie, neither dealer or player wins the round. /nIf any players get dealt a natural (a 10 or face card and an ace) they immediately win the round. If the dealer has a natural while any players do not have a natural, the dealer wins the round.','Face cards count for 10 points, and numbered cards count for their respective number value. Ace cards may count for 1 point or 11 points, each player may pick the value based on their needs during play. /nEach player can win or lose against the dealer, the results of one player does not impact the round for other players.', 6, '2009-01-17', '15:15:15', 2, 7),
 (2, 'War', '52 card deck', 'Obtain the entire deck of cards.', 'Deal 26 cards (half the deck) to each player, the piles should be face down in front of each player.', 'Each round, each player will reveal the card on the top of their pile. The player with the higher card wins the round and takes both cards, placing them at the bottom of their pile. If there is a draw, both players will then reveal two more cards, one face down and one face up. The player with the higher card wins the round and takes all 6 cards. Repeat this process if another draw occurs. The player that obtains the entire deck of cards wins the game.', 'No rules', 6, '2009-01-17', '15:15:15', 2, 7),
 (3, 'Thirty-One', '52 card deck', 'To win, a player must obtain a hand which is nearest to a total of 31 in cards of one suit during the showdown.', 'Deal three cards face down to each player, then place rest of the deck is placed between all players with additional room for a discard pile.', 'During a players turn, the player can choose to pick a card from the deck or discard pile and then they must discard a card. When a player is comfortable with their hand, they may call for a showdown by knocking on the table. Each player (not including the one who knocked) will have one more turn to try and improve their hand. The player with the lowest hand loses the round, and if the player who called for the showdown has the lowest hand, it counts as 2 losses. After losing 4 times, the player is out of the game. The last player left wins the game.', 'Face cards count for 10 points, Ace cards count for 11 points, and numbered cards count for their respective number value. A three of a kind is worth 30 points regardless of the card value./n(Optional Rules) /nA hand greater than 31 will not be counted during the showdown.', 6, '2009-01-17', '15:15:15', 2, 10),
@@ -280,7 +280,7 @@ ALTER TABLE `users`
 -- Indexes for table `Favourite`
 --
 ALTER TABLE `Favourite`
-  ADD PRIMARY KEY (`userID`);
+  ADD PRIMARY KEY (`userID`, `entryID`);
 
 --
 -- Indexes for table `UserType`
