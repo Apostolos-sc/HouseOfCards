@@ -12,8 +12,8 @@
         private string $userGroup;
 
         //Constructor
-        public function _construct(int $accessLevel, string $userGroup){
-            $this->$accessLevel = $accessLevel;
+        public function __construct(int $accessLevel, string $userGroup){
+            $this->accessLevel = $accessLevel;
             $this->userGroup = $userGroup;
         }
 
@@ -22,17 +22,17 @@
             return $this->accessLevel;
         }
         
-        public function getUserGrpoup() {
+        public function getUserGroup() {
             return $this->userGroup;
         }
 
         //Setters
         public function setAccessLevel(int $accessLevel) {
-            $this->$accessLevel = $accessLevel;
+            $this->accessLevel = $accessLevel;
         }
     
         public function setUserGroup(string $userGroup) {
-            $this->$userGroup = $userGroup;
+            $this->userGroup = $userGroup;
         }
 
         //Database access stubs
@@ -73,7 +73,7 @@
             //Query the database for a wiki entry that corresponds to one with an ID of $wikiEntryID.
             //If it doesn't exist in the database return null.
             if($dbConnection->is_connected()) {
-                $stmt = $dbConnection->connection->prepare('SELECT * FROM UserTypes WHERE UserType.accessLevel=?');
+                $stmt = $dbConnection->connection->prepare('SELECT * FROM UserType WHERE UserType.accessLevel=?');
                 $stmt->bind_param('i', $userAccessLevel);
                 $stmt->execute();
                 $result = $stmt->get_result();

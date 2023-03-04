@@ -18,8 +18,8 @@
         private String $rules;
         private Date $lastEditedOn;
         private User $lastEditedBy;
-        private Comment $comments = array();
-        private Rating $ratings = array();
+        private Array $comments = [];
+        private Array $ratings = [];
         private int $minPlayers;
         private int $maxPlayers;
 

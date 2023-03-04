@@ -5,7 +5,7 @@
     //Last Edited On    : 21-02-2023
     //Filename          : header.php
     //Version           : 1.1
-    if($GLOBALS['title']) {
+    if(isset($GLOBALS['title'])) {
         $title = $GLOBALS['title'];
     } else {
         $GLOBALS["title"] = "Welcome to House Cards Wiki";        

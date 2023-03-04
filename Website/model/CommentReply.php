@@ -91,7 +91,7 @@
             //Query db to find CommentReplies for a Comment whose ID = $commentID
             $commentReplies = [];
             if($dbConnection->is_connected()) {
-                $stmt = $dbConnection->connection->prepare('SELECT * FROM commentReply WHERE CommentReply.commentID=?');
+                $stmt = $dbConnection->connection->prepare('SELECT * FROM CommentReply WHERE CommentReply.commentID=?');
                 $stmt->bind_param('i', $commentID);
                 $stmt->execute();
                 $result = $stmt->get_result();
@@ -112,7 +112,7 @@
                         //Create Date object
                         $date = new Date($date_arr[2]+0, $date_arr[1] + 0, $date_arr[0], $time_arr[0]+0, $time_arr[1]+0, $time_arr[2] + 0);
                         //create CommentReply object from the fetched information
-                        $commentReply = new CommentReply($row['id'], $row['commentID'], $user,  $row['positionID'], $row['content'], $user, $date);
+                        $commentReply = new CommentReply($row['id'], $row['commentID'], $row['positionID'], $row['content'], $user, $date);
                         //add the comment to the comment array
                         $commentsReplies[] = $commentReply;
                     }

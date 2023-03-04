@@ -12,7 +12,7 @@
     //Completed by Apostolos Scondrianis
     //Function that generates the View of a Wiki Page for the Guest Users
     
-    function generateWikiPageGuestUser(WikiEntry $wikiPage, array $gameList): string {
+    function generateWikiPageGuestUser(WikiEntry $wikiPage, Array $gameList): string {
         $view = "<div id=\"card-game-body\">
                     <div id=\"wikiTitle\">
                     Card Games Wiki Pages
@@ -81,9 +81,9 @@
                         <div id=\"wikiNavContent\">
                             <ul style=\"list-style: none;text-align:left; margin:0; padding:0;\">";
         foreach($gameList as $game) {
-            $view = $view + "<li><a href=\"\">".$game."</a></li>";
+            $view .="<li><a href=\"\">".$game."</a></li>";
         }                   
-        $view = $view + "
+        $view .= "
                             <ul>
                         </div>
                     </div>
@@ -96,17 +96,17 @@
                         </div>";
         //generate HTML code for each comment of the wiki page
         foreach($wikiPage->getComments() as $comment) {
-            $view = $view + "
+            $view .= "
                         <div class=\"comment_container\">
                             <div class=\"comment_user_info_container\">
                                 <div class=\"comment_user_info_group\">
-                                    ".$comment->getUser()->getUserType()->getUserGroup()."
+                                    ".$comment->getPostedBy()->getUserGroup()->getUserGroup()."
                                 </div>
                                 <div class=\"comment_user_info_image\">
                                     <img src=\"https://goldenagesolutions.ca/HouseOfCards/images/beans.jpg\"/>
                                 </div>
                                 <div class=\"comment_user_info_username\">
-                                    <a href=\"\">".$comment->getUser()->getUsername()."</a>
+                                    <a href=\"\">".$comment->getPostedBy()->getUsername()."</a>
                                 </div>
                             </div>
                             <div class=\"comment_content_container\">
@@ -121,17 +121,17 @@
                         </div>";
             //generate code for each comment reply posted to each comment of the wiki page
             foreach($comment->getCommentReplies() as $reply) {
-                $view = $view + "
+                $view .= "
                         <div class=\"comment_reply_container\">
                             <div class=\"comment_reply_user_info_container\">
                                 <div class=\"comment_reply_user_info_group\">
-                                    ".$reply->getUser()->getUserGroup()->getUserGroup()."
+                                    ".$reply->getPostedBy()->getUserGroup()->getUserGroup()."
                                 </div>
                                 <div class=\"comment_reply_user_info_image\">
                                     <img src=\"https://goldenagesolutions.ca/HouseOfCards/images/beans.jpg\"/>
                                 </div>
                                 <div class=\"comment_reply_user_info_username\">
-                                    <a href=\"\">".$reply->getUser()->getUsername()."</a>
+                                    <a href=\"\">".$reply->getPostedBy()->getUsername()."</a>
                                 </div>
                             </div>
                             <div class=\"comment_reply_content_container\">
@@ -146,7 +146,7 @@
                         ";
             }
         }
-        $view = $view+ "
+        $view .= "
                     </div>
                 </div>
                 ";

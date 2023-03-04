@@ -7,48 +7,43 @@
     //Version           : 0.2 - Stub File
     //include php files of model
     
-    //include('../model/Rating.php);
-    //include('../model/Favorite.php);
-    //include('../model/Comment.php);
-    //include('../model/CommentReply.php);
+
     //include('../view/view_functions.php);
     //This line forces return types on functions
 
     declare(strict_types=1);
-    include('../model/User.php');
     include('../controller/functions.php');
-    include('../model/wikientry.php');
     //Stub Functions
     //The idea here is to have static functions inside each class of the Model that
     //access the db and then return the information needed.
 
     //returns null 
-    function getUsers(Database $dbConnection) : ?array {
+    function getUsers(Database $dbConnection) : Array {
         $users = User::fetchUsers($dbConnection);
         return $users;
     }
 
-    function getCommentsByEntryID(Database $dbConnection, int $wikiEntryID): ?array {
+    function getCommentsByEntryID(Database $dbConnection, int $wikiEntryID): Array {
         $comments = Comment::fetchComments($dbConnection, $wikiEntryID);
         return $comments;
     }
 
-    function getCommentRepliesByCommentID(Database $dbConnection, int $commentID): array {
+    function getCommentRepliesByCommentID(Database $dbConnection, int $commentID): Array {
         $commentReplies = CommentReply::fetchCommentRepliesByCommentID($dbConnection, $commentID);
         return $commentReplies;
     }
 
-    function getWikiEntries(Database $dbConnection) : ?array {
+    function getWikiEntries(Database $dbConnection) : Array {
         $entries = getWikiEntries($dbConnection);
         return $entries;
     }
 
-    function getFavouritesByUserID(Database $dbConnection, int $userID) : array {
+    function getFavouritesByUserID(Database $dbConnection, int $userID) : Array {
         $favorites = Favourite::fetchFavouritesByUserID($dbConnection, $userID);
         return $favorites;
     }
 
-    function getRatingsByEntryID(Database $dbConnection, int $wikiEntryID) : array{
+    function getRatingsByEntryID(Database $dbConnection, int $wikiEntryID) : Array{
         $ratings = Rating::fetchRatingsByEntryID($dbConnection, $wikiEntryID);
         return $ratings;
     }
@@ -64,11 +59,11 @@
 
     //This function needs to be tested. Can't remember if it should be $wikiEntry->getGameName() or
     //if it should be $wikiEntry.getGameName()
-    function getGameList(array $wikiEntries) : array {
-        $gameList = array();
+    function getGameList(Array $wikiEntries) : Array {
+        $gameList = [];
         
         foreach($wikiEntries as $wikiEntry) {
-            array_push($gamelist, $wikiEntry->getGameName());
+           $gameList[] = $wikiEntry->getGameName();
         }
         return $gameList;
     }

@@ -17,7 +17,7 @@
         private String $username;
         private String $password;
         private Date $dob;
-        private Favourite $favourites = array();
+        private Array $favourites = []; //PHP is loosely typed
         //Should consider if we should carry the ratings in the user for each user or if we should query the db each time
         // we need them 
 

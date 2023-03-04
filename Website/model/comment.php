@@ -125,7 +125,7 @@
                         //get CommentReplies of the Comment
                         $commentReplies = CommentReply::fetchCommentRepliesByCommentID($dbConnection, $row['id']);
                         //create Comment object from the fetched information
-                        $comment = new Comment($row['id'], $row['entryID'], $user,  $row['positionID'], $date, $row['content'], $commentReplies);
+                        $comment = new Comment($row['id'], $row['entryID'], $user, $row['positionID'], $date, $row['content'], $commentReplies);
                         //add the comment to the comment array
                         $comments[] = $comment;
                     }
