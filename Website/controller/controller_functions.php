@@ -2,9 +2,9 @@
     //Author            : Apostolos Scondrianis
     //Date Created      : 16-02-2023
     //Last Edit By      : Apostolos Scondrianis
-    //Last Edited     	: 08-03-2023
+    //Last Edited     	: 09-03-2023
     //Filename          : controller.php
-    //Version           : 0.3 - Stub File
+    //Version           : 0.4 - Stub File
     //include php files of model
     
 
@@ -66,5 +66,13 @@
            $gameList[] = array($wikiEntry->getEntryID() ,$wikiEntry->getGameName());
         }
         return $gameList;
+    }
+
+    // Removing the redundant HTML characters if any exist.
+    function test_input($data) {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
     }
 ?>
