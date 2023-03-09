@@ -1,15 +1,15 @@
 <?php
-    //Author            : Team 31
+    //Author            : Apostolos Scondrianis
     //Date Created      : 16-02-2023
-    //Last Edited     	: ----------
+    //Last Edited By    : Apostolos Scondrianis
+    //Last Edited On    : 08-03-2023
     //Filename          : view_functions.php
-    //Version           : 0.1 - First Draft
+    //Version           : 0.2 - WikiPage View Complete
     
     //There are some more edits that need to be done on the php classes when you guys finish them.
     //I forgot that php passes objects by reference. There it's okay instead of holding the id's of users
     //to simply hold the object itself in the classes where we store "userID" such as the Comment class.
 
-    //Completed by Apostolos Scondrianis
     //Function that generates the View of a Wiki Page for the Guest Users
     
     function generateWikiPageGuestUser(WikiEntry $wikiPage, Array $gameList): string {
@@ -81,7 +81,7 @@
                         <div id=\"wikiNavContent\">
                             <ul style=\"list-style: none;text-align:left; margin:0; padding:0;\">";
         foreach($gameList as $game) {
-            $view .="<li><a href=\"\">".$game."</a></li>";
+            $view .="<li><a href=\"https://goldenagesolutions.ca/HouseOfCards/wikipage.php?entry=".$game[0]."\">".$game[1]."</a></li>";
         }                   
         $view .= "
                             <ul>
@@ -95,6 +95,9 @@
                             Discussion Board <a href=\"\"><img style=\"position: absolute; bottom: 0; right: 0; height:30px; width:30px;\" src=\"https://goldenagesolutions.ca/HouseOfCards/images/reply.png\"/></a>
                         </div>";
         //generate HTML code for each comment of the wiki page
+        if($wikiPage->getComments() == null || sizeof($wikiPage->getComments()) == 0) {
+            $view .= "No comments have been posted yet.";
+        }
         foreach($wikiPage->getComments() as $comment) {
             $view .= "
                         <div class=\"comment_container\">
@@ -150,6 +153,90 @@
                     </div>
                 </div>
                 ";
+        return $view;
+    }
+    function generateWikiPageWrongEntry(Array $gameList): string {
+        $view = "<div id=\"card-game-body\">
+                    <div id=\"wikiTitle\">
+                    Card Games Wiki Pages
+                    </div>
+                    <div id=\"wikiContent\">
+                        An invalid entry ID has been selected. It must be a positive or zero integer.
+                    </div>
+                    <div id=\"wikiNav\">
+                        <div id=\"wikiNavTitle\">
+                            Game List
+                        </div>
+                        <div id=\"wikiNavContent\">
+                            <ul style=\"list-style: none;text-align:left; margin:0; padding:0;\">";
+        foreach($gameList as $game) {
+            $view .="<li><a href=\"https://goldenagesolutions.ca/HouseOfCards/wikipage.php?entry=".$game[0]."\">".$game[1]."</a></li>";
+        }                   
+        $view .= "
+                            <ul>
+                        </div>
+                    </div>
+                    <div id=\"pageInfo\"> 
+                    </div>
+                    <div id=\"wikiComments\">
+                    </div>
+                </div>";
+        return $view;
+    }
+    function generateWikiPageWelcome(Array $gameList): string {
+        $view = "<div id=\"card-game-body\">
+                    <div id=\"wikiTitle\">
+                    Card Games Wiki Pages
+                    </div>
+                    <div id=\"wikiContent\">
+                        Welcome to the House of Cards Wiki Page, please select one of the games from the left navigation to view its gameplay and rules.
+                    </div>
+                    <div id=\"wikiNav\">
+                        <div id=\"wikiNavTitle\">
+                            Game List
+                        </div>
+                        <div id=\"wikiNavContent\">
+                            <ul style=\"list-style: none;text-align:left; margin:0; padding:0;\">";
+        foreach($gameList as $game) {
+            $view .="<li><a href=\"https://goldenagesolutions.ca/HouseOfCards/wikipage.php?entry=".$game[0]."\">".$game[1]."</a></li>";
+        }                   
+        $view .= "
+                            <ul>
+                        </div>
+                    </div>
+                    <div id=\"pageInfo\">
+                    </div>
+                    <div id=\"wikiComments\">
+                    </div>
+                </div>";
+        return $view;
+    }
+    function generateWikiPageNotExist(Array $gameList): string {
+        $view = "<div id=\"card-game-body\">
+                    <div id=\"wikiTitle\">
+                    Card Games Wiki Pages
+                    </div>
+                    <div id=\"wikiContent\">
+                        The entry you have selected to view does not exist. Please try again.    
+                    </div>
+                    <div id=\"wikiNav\">
+                        <div id=\"wikiNavTitle\">
+                            Game List
+                        </div>
+                        <div id=\"wikiNavContent\">
+                            <ul style=\"list-style: none;text-align:left; margin:0; padding:0;\">";
+        foreach($gameList as $game) {
+            $view .="<li><a href=\"https://goldenagesolutions.ca/HouseOfCards/wikipage.php?entry=".$game[0]."\">".$game[1]."</a></li>";
+        }                   
+        $view .= "
+                            <ul>
+                        </div>
+                    </div>
+                    <div id=\"pageInfo\">
+                    </div>
+                    <div id=\"wikiComments\">
+                    </div>
+                </div>";
         return $view;
     }
 ?>

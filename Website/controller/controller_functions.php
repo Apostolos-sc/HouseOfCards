@@ -2,9 +2,9 @@
     //Author            : Apostolos Scondrianis
     //Date Created      : 16-02-2023
     //Last Edit By      : Apostolos Scondrianis
-    //Last Edited     	: 20-02-2023
+    //Last Edited     	: 08-03-2023
     //Filename          : controller.php
-    //Version           : 0.2 - Stub File
+    //Version           : 0.3 - Stub File
     //include php files of model
     
 
@@ -63,7 +63,7 @@
         $gameList = [];
         
         foreach($wikiEntries as $wikiEntry) {
-           $gameList[] = $wikiEntry->getGameName();
+           $gameList[] = array($wikiEntry->getEntryID() ,$wikiEntry->getGameName());
         }
         return $gameList;
     }
