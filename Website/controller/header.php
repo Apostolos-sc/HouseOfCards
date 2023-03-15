@@ -1,9 +1,15 @@
 <?php
     //Author            : Apostolos Scondrianis
     //Date Created      : 12-02-2023
-    //Last Edited     	: 15-02-2023
+    //Last Edited By    : Apostolos Scondrianis
+    //Last Edited On    : 21-02-2023
     //Filename          : header.php
-    //Version           : 1.0
+    //Version           : 1.1
+    if(isset($GLOBALS['title'])) {
+        $title = $GLOBALS['title'];
+    } else {
+        $GLOBALS["title"] = "Welcome to House Cards Wiki";        
+    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -11,7 +17,9 @@
         <link rel="stylesheet" href="controller/theme.css">
         <link rel="icon" type="image/png" href="https://goldenagesolutions.ca/HouseOfCards/images/cardgame.png">
         <title>
-            Welcome to House Cards Wiki
+            <?
+            echo $GLOBALS["title"];
+            ?>
         </title>
     </head>
     <body>

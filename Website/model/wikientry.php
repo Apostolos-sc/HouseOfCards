@@ -2,33 +2,40 @@
     //Author            : Nicholas Lam
     //Date Created      : 12-15-2023
     //Last Edit By      : Apostolos Scondrianis
-    //Last Edited     	: 12-20-2023
+    //Last Edited     	: 09-03-2023
     //Filename          : wikientry.php
-    //Version           : 1.1
+    //Version           : 1.5
+
     //Class User
     class WikiEntry {
         //Properties
         private int $entryID;
         private String $gameName;
-        private String $description;
+        private String $requiredItems;
+        private String $objective;
+        private String $setUp;
+        private String $gamePlay;
         private String $rules;
-        private Date $lastEdit;
-        private int $lastEditedByUserID;
-        private Comment $comments = array();
-        private Rating $ratings = array();
+        private Date $lastEditedOn;
+        private User $lastEditedBy;
+        private Array $comments = [];
+        private Array $ratings = [];
         private int $minPlayers;
         private int $maxPlayers;
 
         //Constructor
-        public function __construct(int $entryID, String $gameName, String $description, 
-                                    String $rules, Date $lastEdit, int $lastEditedByUserID, Array $comments,
-                                    Array $ratings, int $minPlayers, int $maxPlayers) {
+        public function __construct(int $entryID, String $gameName, String $requiredItems, String $objective,
+                                    String $setUp, String $gamePlay, String $rules, Date $lastEditedOn, User $lastEditedBy, 
+                                    Array $comments, Array $ratings, int $minPlayers, int $maxPlayers) {
             $this->entryID = $entryID;
             $this->gameName = $gameName;
-            $this->description = $description;
+            $this->requiredItems = $requiredItems;
+            $this->objective = $objective;
+            $this->setUp = $setUp;
+            $this->gamePlay = $gamePlay;
             $this->rules = $rules;
-            $this->lastEdit = $lastEdit;
-            $this->lastEditedByUserID = $lastEditedByUserID;
+            $this->lastEditedOn = $lastEditedOn;
+            $this->lastEditedBy = $lastEditedBy;
             $this->comments = $comments;
             $this->ratings = $ratings;
             $this->minPlayers = $minPlayers;
@@ -36,86 +43,237 @@
         }
 
         //Setters
-        function setEntryID(int $entryID) {
+        public function setEntryID(int $entryID) {
             $this->entryID = $entryID;
         }
 
-        function setGameName(String $gameName) {
+        public function setGameName(String $gameName) {
             $this->gameName = $gameName;
         }
 
-        function setDescription(String $description) {
-            $this->description = $description;
+        public function setRequiredItems(String $requiredItems) {
+            $this->requiredItems = $requiredItems;
         }
 
-        function setRules(String $rules) {
+        public function setObjective(String $objective) {
+            $this->objective = $objective;
+        }
+
+        public function setSetUp(String $setUp) {
+            $this->setUp = $setUp;
+        } 
+
+        public function setGamePlay(String $gamePlay) {
+            $this->gamePlay = $gamePlay;
+        }
+
+        public function setRules(String $rules) {
             $this->rules = $rules;
         }
 
-        function setLastEdit(Date $lastEdit) {
-            $this->lastEdit = $lastEdit;
+        public function setLastEditedOn(Date $lastEditedOn) {
+            $this->lastEditedOn = $lastEditedOn;
         }
 
-        function setLastEditedByUserID(int $lastEditedByUserID) {
-            $this->lastEditedByUserID = $lastEditedByUserID;
+        public function setLastEditedByUserID(User $lastEditedBy) {
+            $this->lastEditedBy = $lastEditedBy;
         }
 
-        function setComments(Array $comments) {
+        public function setComments(Array $comments) {
             $this->comments = $comments;
         }
 
-        function setRatings(Array $ratings) {
+        public function setRatings(Array $ratings) {
             $this->ratings = $ratings;
         }
 
-        function setMinPlayers(int $minPlayers) {
+        public function setMinPlayers(int $minPlayers) {
             $this->minPlayers = $minPlayers;
         }
         
-        function setMaxPlayers(int $maxPlayers) {
+        public function setMaxPlayers(int $maxPlayers) {
             $this->maxPlayers = $maxPlayers;
         }
 
 
         //Getters
-        function getEntryID() {
+        public function getEntryID() {
             return $this->entryID;
         }
 
-        function getGameName() {
+        public function getGameName() {
             return $this->gameName;
         }
 
-        function getDescription() {
-            return $this->description;
+        public function getRequiredItems() {
+            return $this->requiredItems;
         }
 
-        function getRules() {
+        public function getObjective() {
+            return $this->objective;
+        }
+
+        public function getSetUp() {
+            return $this->setUp;
+        } 
+
+        public function getGamePlay() {
+            return $this->gamePlay;
+        }
+
+        public function getRules() {
             return $this->rules;
         }
 
-        function getLastEdit() {
-            return $this->lastEdit;
+        public function getLastEditedOn() {
+            return $this->lastEditedOn;
         }
 
-        function getLastEditUser() {
-            return $this->lastEditedByUserID;
+        function getLastEditedBy() {
+            return $this->lastEditedBy;
         }
 
-        function getComments() {
+        public function getComments() {
             return $this->comments;
         }
 
-        function getRatings() {
+        public function getRatings() {
             return $this->ratings;
         }
 
-        function getMinPlayers() {
+        public function getMinPlayers() {
             return $this->minPlayers;
         }
         
-        function getMaxPlayers() {
+        public function getMaxPlayers() {
             return $this->maxPlayers;
+        }
+
+        //Database Access Stubs
+        /*
+            DB Table Schema
+            `id` int(10) NOT NULL,
+            `gameName` varchar(200) NOT NULL,
+            `requiredItems` varchar(200) NOT NULL,
+            `objective` varchar(200) NOT NULL,
+            `setUp` varchar(200) NOT NULL,
+            `gamePlay` varchar(200) NOT NULL,
+            `rules` varchar(200) NOT NULL,
+            `lastEditedBy` int(10) NOT NULL,
+            `lastEditedDate` date,
+            `lastEditedTime` time(6) DEFAULT NULL
+            `minPlayer` int(10) NOT NULL,
+            `maxPlayer` int(10) NOT NULL
+        */
+        public static function fetchWikiEntries(Database $dbConnection) : ?Array {
+            //access the database and for each row of wiki entries, populate one WikiEntry object.
+            //Return all the wiki entries of the database in the form of an array
+            //Check to see if the db object has a valid connection
+            $entries = [];
+            if($dbConnection->is_connected()) {
+                $stmt = $dbConnection->connection->prepare('SELECT * FROM wikiEntry');
+                $stmt->execute();
+                $result = $stmt->get_result();
+                if($result->num_rows == 0) {
+                    //no result. Return an empty array.
+                    return $entries;
+                } else {
+                    //fetch associatively a row. Use $row to get the data needed.
+                    while ($row = $result->fetch_assoc()) {
+                        //instead of using array_push, use array[] faster operation
+                        $user = User::fetchUserByID($dbConnection, $row['lastEditedBy']);
+                        //Maria DB time format is YYYY-MM-DD
+                        //Create an array of strings using - as a delimeter.
+                        $date_arr = explode ("-", $row['lastEditedDate']);
+                        //Create an array of strings using : as a delimiter
+                        $time_arr = explode(":", $row['lastEditedTime']);
+                        //Adding an integer, i.e. 0, does an implicit String conversion from String to integer
+                        //Create Date object
+                        $date = new Date($date_arr[2]+0, $date_arr[1] + 0, $date_arr[0], $time_arr[0]+0, $time_arr[1]+0, $time_arr[2] + 0);
+                        //Get ratings of the entry
+                        $ratings = Rating::fetchRatingsByEntryID($dbConnection, $row['id']);
+                        //get comments of the rating
+                        $comments = Comment::fetchCommentsByEntryID($dbConnection, $row['id'], $row['id']);
+                        $wikiEntry = new WikiEntry($row['id'], $row['gameName'], $row['requiredItems'], $row['objective'], 
+                                                    $row['setUp'], $row['gamePlay'], $row['rules'], $date, $user, $comments, $ratings, $row['minPlayer'], $row['maxPlayer']);
+                        //Add the entry to the next slot of the array. This is the fastest way to do it. Don't use "array_push" function
+                        $entries[] = $wikiEntry;
+                    }
+                    //Done fetching rows, return array
+                    return $entries;
+                }
+            } else {
+                //db object is not connected. Return Null.
+                return null;
+            }
+        }
+        
+        public static function fetchWikiEntry(Database $dbConnection, int $entryID) : ?WikiEntry {
+            //Query the database for a wiki entry that corresponds to one with an ID of $entryID.
+            //If it doesn't exist in the database return null.
+            if($dbConnection->is_connected()) {
+                $stmt = $dbConnection->connection->prepare('SELECT * FROM wikiEntry WHERE wikiEntry.id=?');
+                $stmt->bind_param('i', $entryID);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                if($result->num_rows == 0) {
+                    //no result. Return an empty array.
+                    return null;
+                } else {
+                    //fetch associatively a row. Use $row to get the data needed.
+                    $row = $result->fetch_assoc();
+                    //instead of using array_push, use array[] faster operation
+                    $user = User::fetchUserByID($dbConnection, $row['lastEditedBy']);
+                    //need to implement date conversion function
+                    //Maria DB time format is YYYY-MM-DD
+                    //Create an array of strings using - as a delimeter.
+                    $date_arr = explode ("-", $row['lastEditedDate']);
+                    //Create an array of strings using : as a delimiter
+                    $time_arr = explode(":", $row['lastEditedTime']);
+                    //Adding an integer, i.e. 0, does an implicit String conversion from String to integer
+                    //Create Date object
+                    $date = new Date($date_arr[2]+0, $date_arr[1] + 0, $date_arr[0], $time_arr[0]+0, $time_arr[1]+0, $time_arr[2] + 0);
+                    //Get ratings of the entry
+                    $ratings = Rating::fetchRatingsByEntryID($dbConnection, $row['id']);
+                    //get comments of the rating
+                    $comments = Comment::fetchCommentsByEntryID($dbConnection, $row['id'], $row['id']);
+                    $wikiEntry = new WikiEntry($row['id'], $row['gameName'], $row['requiredItems'], $row['objective'], 
+                                                $row['setUp'], $row['gamePlay'], $row['rules'], $date, $user, $comments, $ratings, $row['minPlayer'], $row['maxPlayer']);
+                    return $wikiEntry;
+                }
+            } else {
+                //db object is not connected. Return Null.
+                return null;
+            }
+        }
+
+        //Could potential search for similar results in the database, it is a bit complicated. Need to use algorithms
+        //suchs as levenstein, or the LIKE functionality of MySQL and optimize it so we get reasonable results.
+        //This function will return an array of the game if it exists in the database
+        //If there are no results return an empty array, if the database connection doesn't work return null
+        public static function searchGameByName(Database $dbConnection, string $gameName) : ?Array {
+            $entry = array();
+            if($dbConnection->is_connected()) {
+                    $stmt = $dbConnection->connection->prepare('SELECT * FROM wikiEntry WHERE LOWER(wikiEntry.gameName)=LOWER(?)');
+                    $stmt->bind_param('s', $gameName);
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+                    if($result->num_rows == 0) {
+                        //no result. Return an empty array.
+                        return $entry;
+                    } else {
+                        //fetch associatively a row. Use $row to get the data needed.
+                        $row = $result->fetch_assoc();
+                        //create an array in the form of (entryID, gameName) and add it to the entries array
+                        $entry[] = $row['id'];
+                        $entry[] = $row['gameName'];
+                        //Done fetching rows, return array
+                        return $entry;
+                    }
+            } else {
+                //db object is not connected. Return Null.
+                return null;
+            }
         }
     }
 ?>
