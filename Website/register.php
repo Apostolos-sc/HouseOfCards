@@ -1,10 +1,10 @@
 <?php
     //Author            : Apostolos Scondrianis
-    //Date Created      : 15-03-2023
+    //Date Created      : 12-02-2023
     //Last Edited By    : Apostolos Scondrianis
-    //Last Edited     	: 15-03-2023
-    //Filename          : register.php
-    //Version           : 0.1
+    //Last Edited     	: 21-02-2023
+    //Filename          : login.php
+    //Version           : 1.1
     $GLOBALS["title"] = "Welcome to House of Cards Wiki - Register";
     include 'controller/connectDB.php';
 

@@ -26,6 +26,7 @@
                         if(ctype_digit(strval($_GET['entry']))) {
                             //entryID is a zero or positive integer
                             $entry = WikiEntry::fetchWikiEntry($db, intval($_GET['entry']));
+                            echo $_GET['entry'];
                             if($entry != null) {
                                 //entry exists, print information
                                 echo generateWikiPageGuestUser($entry, getGameList(WikiEntry::fetchWikiEntries($db)));

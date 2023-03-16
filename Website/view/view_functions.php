@@ -1,15 +1,15 @@
 <?php
-    //Author            : Apostolos Scondrianis
+    //Author            : Team 31
     //Date Created      : 16-02-2023
-    //Last Edited By    : Apostolos Scondrianis
-    //Last Edited On    : 08-03-2023
+    //Last Edited     	: ----------
     //Filename          : view_functions.php
-    //Version           : 0.2 - WikiPage View Complete
+    //Version           : 0.1 - First Draft
     
     //There are some more edits that need to be done on the php classes when you guys finish them.
     //I forgot that php passes objects by reference. There it's okay instead of holding the id's of users
     //to simply hold the object itself in the classes where we store "userID" such as the Comment class.
 
+    //Completed by Apostolos Scondrianis
     //Function that generates the View of a Wiki Page for the Guest Users
     
     function generateWikiPageGuestUser(WikiEntry $wikiPage, Array $gameList): string {
