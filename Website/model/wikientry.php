@@ -2,9 +2,9 @@
     //Author            : Nicholas Lam
     //Date Created      : 12-15-2023
     //Last Edit By      : Apostolos Scondrianis
-    //Last Edited     	: 09-03-2023
+    //Last Edited     	: 26-20-2023
     //Filename          : wikientry.php
-    //Version           : 1.5
+    //Version           : 1.4
 
     //Class User
     class WikiEntry {
@@ -241,35 +241,6 @@
                                                 $row['setUp'], $row['gamePlay'], $row['rules'], $date, $user, $comments, $ratings, $row['minPlayer'], $row['maxPlayer']);
                     return $wikiEntry;
                 }
-            } else {
-                //db object is not connected. Return Null.
-                return null;
-            }
-        }
-
-        //Could potential search for similar results in the database, it is a bit complicated. Need to use algorithms
-        //suchs as levenstein, or the LIKE functionality of MySQL and optimize it so we get reasonable results.
-        //This function will return an array of the game if it exists in the database
-        //If there are no results return an empty array, if the database connection doesn't work return null
-        public static function searchGameByName(Database $dbConnection, string $gameName) : ?Array {
-            $entry = array();
-            if($dbConnection->is_connected()) {
-                    $stmt = $dbConnection->connection->prepare('SELECT * FROM wikiEntry WHERE LOWER(wikiEntry.gameName)=LOWER(?)');
-                    $stmt->bind_param('s', $gameName);
-                    $stmt->execute();
-                    $result = $stmt->get_result();
-                    if($result->num_rows == 0) {
-                        //no result. Return an empty array.
-                        return $entry;
-                    } else {
-                        //fetch associatively a row. Use $row to get the data needed.
-                        $row = $result->fetch_assoc();
-                        //create an array in the form of (entryID, gameName) and add it to the entries array
-                        $entry[] = $row['id'];
-                        $entry[] = $row['gameName'];
-                        //Done fetching rows, return array
-                        return $entry;
-                    }
             } else {
                 //db object is not connected. Return Null.
                 return null;
