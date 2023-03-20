@@ -16,7 +16,7 @@
         private int $rating;
 
         //Constructor
-        public function _construct(int $ratingID, int $entryID, int $userID, int $rating){
+        public function __construct(int $ratingID, int $entryID, int $userID, int $rating){
             $this->ratingID = $ratingID;
             $this->entryID = $entryID;
             $this->userID = $userID;

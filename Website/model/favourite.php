@@ -14,9 +14,9 @@
         private int $entryID;
 
         //Constructor
-        public function _construct(int $userID, int $entryID) {
-            $this->$userID = $userID;
-            $this->$entryID = $entryID;
+        public function __construct(int $userID, int $entryID) {
+            $this->userID = $userID;
+            $this->entryID = $entryID;
         }
 
         //Setters
@@ -95,5 +95,7 @@
                 return null;
             }
         }
+
+
     }
 ?>

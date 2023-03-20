@@ -8,7 +8,7 @@
     session_start();
     //setcookie("admin", "Godlike", time()+3600);
     $db = new Database();
-    $db -> init_connection('db5011903138.hosting-data.io', 'dbs10023131', 'dbu5422963', 'CardsWiki2023!', '3306');
+    $db -> init_connection('localhost:3306', 'houseofcardsdb', 'root', '', '3306');
     //cookies code :
     //setcookie($name, $value, $expire, $path, $domain); <-- should appear before HTML TAG.
     //example : setcookie("user", "John Doe", time()+3600); cookies are small files.

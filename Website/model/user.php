@@ -2,9 +2,9 @@
     //Author            : Apostolos Scondrianis
     //Date Created      : 12-02-2023
     //Last Edited By    : Apostolos Scondrianis
-    //Last Edited On    : 03-02-2023
+    //Last Edited On    : 19-03-2023
     //Filename          : user.php
-    //Version           : 1.3
+    //Version           : 1.4
     //Class User
     class User {
 
@@ -212,6 +212,34 @@
                     //done fetching users from db. Return array of users.
                     return $users;
                 }
+            } else {
+                //db object is not connected. Return Null.
+                return null;
+            }
+        }
+
+
+        //ADDED BY ALEX ON MARCH 19 
+        //Returns a user if they are an exact match
+        public static function searchUserByName(Database $dbConnection, string $userName) : ?Array {
+            $entry = array();
+            if($dbConnection->is_connected()) {
+                    $stmt = $dbConnection->connection->prepare('SELECT * FROM users WHERE LOWER(users.username)=LOWER(?)');
+                    $stmt->bind_param('s', $userName);
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+                    if($result->num_rows == 0) {
+                        //no result. Return an empty array.
+                        return $entry;
+                    } else {
+                        //fetch associatively a row. Use $row to get the data needed.
+                        $row = $result->fetch_assoc();
+                        //create an array in the form of (entryID, gameName) and add it to the entries array
+                        $entry[] = $row['id'];
+                        $entry[] = $row['username'];
+                        //Done fetching rows, return array
+                        return $entry;
+                    }
             } else {
                 //db object is not connected. Return Null.
                 return null;

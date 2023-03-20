@@ -68,6 +68,16 @@
         return $gameList;
     }
 
+    //Added by Alex on March 19 for userpage.php
+    function getUserList(Array $users) : Array {
+        $userList = [];
+        
+        foreach($users as $user) {
+           $userList[] = array($user->getUserID() ,$user->getUsername());
+        }
+        return $userList;
+    }
+
     // Removing the redundant HTML characters if any exist.
     function test_input($data) {
         $data = trim($data);
