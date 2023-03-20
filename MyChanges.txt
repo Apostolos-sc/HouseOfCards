@@ -1,0 +1,33 @@
+controller_functions.php
+	getUserList
+	
+userpage.php
+	NEW FILE
+	
+user.php
+	searchUserByName
+	
+view_functions.php
+	generateUserPageWelcome
+	generateUserPageGuestUser
+	generateUserPageNotExist
+	generateUserPageWrongEntry
+	
+usersearch.php
+	NEW FILE
+	
+left-menu.php
+	Added the links to the view users and search users to lines 16 and 17
+	
+rating.php
+	fixed constructor
+	
+favourite.php
+	fixed constructor
+  
+  
+  Other Notes:
+  I basically just copied and retrofitted Apostolos' implementation of wikipage.php and search.php to implement the View user and Search User pages.
+  If you goto deploy these changes the viewing users should work except for adminsayma, this is because she has a game favourited in the DB that does not exist, this causes an error.
+  I beleive all the redirect links should be set to redirect to the goldenagesolutions.com URL.
+  I lazily uploaded these just from my computer without using git, hopefully thats not a problem.
