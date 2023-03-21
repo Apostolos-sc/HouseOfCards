@@ -192,7 +192,7 @@ CREATE TABLE `users` (
   `id` int(10) NOT NULL,
   `username` varchar(200) NOT NULL,
   `email` varchar(200) NOT NULL,
-  `userAccessLevel` varchar(200) DEFAULT NULL,
+  `userAccessLevel` int(10) DEFAULT NULL,
   `fname` varchar(200) DEFAULT NULL,
   `lname` varchar(200) DEFAULT NULL,
   `password` varchar(200) NOT NULL,

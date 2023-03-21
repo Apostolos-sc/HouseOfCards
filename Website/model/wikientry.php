@@ -251,8 +251,7 @@
         //suchs as levenstein, or the LIKE functionality of MySQL and optimize it so we get reasonable results.
         //This function will return an array of the game if it exists in the database
         //If there are no results return an empty array, if the database connection doesn't work return null
-        public static function searchGameByName(Database $dbConnection, string $gameName) : ?Array {
-            $entry = array();
+        public static function fetchWikiEntryByName(Database $dbConnection, string $gameName) : ?WikiEntry {
             if($dbConnection->is_connected()) {
                     $stmt = $dbConnection->connection->prepare('SELECT * FROM wikiEntry WHERE LOWER(wikiEntry.gameName)=LOWER(?)');
                     $stmt->bind_param('s', $gameName);
@@ -260,15 +259,28 @@
                     $result = $stmt->get_result();
                     if($result->num_rows == 0) {
                         //no result. Return an empty array.
-                        return $entry;
+                        return null;
                     } else {
                         //fetch associatively a row. Use $row to get the data needed.
                         $row = $result->fetch_assoc();
-                        //create an array in the form of (entryID, gameName) and add it to the entries array
-                        $entry[] = $row['id'];
-                        $entry[] = $row['gameName'];
-                        //Done fetching rows, return array
-                        return $entry;
+                        //instead of using array_push, use array[] faster operation
+                        $user = User::fetchUserByID($dbConnection, $row['lastEditedBy']);
+                        //need to implement date conversion function
+                        //Maria DB time format is YYYY-MM-DD
+                        //Create an array of strings using - as a delimeter.
+                        $date_arr = explode ("-", $row['lastEditedDate']);
+                        //Create an array of strings using : as a delimiter
+                        $time_arr = explode(":", $row['lastEditedTime']);
+                        //Adding an integer, i.e. 0, does an implicit String conversion from String to integer
+                        //Create Date object
+                        $date = new Date($date_arr[2]+0, $date_arr[1] + 0, $date_arr[0], $time_arr[0]+0, $time_arr[1]+0, $time_arr[2] + 0);
+                        //Get ratings of the entry
+                        $ratings = Rating::fetchRatingsByEntryID($dbConnection, $row['id']);
+                        //get comments of the rating
+                        $comments = Comment::fetchCommentsByEntryID($dbConnection, $row['id'], $row['id']);
+                        $wikiEntry = new WikiEntry($row['id'], $row['gameName'], $row['requiredItems'], $row['objective'], 
+                                                    $row['setUp'], $row['gamePlay'], $row['rules'], $date, $user, $comments, $ratings, $row['minPlayer'], $row['maxPlayer']);
+                        return $wikiEntry;
                     }
             } else {
                 //db object is not connected. Return Null.
