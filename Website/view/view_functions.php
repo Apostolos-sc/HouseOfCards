@@ -1,10 +1,10 @@
 <?php
     //Author            : Apostolos Scondrianis
     //Date Created      : 16-02-2023
-    //Last Edited By    : Apostolos Scondrianis
-    //Last Edited On    : 08-03-2023
+    //Last Edited By    : Alexander Sembrat
+    //Last Edited On    : 19-03-2023
     //Filename          : view_functions.php
-    //Version           : 0.2 - WikiPage View Complete
+    //Version           : 0.2 - User Page view functions
     
     //There are some more edits that need to be done on the php classes when you guys finish them.
     //I forgot that php passes objects by reference. There it's okay instead of holding the id's of users
@@ -237,6 +237,178 @@
                     <div id=\"wikiComments\">
                     </div>
                 </div>";
+        return $view;
+    }
+
+    //Functions below added for View Users by Alex on March 19
+
+    function generateUserPageWrongEntry(Array $userList): string {
+        $view = "<div id=\"card-game-body\">
+                    <div id=\"wikiTitle\">
+                    User Pages
+                    </div>
+                    <div id=\"wikiContent\">
+                        An invalid user ID has been selected. It must be a positive or zero integer.
+                    </div>
+                    <div id=\"wikiNav\">
+                        <div id=\"wikiNavTitle\">
+                            User List
+                        </div>
+                        <div id=\"wikiNavContent\">
+                            <ul style=\"list-style: none;text-align:left; margin:0; padding:0;\">";
+        foreach($userList as $user) {
+            $view .="<li><a href=\"https://goldenagesolutions.ca/HouseOfCards/userpage.php?ID=".$user[0]."\">".$user[1]."</a></li>";
+        }                   
+        $view .= "
+                            <ul>
+                        </div>
+                    </div>
+                    <div id=\"pageInfo\"> 
+                    </div>
+                    <div id=\"wikiComments\">
+                    </div>
+                </div>";
+        return $view;
+    }
+    function generateUserPageWelcome(Array $userList): string {
+        $view = "<div id=\"card-game-body\">
+                    <div id=\"wikiTitle\">
+                    User Pages
+                    </div>
+                    <div id=\"wikiContent\">
+                       Please select a user to view their details.
+                    </div>
+                    <div id=\"wikiNav\">
+                        <div id=\"wikiNavTitle\">
+                            User List
+                        </div>
+                        <div id=\"wikiNavContent\">
+                            <ul style=\"list-style: none;text-align:left; margin:0; padding:0;\">";
+        foreach($userList as $user) {
+            $view .="<li><a href=\"https://goldenagesolutions.ca/HouseOfCards/userpage.php?ID=".$user[0]."\">".$user[1]."</a></li>";
+        }                   
+        $view .= "
+                            <ul>
+                        </div>
+                    </div>
+                    <div id=\"pageInfo\">
+                    </div>
+                    <div id=\"wikiComments\">
+                    </div>
+                </div>";
+        return $view;
+    }
+    function generateUserPageNotExist(Array $userList): string {
+        $view = "<div id=\"card-game-body\">
+                    <div id=\"wikiTitle\">
+                    User Pages
+                    </div>
+                    <div id=\"wikiContent\">
+                        The entry you have selected to view does not exist. Please try again.    
+                    </div>
+                    <div id=\"wikiNav\">
+                        <div id=\"wikiNavTitle\">
+                            User List
+                        </div>
+                        <div id=\"wikiNavContent\">
+                            <ul style=\"list-style: none;text-align:left; margin:0; padding:0;\">";
+        foreach($userList as $user) {
+            $view .="<li><a href=\"https://goldenagesolutions.ca/HouseOfCards/userpage.php?ID=".$user[0]."\">".$user[1]."</a></li>";
+        }                   
+        $view .= "
+                            <ul>
+                        </div>
+                    </div>
+                    <div id=\"pageInfo\">
+                    </div>
+                    <div id=\"wikiComments\">
+                    </div>
+                </div>";
+        return $view;
+    }
+    function generateUserPageGuestUser(User $user, String $favourites, String $ratings, Array $userList): string {
+       // $favourites = "";
+        //foreach(Favourite::fetchFavouritesByUserID($db,$user->getUserID()) as $fav ){
+        $view = "<div id=\"card-game-body\">
+                    <div id=\"wikiTitle\">
+                    User Pages
+                    </div>
+                    <div id=\"wikiContent\">
+                        <table id='wiki_table'>
+                            <tr class='wiki_table_row'>
+                                <td id='wiki_table_title' colspan='2' >
+                                    ". $user->getUsername() ."
+                                </td>
+                            </tr>
+                            <tr class='wiki_table_row' colspan=2>
+                                <td class='wiki_table_data_left'>
+                                    First Name :
+                                </td>
+                                <td class='wiki_table_data_right'>
+                                    ".$user->getFirstName()."
+                                </td>
+                            </tr>
+                            <tr class='wiki_table_row' colspan=2>
+                                <td class='wiki_table_data_left'>
+                                    Last Name :
+                                </td>
+                                <td class='wiki_table_data_right'>
+                                    ".$user->getLastName()."
+                                </td>
+                            </tr>
+                            <tr class='wiki_table_row'colspan=2>
+                                <td class='wiki_table_data_left'>
+                                    User Type :
+                                </td>
+                                <td class='wiki_table_data_right'>
+                                    ".$user->getUserGroup()->getUserGroup()."    
+                                </td>
+                            </tr>
+                            <tr class='wiki_table_row'>
+                                <td class='wiki_table_data_left'>
+                                    Favourites :
+                                </td>
+                                <td class='wiki_table_data_right'>
+                                    ".$favourites."
+                                </td>
+                            </tr>
+                            <tr class='wiki_table_row' colspan=2>
+                                <td class='wiki_table_data_left'>
+                                    Rated Games :
+                                </td>
+                                <td class='wiki_table_data_right'>
+                                    ".$ratings."
+                                </td>
+                            </tr>
+                            <tr class='wiki_table_row' colspan=2>
+                                <td class='wiki_table_data_left'>
+                                    Rules :
+                                </td>
+                                <td class='wiki_table_data_right'>
+                                    ".$user->getFirstName()."                                     
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id=\"wikiNav\">
+                        <div id=\"wikiNavTitle\">
+                            User List
+                        </div>
+                        <div id=\"wikiNavContent\">
+                            <ul style=\"list-style: none;text-align:left; margin:0; padding:0;\">";
+        foreach($userList as $user) {
+            //$view .="<li><a href=\"userpage.php?entry=".$user[0]."\">".$user[1]."</a></li>"; 
+            $view .="<li><a href=\"https://goldenagesolutions.ca/HouseOfCards/userpage.php?ID=".$user[0]."\">".$user[1]."</a></li>";
+        }
+        $view .= "
+                            <ul>
+                        </div>
+                    </div>
+                    <div id=\"pageInfo\">
+                    </div>
+                    <div id=\"wikiComments\">
+                    </div>
+                </div>";                         
         return $view;
     }
 ?>

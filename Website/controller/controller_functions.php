@@ -1,10 +1,10 @@
 <?php
     //Author            : Apostolos Scondrianis
     //Date Created      : 16-02-2023
-    //Last Edit By      : Apostolos Scondrianis
-    //Last Edited     	: 09-03-2023
+    //Last Edit By      : Alexander Sembrat
+    //Last Edited     	: 20-03-2023
     //Filename          : controller.php
-    //Version           : 0.4 - Stub File
+    //Version           : 0.5 - Stub File
     //include php files of model
     
 
@@ -66,6 +66,16 @@
            $gameList[] = array($wikiEntry->getEntryID() ,$wikiEntry->getGameName());
         }
         return $gameList;
+    }
+
+    //Added by Alex on March 19 for userpage.php
+    function getUserList(Array $users) : Array {
+        $userList = [];
+        
+        foreach($users as $user) {
+            $userList[] = array($user->getUserID() ,$user->getUsername());
+        }
+        return $userList;
     }
 
     // Removing the redundant HTML characters if any exist.

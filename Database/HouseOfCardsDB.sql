@@ -232,7 +232,7 @@ INSERT INTO `Favourite` (`userID`, `entryID`) VALUES
 (1, 3),
 (1, 4),
 (1, 8),
-(1, 15),
+(1, 14),
 (2, 5),
 (2, 6),
 (2, 7),
