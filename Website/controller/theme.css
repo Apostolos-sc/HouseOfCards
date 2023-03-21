@@ -7,8 +7,8 @@ Version      : 1.2
 */
 html {
     height: 100%;
-    color: #030603;
-    background-color:#97BC62FF;
+    color: #CCCCCC;
+    background-color:#515151;
 }
 body { 
     min-height: 100%;
@@ -17,7 +17,7 @@ body {
 /* grid layout for website */
 .top {
     grid-area: header;
-    border:1px solid #030603;
+    border:1px solid #000000;
     margin-left: 20px;
     margin-right: 20px;
     min-height: 100px;
@@ -32,12 +32,12 @@ body {
 .left {
     margin-left: 20px;
     grid-area: left-menu;
-    border:1px solid #030603;
+    border:1px solid #000000;
 }
 /*center grid area */
 .center {
     grid-area: main;
-    border:1px solid #030603;
+    border:1px solid #000000;
     min-height:  70vh;
 }
 /* content div in the center area */
@@ -53,13 +53,13 @@ body {
 /*right menu*/
 .right {
     grid-area: right-menu;
-    border:1px solid #030603;
+    border:1px solid #000000;
     margin-right: 20px;
 }
 /* footer area */
 .bottom {
     grid-area: footer;
-    border:1px solid #030603;
+    border:1px solid #000000;
     margin-top: 20px;
     margin-left: 20px;
     margin-right: 20px;
@@ -80,11 +80,11 @@ body {
     'left-menu main main main main right-menu'
     'footer footer footer footer footer footer';
     grid-gap: 10px;
-    background-color:#97BC62FF;
+    background-color:#515151;
     margin-top: 10px;
 }
 .grid-container > div {
-    background-color:#2C5F2D;
+    background-color:#333333;
     text-align: center;
     padding: 0px;
     font-size: 16px;
@@ -92,31 +92,38 @@ body {
 
 /* menu css */
 .menu-header {
-    background-color:#030603;
-    color:#97BC62FF;
+    background-color:#000000;
+    color:#CCCCCC;
 }
 .menu-content {
+    text-align:left;
     margin-top: 5px;
     margin-bottom: 5px;
-    margin-left: 5px;
-    margin-right: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 
 /* unvisited link */
 a:link {
-    color: #030603;
+    color: #CCCCCC;
+    text-decoration-line: none;
 }
 
 /* visited link */
 a:visited {
-    color: #030603;
+    color: #CCCCCC;
+    text-decoration-line: underline;  
+}
+
+a:hover {
+    text-decoration-line: underline;
 }
 
 /*wiki page css */
 /* wiki game content table */
 #wiki_table {
-    border: 1px solid #2C5F2D;
+    border: 1px solid #333333;
     border-collapse: collapse;
     margin-left: auto;
     margin-right: auto;
@@ -127,12 +134,12 @@ a:visited {
     padding-bottom:10px; 
     font-weight:bold; 
     font-size: 20px;
-    background-color:#2C5F2D;
-    color:#97BC62FF;
-    border: 1px solid #2C5F2D;
+    background-color:#333333;
+    color:#CCCCCC;
+    border: 1px solid #333333;
 }
 .wiki_table_data_left {
-    border: 1px solid #2C5F2D;
+    border: 1px solid #333333;
     margin: 0;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -140,7 +147,7 @@ a:visited {
     font-size: 16px;
 }
 .wiki_table_data_right {
-    border: 1px solid #2C5F2D;
+    border: 1px solid #333333;
     margin: 0;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -148,7 +155,7 @@ a:visited {
     font-size: 16px;
 }
 .wiki_table_row {
-    border: 1px solid #2C5F2D;
+    border: 1px solid #333333;
 }
 /* wiki content table */
 /* card wiki page */
@@ -173,9 +180,9 @@ a:visited {
     grid-area: header;
     padding-top: 10px; 
     padding-bottom:10px;
-    background: #2C5F2D;
-    color:#97BC62FF;
-    border: 1px solid #030603;
+    background: #333333;
+    color:#CCCCCC;
+    border: 1px solid #000000;
     border-bottom: 0px;
     margin-right:5px;
     font-size: 20px;
@@ -184,24 +191,24 @@ a:visited {
 #wikiComments {
     grid-area: comments;
     padding: 1.2em;
-    background: #97BC62FF;
-    border: 1px solid #030603;
+    background: #515151;
+    border: 1px solid #000000;
     margin-right:5px;
     margin-left:5px;
 }
 #wikiContent { 
     grid-area: article;     
     padding: 1.2em;
-    background: #97BC62FF;
-    border: 1px solid #030603;
+    background: #515151;
+    border: 1px solid #000000;
     border-top:0px;
     margin-right:5px;
     margin-bottom:10px;
 }
 #wikiNav { 
     grid-area: nav; 
-    background: #97BC62FF;
-    border: 1px solid #030603;
+    background: #515151;
+    border: 1px solid #000000;
     margin-left: 5px;
     margin-bottom: 10px;
 }
@@ -210,8 +217,8 @@ a:visited {
     padding-bottom:10px; 
     font-weight:bold; 
     font-size: 20px;
-    background-color:#2C5F2D;
-    color:#97BC62FF;
+    background-color:#333333;
+    color:#CCCCCC;
 }
 #wikiNavContent {
     margin-left: 1.2em;
@@ -222,8 +229,8 @@ a:visited {
 #pageInfo { 
     grid-area: info; 
     padding: 1.2em;
-    background: #97BC62FF;
-    border: 1px solid #030603;
+    background: #515151;
+    border: 1px solid #000000;
     margin-right:5px;
     margin-bottom: 10px;
 }
@@ -233,9 +240,9 @@ a:visited {
     position:relative;
     padding-top: 10px; 
     padding-bottom:10px;
-    background: #2C5F2D;
-    color:#97BC62FF;
-    border: 1px solid #030603;
+    background: #333333;
+    color:#CCCCCC;
+    border: 1px solid #000000;
     font-size: 20px;
     font-weight: bold;
 }
@@ -243,11 +250,11 @@ a:visited {
 .comment_container {
     display: flex;
     margin-top: 5px;
-    border: 1px solid #2C5F2D;
+    border: 1px solid #333333;
 }
 .comment_user_info_container {
-    border-right: 1px solid #2C5F2D;
-    background: #2C5F2D;
+    border-right: 1px solid #333333;
+    background: #333333;
     width: 200px;
     min-height:200px;
     height: auto;
@@ -274,7 +281,7 @@ a:visited {
     padding-top: 5px;
     padding-bottom: 4px;
     padding-right: 10px;
-    border-bottom: 1px solid #2C5F2D;
+    border-bottom: 1px solid #333333;
 }
 .comment_content_main{
     min-height: 132px;
@@ -287,12 +294,12 @@ a:visited {
 .comment_reply_container {
     display: flex;
     margin-top: 5px;
-    border: 1px solid #2C5F2D;
+    border: 1px solid #333333;
     margin-left: 50px;
 }
 .comment_reply_user_info_container {
-    border-right: 1px solid #2C5F2D;
-    background: #2C5F2D;
+    border-right: 1px solid #333333;
+    background: #333333;
     width: 200px;
     min-height:200px;
     height: auto;
@@ -319,7 +326,7 @@ a:visited {
     padding-top: 5px;
     padding-bottom: 4px;
     padding-right: 10px;
-    border-bottom: 1px solid #2C5F2D;
+    border-bottom: 1px solid #333333;
 }
 .comment_reply_content_main{
     min-height: 132px;
@@ -329,14 +336,14 @@ a:visited {
 /* Comment Reply Section css ends */
 /*wiki page css ends*/
 #table_players {
-    border: 1px solid #030603;
+    border: 1px solid #CCCCCC;
     border-collapse: collapse;
     margin-left: auto;
     margin-right: auto;
     margin-bottom:auto;
 }
 #table_character_stats {
-    border: 1px solid #030603;
+    border: 1px solid #CCCCCC;
     border-collapse: collapse;
     margin-left: auto;
     margin-right: auto;
@@ -347,8 +354,8 @@ a:visited {
     padding-bottom:10px; 
     font-weight:bold; 
     font-size: 20px;
-    background-color:#030603;
-    color:#2C5F2D;
+    background-color:#CCCCCC;
+    color:#333333;
     
 }
 #table_character_title_stats {
@@ -356,12 +363,12 @@ a:visited {
     padding-bottom:10px; 
     font-weight:bold; 
     font-size: 20px;
-    background-color:#030603;
-    color:#2C5F2D;
+    background-color:#CCCCCC;
+    color:#333333;
     
 }
 .table_players_header_data {
-    border: 1px solid #030603;
+    border: 1px solid #CCCCCC;
     margin: 0;
     padding: 0;
     width : 60%;
@@ -370,10 +377,10 @@ a:visited {
     text-decoration: underline;
 }
 .table_players_rows {
-    border: 1px solid #030603;
+    border: 1px solid #CCCCCC;
 }
 .table_players_data {
-    border: 1px solid #030603;
+    border: 1px solid #CCCCCC;
     margin: 0;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -387,15 +394,15 @@ a:visited {
     margin-bottom: 5px;
 }
 .input-fields {
-    background-color:#030603;
-    border: 1px solid #97BC62FF;
-    color: #97BC62FF;
+    background-color:#CCCCCC;
+    border: 1px solid #CCCCCC;
+    color: #000000;
     text-align: center;
     margin: 5px;
 }
 .submit-inputs {
-    background-color:#030603;
-    color: #97BC62FF;
+    background-color:#CCCCCC;
+    color: #000000;
     text-align: center;
     width: 140px;
 }
