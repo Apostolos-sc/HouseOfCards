@@ -336,14 +336,14 @@ a:hover {
 /* Comment Reply Section css ends */
 /*wiki page css ends*/
 #table_players {
-    border: 1px solid #CCCCCC;
+    border: 1px solid #000000;
     border-collapse: collapse;
     margin-left: auto;
     margin-right: auto;
     margin-bottom:auto;
 }
 #table_character_stats {
-    border: 1px solid #CCCCCC;
+    border: 1px solid #000000;
     border-collapse: collapse;
     margin-left: auto;
     margin-right: auto;
@@ -354,8 +354,8 @@ a:hover {
     padding-bottom:10px; 
     font-weight:bold; 
     font-size: 20px;
-    background-color:#CCCCCC;
-    color:#333333;
+    background-color:#000000;
+    color:#CCCCCC;
     
 }
 #table_character_title_stats {
@@ -368,7 +368,7 @@ a:hover {
     
 }
 .table_players_header_data {
-    border: 1px solid #CCCCCC;
+    border: 1px solid #000000;
     margin: 0;
     padding: 0;
     width : 60%;
@@ -377,10 +377,10 @@ a:hover {
     text-decoration: underline;
 }
 .table_players_rows {
-    border: 1px solid #CCCCCC;
+    border: 1px solid #000000;
 }
 .table_players_data {
-    border: 1px solid #CCCCCC;
+    border: 1px solid #000000;
     margin: 0;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -395,7 +395,7 @@ a:hover {
 }
 .input-fields {
     background-color:#CCCCCC;
-    border: 1px solid #CCCCCC;
+    border: 1px solid #000000;
     color: #000000;
     text-align: center;
     margin: 5px;
