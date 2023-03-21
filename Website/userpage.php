@@ -5,6 +5,10 @@
     //Filename          : userpage.php
     //Version           : 1.0
     include('controller/connectDB.php');
+    if(!isset($_SESSION['username']) && !isset($_SESSION['password'])) {
+        header("Location: index.php");
+        exit();
+    }
     include('controller/header.php');
     include('controller/left-menu.php');
     include('view/view_functions.php');

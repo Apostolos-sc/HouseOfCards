@@ -26,6 +26,17 @@
                                         <a href='favorites.php'>My Favorites</a><br>
                                     </div>
                                     ";
+                                if(isset($_SESSION["accessLevel"]) && $_SESSION["accessLevel"] == 1) {
+                                    echo "
+                                    <div class='menu-header'>
+                                        Administrator Panel
+                                    </div>                    
+                                    <div class='menu-content'>
+                                        <a href=''>Create Wiki Entry</a><br/>
+                                        <a href=''>Edit User</a><br>
+                                    </div>
+                                    ";
+                                }
                         } else {
                             echo "Welcome, Guest.<br>";
                             echo "</div>";

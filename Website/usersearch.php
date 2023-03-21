@@ -6,6 +6,10 @@
     //Filename          : usersearch.php
     //Version           : 1.0
     include 'controller/connectDB.php';
+    if(!isset($_SESSION['username']) && !isset($_SESSION['password'])) {
+        header("Location: index.php");
+        exit();
+    }
     include 'controller/controller_functions.php';
     include('model/favourite.php');
     include('model/user.php');
