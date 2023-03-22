@@ -13,7 +13,6 @@
     } else {
         // remove all session variables
         $_SESSION = array();
-
         // destroy the session
         session_destroy();
     }
