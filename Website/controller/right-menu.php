@@ -13,29 +13,43 @@
                     <div class="menu-content">
                     <?php
                         if(isset($_SESSION["username"]) && isset($_SESSION["password"])) {
-                                echo "Welcome ".$_SESSION["username"]."!<br/>";
-                                echo "<a href='logout.php'>Logout</a>";
+                                echo "Welcome <b>".$_SESSION["username"]."</b>!<br/>";
+                                echo "</div>";
                                 echo "
                                     <div class='menu-header'>
                                         User Panel
                                     </div>                    
                                     <div class='menu-content'>
+                                        <a href='logout.php'>Logout</a><br/>
                                         <a href='profile.php'>View My Profile</a><br>
                                         <a href='editprofile.php'>Edit My Profile</a><br>
                                         <a href='favorites.php'>My Favorites</a><br>
                                     </div>
                                     ";
+                                if(isset($_SESSION["accessLevel"]) && $_SESSION["accessLevel"] == 1) {
+                                    echo "
+                                    <div class='menu-header'>
+                                        Administrator Panel
+                                    </div>                    
+                                    <div class='menu-content'>
+                                        <a href=''>Create Wiki Entry</a><br/>
+                                        <a href=''>Edit User</a><br>
+                                    </div>
+                                    ";
+                                }
                         } else {
-                            echo "Welcome, Guest.<br>
-                            <a href='login.php'>Login</a><br>
-                            <a href='register.php'>Register</a><br>
+                            echo "Welcome, Guest.<br>";
+                            echo "</div>";
+                            echo "
+                                <div class='menu-header'>
+                                    User Panel
+                                </div>   
+                                <div class='menu-content'>
+                                    <a href='login.php'>Login</a><br>
+                                    <a href='register.php'>Register</a><br>
+                                </div>
                             ";
                             
                         }
                     ?>
-                    </div>
-                    <div>
-
-                    </div>
-
                 </div>

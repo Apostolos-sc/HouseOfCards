@@ -5,9 +5,7 @@
     //Last Edited On    : 21-02-2023
     //Filename          : header.php
     //Version           : 1.1
-    if(isset($GLOBALS['title'])) {
-        $title = $GLOBALS['title'];
-    } else {
+    if(!isset($GLOBALS['title'])) {
         $GLOBALS["title"] = "Welcome to House Cards Wiki";        
     }
 ?>
@@ -15,10 +13,11 @@
 <html>
     <head>
         <link rel="stylesheet" href="controller/theme.css">
+        <script src="controller/jquery-3.2.1.min.js"></script>
         <link rel="icon" type="image/png" href="https://goldenagesolutions.ca/HouseOfCards/images/cardgame.png">
         <title>
             <?
-            echo $GLOBALS["title"];
+            echo $GLOBAL["title"];
             ?>
         </title>
     </head>

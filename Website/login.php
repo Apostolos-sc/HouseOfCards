@@ -8,7 +8,7 @@
     $GLOBALS["title"] = "Welcome to House of Cards Wiki - Login";
     include 'controller/connectDB.php';
 
-    if(isset($_SESSION['username']) && isset($_COOKIE['password'])) {
+    if(isset($_SESSION['username']) && isset($_SESSION['password'])) {
         header("Location: index.php");
         exit();
     }

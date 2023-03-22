@@ -13,7 +13,17 @@
                     <div class="menu-content">
                         <a href="http://goldenagesolutions.ca/HouseOfCards/wikipage.php">View Card Games</a><br>
                         <a href="http://goldenagesolutions.ca/HouseOfCards/search.php">Search a Card Game</a><br>
-                        <a href="">View Users</a><br>
-                        <a href="">Search User</a><br>
                     </div>
+                    <?
+                    if(isset($_SESSION['username']) && isset($_SESSION['password'])) {
+                        echo "                    
+                        <div class=\"menu-header\">
+                            User Menu
+                        </div>
+                        <div class=\"menu-content\">
+                            <a href=\"http://goldenagesolutions.ca/HouseOfCards/userpage.php\">View Users</a><br>
+                            <a href=\"http://goldenagesolutions.ca/HouseOfCards/usersearch.php\">Search User</a><br>
+                        </div>";
+                    }
+                    ?>
                 </div>

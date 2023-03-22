@@ -1,10 +1,10 @@
 <?php
     //Author            : Carter Marcelo
     //Date Created      : 19-02-2023
-    //Last Edited By    : Apostolos Scondrianis
-    //Last Edited On    : 03-03-2023
+    //Last Edited By    : Alexander Sembrat
+    //Last Edited On    : 19-03-2023
     //Filename          : favourite.php
-    //Version           : 1.3
+    //Version           : 1.4
 
     //Class Favourite
     class Favourite {
@@ -14,9 +14,9 @@
         private int $entryID;
 
         //Constructor
-        public function _construct(int $userID, int $entryID) {
-            $this->$userID = $userID;
-            $this->$entryID = $entryID;
+        public function __construct(int $userID, int $entryID) {
+            $this->userID = $userID;
+            $this->entryID = $entryID;
         }
 
         //Setters
