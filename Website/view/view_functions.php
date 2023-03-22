@@ -240,6 +240,176 @@
         return $view;
     }
 
+    function generateWikiPageLoggedInUser(WikiEntry $wikiPage, User $user, Array $gameList): string {
+        $view = "<div id=\"card-game-body\">
+                    <div id=\"wikiTitle\">
+                    Card Games Wiki Pages
+                    </div>
+                    <div id=\"wikiContent\">
+                        <table id='wiki_table'>
+                            <tr class='wiki_table_row'>
+                                <td id='wiki_table_title' colspan='2' >
+                                    ". $wikiPage->getGameName() ." <img src=\"https://goldenagesolutions.ca/HouseOfCards/images/star2.png\" style=\"vertical-align:middle;height:20px;width:120px;\"/>
+                                </td>
+                            </tr>
+                            <tr class='wiki_table_row' colspan=2>
+                                <td class='wiki_table_data_left'>
+                                    # of Players :
+                                </td>
+                                <td class='wiki_table_data_right'>
+                                    ".$wikiPage->getMinPlayers()." - ".$wikiPage->getMaxPlayers()."
+                                </td>
+                            </tr>
+                            <tr class='wiki_table_row' colspan=2>
+                                <td class='wiki_table_data_left'>
+                                    Required Items :
+                                </td>
+                                <td class='wiki_table_data_right'>
+                                    ".$wikiPage->getRequiredItems()."
+                                </td>
+                            </tr>
+                            <tr class='wiki_table_row'colspan=2>
+                                <td class='wiki_table_data_left'>
+                                    Objective :
+                                </td>
+                                <td class='wiki_table_data_right'>
+                                    ".$wikiPage->getObjective()."    
+                                </td>
+                            </tr>
+                            <tr class='wiki_table_row'>
+                                <td class='wiki_table_data_left'>
+                                    Set Up :
+                                </td>
+                                <td class='wiki_table_data_right'>
+                                    ".$wikiPage->getSetUp()."
+                                </td>
+                            </tr>
+                            <tr class='wiki_table_row' colspan=2>
+                                <td class='wiki_table_data_left'>
+                                    Play :
+                                </td>
+                                <td class='wiki_table_data_right'>
+                                    ".$wikiPage->getGamePlay()."
+                                </td>
+                            </tr>
+                            <tr class='wiki_table_row' colspan=2>
+                                <td class='wiki_table_data_left'>
+                                    Rules :
+                                </td>
+                                <td class='wiki_table_data_right'>
+                                    ".$wikiPage->getRules()."                                     
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id=\"wikiNav\">
+                        <div id=\"wikiNavTitle\">
+                            Game List
+                        </div>
+                        <div id=\"wikiNavContent\">
+                            <ul style=\"list-style: none;text-align:left; margin:0; padding:0;\">";
+        foreach($gameList as $game) {
+            $view .="<li><a href=\"https://goldenagesolutions.ca/HouseOfCards/wikipage.php?entry=".$game[0]."\">".$game[1]."</a></li>";
+        }                   
+        $view .= "
+                            <ul>
+                        </div>
+                    </div>
+                    <div id=\"pageInfo\">
+                        Last Edit By : <a href=\"userpage.php?ID=".$wikiPage->getLastEditedBy()->getUserID()."\">".$wikiPage->getLastEditedBy()->getUsername()."</a> - Last Edit On : ".$wikiPage->getLastEditedOn()->generateDateTimeString()."
+                    </div>
+                    <div id=\"wikiComments\">
+                        <div id=\"commentHeader\">
+                            Discussion Board <a href=\"\"><img style=\"position: absolute; bottom: 0; right: 0; height:30px; width:30px;\" src=\"https://goldenagesolutions.ca/HouseOfCards/images/reply.png\"/></a>
+                        </div>";
+        if($wikiPage->getComments() == null || sizeof($wikiPage->getComments()) == 0) {
+            $view .= "No comments have been posted yet.";
+        }
+        foreach($wikiPage->getComments() as $comment) {
+            $view .= "
+                        <div class=\"comment_container\">
+                            <div class=\"comment_user_info_container\">
+                                <div class=\"comment_user_info_group\">
+                                    ".$comment->getPostedBy()->getUserGroup()->getUserGroup()."
+                                </div>
+                                <div class=\"comment_user_info_image\">
+                                    <img src=\"https://goldenagesolutions.ca/HouseOfCards/images/beans.jpg\"/>
+                                </div>
+                                <div class=\"comment_user_info_username\">
+                                    <a href=\"userpage.php?ID=".$comment->getPostedBy()->getUserID()."\">".$comment->getPostedBy()->getUsername()."</a>
+                                </div>
+                            </div>
+                            <div class=\"comment_content_container\">
+                                <div class=\"comment_content_header\">
+                                    #<span style='display:none' class='comment-span-ID'>".$comment->getCommentID()."</span>".$comment->getPositionID()." Posted on <i>".$comment->getPostedOn()->generateDateTimeString()."</i><input type='button' class='replyButton' value='Reply' />
+                                </div>
+                                <div style=\"position:relative\" class=\"comment_content_main\">
+                                    ".$comment->getContent()."
+                                </div>
+                            </div>
+                        </div>";
+            //generate code for each comment reply posted to each comment of the wiki page
+            foreach($comment->getCommentReplies() as $reply) {
+                $view .= "
+                        <div class=\"comment_reply_container\">
+                            <div class=\"comment_reply_user_info_container\">
+                                <div class=\"comment_reply_user_info_group\">
+                                    ".$reply->getPostedBy()->getUserGroup()->getUserGroup()."
+                                </div>
+                                <div class=\"comment_reply_user_info_image\">
+                                    <img src=\"https://goldenagesolutions.ca/HouseOfCards/images/beans.jpg\"/>
+                                </div>
+                                <div class=\"comment_reply_user_info_username\">
+                                    <a href=\"userpage.php?ID=".$reply->getPostedBy()->getUserID()."\">".$reply->getPostedBy()->getUsername()."</a>
+                                </div>
+                            </div>
+                            <div class=\"comment_reply_content_container\">
+                                <div class=\"comment_reply_content_header\">
+                                        #".$comment->getPositionID()."-".$reply->getPositionID()." Posted on <i>".$reply->getPostedOn()->generateDateTimeString()."</i>
+                                </div>
+                                <div style=\"position:relative\" class=\"comment_reply_content_main\">
+                                    ".$reply->getContent()."    
+                                </div>
+                            </div>
+                        </div>        
+                        ";
+            }
+        }
+        $view .= "
+        <div class=\"comment_container\">
+            <div class=\"comment_user_info_container\">
+                <div class=\"comment_user_info_group\">
+                    ".$user->getUserGroup()->getUserGroup()."
+                </div>
+                <div class=\"comment_user_info_image\">
+                    <img src=\"https://goldenagesolutions.ca/HouseOfCards/images/beans.jpg\"/>
+                </div>
+                <div class=\"comment_user_info_username\">
+                    <a href=\"\">".$user->getUsername()."</a>
+                </div>
+            </div>
+            <div style=\"position:relative\" class=\"comment_content_container\">
+                <div class=\"comment_content_header\">
+                    <i>Post a new Comment.</i>
+                </div>
+                <div style=\"position:relative\" class=\"comment_content_main\">
+                    <form id='frm-comment'>
+                        <input style='display:none' name='comment-entryID-post' id='comment-entryID-post' type='text' value='".$wikiPage->getEntryID()."' />
+                        <textarea class='auto-resize-textarea' name='comment-content-post' id='comment-content-post'
+                        placeholder='Your comment here'></textarea>
+                        <input type='button' id='commentButton' value='Publish' />
+                        <div id='comment-message'>Comment added successfully.</div>
+                    </form>
+                </div>
+            </div>
+        </div>";
+        $view .= "
+                    </div>
+                </div>
+                ";
+        
+        return $view;
+    }
     //Functions below added for View Users by Alex on March 19
 
     function generateUserPageWrongEntry(Array $userList): string {

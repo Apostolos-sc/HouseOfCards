@@ -5,6 +5,51 @@ Last Edited  : 08-03-2023
 Filename     : theme.css
 Version      : 1.2
 */
+#comment-message {
+	margin-left: 20px;
+	color: #CCCCCC;
+	display: none;
+}
+#commentButton {
+	padding: 10px 20px;
+	background: #333333;
+    margin-bottom: 15px;
+    margin-left: 5%;
+	border: #CCCCCC 1px solid;
+	color: #CCCCCC;
+	font-size: 0.9em;
+	width: 100px;
+	border-radius: 4px;
+	cursor: pointer;
+}
+.replyButton {
+    padding: 5px 10px;
+	background: #333333;
+    margin-left: 5%;
+	border: #CCCCCC 1px solid;
+	color: #CCCCCC;
+	font-size: 0.8em;
+	width: 50px;
+	border-radius: 4px;
+	cursor: pointer; 
+}
+.input-row {
+	margin-bottom: 20px;
+}
+textarea {
+    background-color:CCCCCC;
+    color: #333333;
+    padding: 10px;
+    border-radius: 5px;
+    border: #000000 1px solid;
+    resize: none;
+    width: 90%;
+    margin-left: 5%;
+    margin-bottom: 15px;
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
 html {
     height: 100%;
     color: #CCCCCC;
@@ -271,24 +316,24 @@ a:hover {
 .comment_content_container {
     flex:1;
     align-self: flex-start;
+
     height: auto;
     min-height: 200px;
 }
 .comment_content_header {
-    height: 18px;
+    height: 24px;
     text-align: right;
     font-size: 14px;
     padding-top: 5px;
-    padding-bottom: 4px;
+    padding-bottom: 5px;
     padding-right: 10px;
     border-bottom: 1px solid #333333;
 }
 .comment_content_main{
     min-height: 132px;
     text-align: left;
-    padding: 20px;
+    padding-top: 10px;
 }
-
 /*Comment css Section ends*/
 /*Comment Reply css Section starts */
 .comment_reply_container {

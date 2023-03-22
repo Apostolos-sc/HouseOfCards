@@ -27,8 +27,12 @@
                             //entryID is a zero or positive integer
                             $entry = WikiEntry::fetchWikiEntry($db, intval($_GET['entry']));
                             if($entry != null) {
-                                //entry exists, print information
-                                echo generateWikiPageGuestUser($entry, getGameList(WikiEntry::fetchWikiEntries($db)));
+                                if(isset($_SESSION['username']) && isset($_SESSION['password'])) {
+                                    echo generateWikiPageLoggedInUser($entry, User::fetchUserByUsername($db, $_SESSION['username']),getGameList(WikiEntry::fetchWikiEntries($db)));
+                                } else {
+                                    //entry exists, print information
+                                    echo generateWikiPageGuestUser($entry, getGameList(WikiEntry::fetchWikiEntries($db)));
+                                }
                             } else {
                                 //entry returned null, i.e., it does not exist.
                                 echo generateWikiPageNotExist(getGameList(WikiEntry::fetchWikiEntries($db)));
@@ -44,6 +48,37 @@
 ?>
                     </div>
                 </div>
+                <script>
+                    $("textarea").each(function () {
+                        this.setAttribute("style", "height:" + (this.scrollHeight) + "px;overflow-y:hidden;");
+                        }).on("input", function () {
+                        this.style.height = 0;
+                        this.style.height = (this.scrollHeight) + "px";
+                    });
+                    $("#commentButton").click(function () {
+            	        $("#comment-message").css('display', 'none');
+                        var comment_content_post = $('#comment-content-post').val();
+                        var comment_entryID_post = $('#comment-entryID-post').val();
+
+                        $.ajax({
+                            url: "commentAdd.php",
+                            data: {"comment-content-post": comment_content_post,
+                                   "comment-entryID-post": comment_entryID_post},
+                            type: 'post',
+                            success: function (response)
+                            {
+                                if (response)
+                                {
+                                    location.reload();
+                                } else
+                                {
+                                    alert("Failed to add comments !");
+                                    return false;
+                                }
+                            }
+                        });
+                    });
+                </script>
 <?php
     include 'controller/right-menu.php';
     include 'controller/footer.php';
