@@ -212,12 +212,16 @@ a:hover {
     color:#CCCCCC;
     border: 1px solid #333333;
 }
+.wiki_table_row_data {
+    width:500px;
+    border: 1px solid #333333;
+}
 .wiki_table_data_left {
     border: 1px solid #333333;
     margin: 0;
     padding-top: 5px;
     padding-bottom: 5px;
-    width : 30%;
+    width : 500px;
     font-size: 16px;
 }
 .wiki_table_data_right {
@@ -225,11 +229,8 @@ a:hover {
     margin: 0;
     padding-top: 5px;
     padding-bottom: 5px;
-    width : 70%;
+    width : 500px;
     font-size: 16px;
-}
-.wiki_table_row {
-    border: 1px solid #333333;
 }
 /* wiki content table */
 /* card wiki page */

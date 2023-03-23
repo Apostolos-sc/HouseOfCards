@@ -535,12 +535,12 @@
                     </div>
                     <div id=\"wikiContent\">
                         <table id='wiki_table'>
-                            <tr class='wiki_table_row'>
+                            <tr class='wiki_table_row_data'>
                                 <td id='wiki_table_title' colspan='2'>
                                     ". $user->getUsername() ."
                                 </td>
                             </tr>
-                            <tr class='wiki_table_row'>
+                            <tr class='wiki_table_data_row'>
                                 <td class='wiki_table_data_left'>
                                     User Type :
                                 </td>
@@ -548,7 +548,7 @@
                                     ".$user->getUserGroup()->getUserGroup()."    
                                 </td>
                             </tr>
-                            <tr class='wiki_table_row'>
+                            <tr class='wiki_table_row_data'>
                                 <td class='wiki_table_data_left'>
                                     Favourites :
                                 </td>
@@ -556,7 +556,7 @@
                                     ".$favourites."
                                 </td>
                             </tr>
-                            <tr class='wiki_table_row'>
+                            <tr class='wiki_table_row_data'>
                                 <td class='wiki_table_data_left'>
                                     Rated Games :
                                 </td>
@@ -590,78 +590,96 @@
 
     function generateProfileView(User $user, string $favourites, string $ratings): string {
         $view = "
-                <table id='table_players'>
-                <tr class='table_players_row'>
-                    <td class='table_players_data' id='table_players_title' colspan='2' >
-                        My Profile
-                    </td>
-                </tr>
-                <tr class='table_players_row'>
-                    <td class='table_players_data'>
-                        Username
-                    </td>
-                    <td class='table_players_data'>
-                        ".$user->getUsername()."
-                    </td>
-                </tr>
-                <tr class='table_players_row'>
-                    <td class='table_players_data'>
-                        User Group :
-                    </td>
-                    <td class='table_players_data'>
-                        ".$user->getUserGroup()->getUserGroup()."
-                    </td>
-                </tr>     
-                <tr class='table_players_row'>
-                    <td class='table_players_data'>
-                        Email :
-                    </td>
-                    <td class='table_players_data'>
-                        ".$user->getEmail()."
-                    </td>
-                </tr>
-                <tr class='table_players_row'>
-                    <td class='table_players_data'>
-                        First Name :
-                    </td>
-                    <td class='table_players_data'>
-                        ".$user->getFirstName()."
-                    </td>
-                </tr>
-                <tr class='table_players_row'>
-                    <td class='table_players_data'>
-                        Last Name :
-                    </td>
-                    <td class='table_players_data'>
-                        ".$user->getLastName()."
-                    </td>
-                </tr>  
-                <tr class='table_players_row'>
-                    <td class='table_players_data'>
-                        Date of Birth
-                    </td>
-                    <td class='table_players_data'>
-                        ".$user->getDOB()->generateDateString()."
-                    </td>
-                </tr>
-                <tr class='table_players_row'>
-                    <td class='table_players_data'>
-                        Favourites
-                    </td>
-                    <td class='table_players_data'>
-                        ".$favourites."
-                    </td>
-                </tr>
-                <tr class='table_players_row'>
-                    <td class='table_players_data'>
-                        Ratings
-                    </td>
-                    <td class='table_players_data'>
-                        ".$ratings."
-                    </td>
-                </tr>                
-                </table>
-                ";
-        return $view;
+            <div id=\"card-game-body\">
+                    <div id=\"wikiTitle\">
+                        Profile Information Page
+                    </div>
+                    <div id=\"wikiContent\">
+                        <table id='wiki_table'>
+                        <tr class='wiki_table_row_data'>
+                            <td id='wiki_table_title' colspan='2' >
+                                My Profile :
+                            </td>
+                        </tr>
+                        <tr class='wiki_table_row_data'>
+                            <td class='wiki_table_data_left'>
+                                Username :
+                            </td>
+                            <td class='wiki_table_data_right'>
+                                ".$user->getUsername()."
+                            </td>
+                        </tr>
+                        <tr class='wiki_table_row_data'>
+                            <td class='wiki_table_data_left'>
+                                User Group :
+                            </td>
+                            <td class='wiki_table_data_right'>
+                                ".$user->getUserGroup()->getUserGroup()."
+                            </td>
+                        </tr>     
+                        <tr class='wiki_table_row_data'>
+                            <td class='wiki_table_data_left'>
+                                Email :
+                            </td>
+                            <td class='wiki_table_data_right'>
+                                ".$user->getEmail()."
+                            </td>
+                        </tr>
+                        <tr class='wiki_table_row_data'>
+                            <td class='wiki_table_data_left'>
+                                First Name :
+                            </td>
+                            <td class='wiki_table_data_right'>
+                                ".$user->getFirstName()."
+                            </td>
+                        </tr>
+                        <tr class='wiki_table_row_data'>
+                            <td class='wiki_table_data_left'>
+                                Last Name :
+                            </td>
+                            <td class='wiki_table_data_right'>
+                                ".$user->getLastName()."
+                            </td>
+                        </tr>  
+                        <tr class='wiki_table_row_data'>
+                            <td class='wiki_table_data_left'>
+                                Date of Birth :
+                            </td>
+                            <td class='wiki_table_data_right'>
+                                ".$user->getDOB()->generateDateString()."
+                            </td>
+                        </tr>
+                        <tr class='wiki_table_row_data'>
+                            <td class='wiki_table_data_left'>
+                                Favourites :
+                            </td>
+                            <td class='wiki_table_data_right'>
+                                ".$favourites."
+                            </td>
+                        </tr>
+                        <tr class='wiki_table_row_data'>
+                            <td class='wiki_table_data_left'>
+                                Ratings
+                            </td>
+                            <td class='wiki_table_data_right'>
+                                ".$ratings."
+                            </td>
+                        </tr>                
+                    </table>
+                </div>
+                <div id=\"wikiNav\">
+                    <div id=\"wikiNavTitle\">
+                        <span style=\"visibility:hidden\">testtesttest</span>
+                    </div>
+                    <div id=\"wikiNavContent\">
+                        <span style=\"visibility:hidden\">testtesttest</span>
+                    </div>
+                </div>
+                <div id=\"pageInfo\">
+                </div>
+                <div id=\"wikiComments\">
+                </div>
+            </div>";  
+            return $view;
     }
 ?>
