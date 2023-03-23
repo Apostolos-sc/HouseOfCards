@@ -81,5 +81,15 @@
             $date_time = $this->day."/".$this->month."/".$this->year." - ".$this->hours.":".$this->minutes.":".$this->seconds;
             return $date_time;
         }
+
+        public function generateTimeString() {
+            $date_time = "".$this->hours.":".$this->minutes.":".$this->seconds;
+            return $date_time;
+        }
+
+        public function generateDateString() {
+            $date = "".$this->day."/".$this->month."/".$this->year;
+            return $date;
+        }
     }
 ?>
