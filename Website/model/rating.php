@@ -1,10 +1,10 @@
 <?php
     //Author            : Carter Marcelo
     //Date Created      : 21-02-2023
-    //Last Edited By    : Alexander Sembrat
-    //Last Edited On    : 19-03-2023
+    //Last Edited By    : Ethan Winters
+    //Last Edited On    : 23-02-2023
     //Filename          : rating.php
-    //Version           : 1.4
+    //Version           : 1.3
 
     //Class Rating
     class Rating {
@@ -16,7 +16,7 @@
         private int $rating;
 
         //Constructor
-        public function __construct(int $ratingID, int $entryID, int $userID, int $rating){
+        public function _construct(int $ratingID, int $entryID, int $userID, int $rating){
             $this->ratingID = $ratingID;
             $this->entryID = $entryID;
             $this->userID = $userID;
@@ -29,11 +29,11 @@
         }
 
         public function setEntryID(int $entryID) {
-            $this->entryID = $entryID;
+            return $this->entryID = $entryID;
         }
 
         public function setUserID(int $userID) {
-            $this->$userID = $userID;
+            return $this->userID;
         }
 
         public function setRating(int $rating) {
