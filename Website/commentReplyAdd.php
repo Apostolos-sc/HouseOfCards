@@ -1,7 +1,4 @@
 <?php
-/**
- * This script is to add the comment to database.
- */
     session_start();
     include('controller/connectDB.php');
     include('model/favourite.php');
@@ -13,22 +10,24 @@
     include('model/CommentReply.php');
     include('model/wikientry.php');
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_SESSION["username"])) {
-        echo "test";
-        if(ctype_digit(strval($_POST['comment-entryID-post']))) {
-            echo $db->is_connected();
-            $entryID = intval($_POST['comment-entryID-post']);
-            $wikientry = WikiEntry::fetchWikiEntry($db,  $entryID);
-            if($wikientry != null) {
+        if(ctype_digit(strval($_POST['comment-ID']))) {
+            $commentID = intval($_POST['comment-ID']);
+            $comment = Comment::fetchCommentByID($db,  $commentID);
+            if($comment != null) {
                 $now = new DateTime();
                 $now->setTimezone(new DateTimeZone('America/Edmonton'));
-                $comments = Comment::fetchCommentsByEntryID($db, $_POST['comment-entryID-post']);
-                $ID = $_SESSION['userID'];
-                $content = $_POST['comment-content-post'];
-                $positionID = sizeof($comments)+1;
+                $commentReplies = $comment->getCommentReplies();
+                if(empty($commentReplies)) {
+                    $positionID = 1;
+                } else {
+                    $positionID = sizeof($commentReplies)+1;
+                }
+                $ID = intval($_SESSION['userID']);
+                $content = $_POST['comment-content-reply-post'];
                 $date = $now->format('Y-m-d');
                 $time = $now->format('H:i:s');
-                $stmt = $db->connection->prepare('INSERT INTO Comment (content, entryID, userID, positionID, postedOnDate, postedOnTime) VALUES (?, ?, ?, ?, ?, ?)');
-                $stmt->bind_param('siiiss', $content, $entryID, $ID, $positionID, $date, $time);
+                $stmt = $db->connection->prepare('INSERT INTO CommentReply (commentID, positionID, userID, content, postedOnDate, postedOnTime) VALUES (?, ?, ?, ?, ?, ?)');
+                $stmt->bind_param('iiisss', $commentID, $positionID, $ID, $content, $date, $time);
                 $stmt->execute();
                 if($stmt->affected_rows > 0 ) {
                     echo true;

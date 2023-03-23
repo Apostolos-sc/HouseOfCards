@@ -214,5 +214,42 @@
                 return null;
             }
         }
+
+        public static function fetchCommentByID(Database $dbConnection, int $commentID) : ?Comment {
+            //Query db to select all comments in the database
+            //Query db to find Comments whose entryID = $entryID
+            if($dbConnection->is_connected()) {
+                $stmt = $dbConnection->connection->prepare('SELECT * FROM Comment WHERE Comment.id=?');
+                $stmt->bind_param('i', $commentID);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                if($result->num_rows == 0) {
+                    //no result. Return an empty array.
+                    return null;
+                } else {
+                    //get rows of the table one by one to process in an associative manner
+                    $row = $result->fetch_assoc();
+                    //create the user object
+                    $user = User::fetchUserByID($dbConnection, $row['userID']);
+                    //Maria DB time format is YYYY-MM-DD
+                    //Create an array of strings using - as a delimeter.
+                    $date_arr = explode ("-", $row['postedOnDate']);
+                    //Create an array of strings using : as a delimiter
+                    $time_arr = explode(":", $row['postedOnTime']);
+                    //Adding an integer, i.e. 0, does an implicit String conversion from String to integer
+                    //Create Date object
+                    $date = new Date($date_arr[2]+0, $date_arr[1] + 0, $date_arr[0], $time_arr[0]+0, $time_arr[1]+0, $time_arr[2] + 0);
+                    //get CommentReplies of the Comment
+                    $commentReplies = CommentReply::fetchCommentRepliesByCommentID($dbConnection, $commentID);
+                    //create Comment object from the fetched information
+                    $comment = new Comment($row['id'], $row['entryID'], $user,  $row['positionID'], $date, $row['content'], $commentReplies);
+                    //add the comment to the comment array
+                    return $comment;
+                }
+            } else {
+                //database connection provided is invalid, return null
+                return null;
+            }
+        }
     }
 ?>

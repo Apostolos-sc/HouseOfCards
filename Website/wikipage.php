@@ -78,8 +78,81 @@
                             }
                         });
                     });
+                    $("#newCommentButton").click(function (e) {
+                        e.preventDefault();
+                        $("#newCommentSection").css('display', 'flex');
+                        $("html").animate(
+                        {
+                            scrollTop: $("#newCommentSection").offset().top
+                        },
+                        800 //speed
+                        );
+                    });
+                    $(".commentReplyButton").click(function (e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        e.stopImmediatePropagation();
+                        
+                        var comID = $(this).attr('commenthead');
+                        $('div[commentid='+ comID + ']').css('display', 'block');
+                        $("html").animate(
+                        {
+                            scrollTop: $('div[commentid='+ comID + ']').offset().top
+                        },
+                        800 //speed
+                        );
+                    });
+                    $(".publishCommentReplyButton").click(function (e) {
+                        var comID = $(this).attr('comment-reply-button-id');
+                        var comment_reply_content_post = $('#comment-reply-content-post-'+ comID +'').val();
+                        $.ajax({
+                            url: "commentReplyAdd.php",
+                            data: {"comment-content-reply-post": comment_reply_content_post,
+                                   "comment-ID": comID},
+                            type: 'post',
+                            success: function (response)
+                            {
+                                if (response)
+                                {
+                                    location.reload();
+                                } else
+                                {
+                                    alert("Failed to add comment reply !");
+                                    return false;
+                                }
+                            }
+                        });
+                    });
                 </script>
 <?php
     include 'controller/right-menu.php';
     include 'controller/footer.php';
+    /*
+                        $(".publishCommentReplyButton").click(function (e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        e.stopImmediatePropagation();
+                        var comID = $(this).attr('comment-reply-button-id');
+                        var comment_reply_content_post = $('#comment-reply-content-post-'+ comID +'').val();
+
+                        alert(comment_reply_content_post);
+                    });
+                            $.ajax({
+                            url: "commentReplyAdd.php",
+                            data: {"comment-content-reply-post": comment_reply_content_post,
+                                   "comment-ID": comID},
+                            type: 'post',
+                            success: function (response)
+                            {
+                                if (response)
+                                {
+                                    location.reload();
+                                } else
+                                {
+                                    alert("Failed to add comment reply !");
+                                    return false;
+                                }
+                            }
+                        });
+                        */
 ?>
