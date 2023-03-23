@@ -13,7 +13,6 @@
     include('model/CommentReply.php');
     include('model/wikientry.php');
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_SESSION["username"])) {
-        echo "test";
         if(ctype_digit(strval($_POST['comment-entryID-post']))) {
             echo $db->is_connected();
             $entryID = intval($_POST['comment-entryID-post']);

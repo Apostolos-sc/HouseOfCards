@@ -114,9 +114,9 @@
                         //create CommentReply object from the fetched information
                         $commentReply = new CommentReply($row['id'], $row['commentID'], $row['positionID'], $row['content'], $user, $date);
                         //add the comment to the comment array
-                        $commentReplies[] = $commentReply;
+                        $commentsReplies[] = $commentReply;
                     }
-                    return $commentReplies;
+                    return $commentsReplies;
                 }
             } else {
                 //database connection provided is invalid, return null
@@ -150,7 +150,7 @@
                         //Create Date object
                         $date = new Date($date_arr[2]+0, $date_arr[1] + 0, $date_arr[0], $time_arr[0]+0, $time_arr[1]+0, $time_arr[2] + 0);
                         //create CommentReply object from the fetched information
-                        $commentReply = new CommentReply($row['id'], $row['commentID'],  $row['positionID'], $row['content'], $user, $date);
+                        $commentReply = new CommentReply($row['id'], $row['commentID'], $user,  $row['positionID'], $row['content'], $user, $date);
                         //add the comment to the comment array
                         $commentsReplies[] = $commentReply;
                     }

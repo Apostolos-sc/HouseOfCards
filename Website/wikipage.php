@@ -1,9 +1,9 @@
 <?php
     //Author            : Apostolos Scondrianis
     //Date Created      : 12-02-2023
-    //Last Edited     	: 16-02-2023
+    //Last Edited     	: 08-03-2023
     //Filename          : wikipage.php
-    //Version           : 1.1
+    //Version           : 1.2
     include('controller/connectDB.php');
     include('controller/header.php');
     include('controller/left-menu.php');
@@ -27,8 +27,12 @@
                             //entryID is a zero or positive integer
                             $entry = WikiEntry::fetchWikiEntry($db, intval($_GET['entry']));
                             if($entry != null) {
-                                //entry exists, print information
-                                echo generateWikiPageGuestUser($entry, getGameList(WikiEntry::fetchWikiEntries($db)));
+                                if(isset($_SESSION['username']) && isset($_SESSION['password'])) {
+                                    echo generateWikiPageLoggedInUser($entry, User::fetchUserByUsername($db, $_SESSION['username']),getGameList(WikiEntry::fetchWikiEntries($db)));
+                                } else {
+                                    //entry exists, print information
+                                    echo generateWikiPageGuestUser($entry, getGameList(WikiEntry::fetchWikiEntries($db)));
+                                }
                             } else {
                                 //entry returned null, i.e., it does not exist.
                                 echo generateWikiPageNotExist(getGameList(WikiEntry::fetchWikiEntries($db)));
@@ -74,81 +78,8 @@
                             }
                         });
                     });
-                    $("#newCommentButton").click(function (e) {
-                        e.preventDefault();
-                        $("#newCommentSection").css('display', 'flex');
-                        $("html").animate(
-                        {
-                            scrollTop: $("#newCommentSection").offset().top
-                        },
-                        800 //speed
-                        );
-                    });
-                    $(".commentReplyButton").click(function (e) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        e.stopImmediatePropagation();
-                        
-                        var comID = $(this).attr('commenthead');
-                        $('div[commentid='+ comID + ']').css('display', 'block');
-                        $("html").animate(
-                        {
-                            scrollTop: $('div[commentid='+ comID + ']').offset().top
-                        },
-                        800 //speed
-                        );
-                    });
-                    $(".publishCommentReplyButton").click(function (e) {
-                        var comID = $(this).attr('comment-reply-button-id');
-                        var comment_reply_content_post = $('#comment-reply-content-post-'+ comID +'').val();
-                        $.ajax({
-                            url: "commentReplyAdd.php",
-                            data: {"comment-content-reply-post": comment_reply_content_post,
-                                   "comment-ID": comID},
-                            type: 'post',
-                            success: function (response)
-                            {
-                                if (response)
-                                {
-                                    location.reload();
-                                } else
-                                {
-                                    alert("Failed to add comment reply !");
-                                    return false;
-                                }
-                            }
-                        });
-                    });
                 </script>
 <?php
     include 'controller/right-menu.php';
     include 'controller/footer.php';
-    /*
-                        $(".publishCommentReplyButton").click(function (e) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        e.stopImmediatePropagation();
-                        var comID = $(this).attr('comment-reply-button-id');
-                        var comment_reply_content_post = $('#comment-reply-content-post-'+ comID +'').val();
-
-                        alert(comment_reply_content_post);
-                    });
-                            $.ajax({
-                            url: "commentReplyAdd.php",
-                            data: {"comment-content-reply-post": comment_reply_content_post,
-                                   "comment-ID": comID},
-                            type: 'post',
-                            success: function (response)
-                            {
-                                if (response)
-                                {
-                                    location.reload();
-                                } else
-                                {
-                                    alert("Failed to add comment reply !");
-                                    return false;
-                                }
-                            }
-                        });
-                        */
 ?>

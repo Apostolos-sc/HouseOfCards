@@ -7,9 +7,8 @@
 ?>
             <div class="bottom">
                 <div class="text_wrapper">
-                    &copy; Developed and maintained by Team 31, SENG401 Final Project
+                    &copy Developed and maintained by Team 31, SENG401 Final Project
                 </div>
-            </div>
         </div>
     </body>
 </html>

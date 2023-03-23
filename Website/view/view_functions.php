@@ -1,15 +1,15 @@
 <?php
-    //Author            : Team 31
+    //Author            : Apostolos Scondrianis
     //Date Created      : 16-02-2023
-    //Last Edited     	: ----------
+    //Last Edited By    : Alexander Sembrat
+    //Last Edited On    : 19-03-2023
     //Filename          : view_functions.php
-    //Version           : 0.1 - First Draft
+    //Version           : 0.2 - User Page view functions
     
     //There are some more edits that need to be done on the php classes when you guys finish them.
     //I forgot that php passes objects by reference. There it's okay instead of holding the id's of users
     //to simply hold the object itself in the classes where we store "userID" such as the Comment class.
 
-    //Completed by Apostolos Scondrianis
     //Function that generates the View of a Wiki Page for the Guest Users
     
     function generateWikiPageGuestUser(WikiEntry $wikiPage, Array $gameList): string {
@@ -21,10 +21,10 @@
                         <table id='wiki_table'>
                             <tr class='wiki_table_row'>
                                 <td id='wiki_table_title' colspan='2' >
-                                    ". $wikiPage->getGameName() ." <img alt ='img' src=\"https://goldenagesolutions.ca/HouseOfCards/images/star2.png\" style=\"vertical-align:middle;height:20px;width:120px;\">
+                                    ". $wikiPage->getGameName() ." <img src=\"https://goldenagesolutions.ca/HouseOfCards/images/star2.png\" style=\"vertical-align:middle;height:20px;width:120px;\"/>
                                 </td>
                             </tr>
-                            <tr class='wiki_table_row' >
+                            <tr class='wiki_table_row' colspan=2>
                                 <td class='wiki_table_data_left'>
                                     # of Players :
                                 </td>
@@ -32,7 +32,7 @@
                                     ".$wikiPage->getMinPlayers()." - ".$wikiPage->getMaxPlayers()."
                                 </td>
                             </tr>
-                            <tr class='wiki_table_row' >
+                            <tr class='wiki_table_row' colspan=2>
                                 <td class='wiki_table_data_left'>
                                     Required Items :
                                 </td>
@@ -40,7 +40,7 @@
                                     ".$wikiPage->getRequiredItems()."
                                 </td>
                             </tr>
-                            <tr class='wiki_table_row'>
+                            <tr class='wiki_table_row'colspan=2>
                                 <td class='wiki_table_data_left'>
                                     Objective :
                                 </td>
@@ -56,7 +56,7 @@
                                     ".$wikiPage->getSetUp()."
                                 </td>
                             </tr>
-                            <tr class='wiki_table_row'>
+                            <tr class='wiki_table_row' colspan=2>
                                 <td class='wiki_table_data_left'>
                                     Play :
                                 </td>
@@ -64,7 +64,7 @@
                                     ".$wikiPage->getGamePlay()."
                                 </td>
                             </tr>
-                            <tr class='wiki_table_row'>
+                            <tr class='wiki_table_row' colspan=2>
                                 <td class='wiki_table_data_left'>
                                     Rules :
                                 </td>
@@ -84,15 +84,15 @@
             $view .="<li><a href=\"https://goldenagesolutions.ca/HouseOfCards/wikipage.php?entry=".$game[0]."\">".$game[1]."</a></li>";
         }                   
         $view .= "
-                            </ul>
+                            <ul>
                         </div>
                     </div>
                     <div id=\"pageInfo\">
-                        Last Edit By : <a href =\"\">".$wikiPage->getLastEditedBy()->getUsername()."</a> - Last Edit On : ".$wikiPage->getLastEditedOn()->generateDateTimeString()."
+                        Last Edit By : <a href>".$wikiPage->getLastEditedBy()->getUsername()."</a> - Last Edit On : ".$wikiPage->getLastEditedOn()->generateDateTimeString()."
                     </div>
                     <div id=\"wikiComments\">
                         <div id=\"commentHeader\">
-                            Discussion Board <a href=\"\"></a>
+                            Discussion Board <a href=\"\"><img style=\"position: absolute; bottom: 0; right: 0; height:30px; width:30px;\" src=\"https://goldenagesolutions.ca/HouseOfCards/images/reply.png\"/></a>
                         </div>";
         //generate HTML code for each comment of the wiki page
         if($wikiPage->getComments() == null || sizeof($wikiPage->getComments()) == 0) {
@@ -106,7 +106,7 @@
                                     ".$comment->getPostedBy()->getUserGroup()->getUserGroup()."
                                 </div>
                                 <div class=\"comment_user_info_image\">
-                                    <img alt ='img' src=\"https://goldenagesolutions.ca/HouseOfCards/images/beans.jpg\">
+                                    <img src=\"https://goldenagesolutions.ca/HouseOfCards/images/beans.jpg\"/>
                                 </div>
                                 <div class=\"comment_user_info_username\">
                                     <a href=\"\">".$comment->getPostedBy()->getUsername()."</a>
@@ -118,6 +118,7 @@
                                 </div>
                                 <div style=\"position:relative\" class=\"comment_content_main\">
                                     ".$comment->getContent()."
+                                    <a href=\"\"><img style=\"position: absolute; bottom: 0; right: 0; height:30px; width:30px;\" src=\"https://goldenagesolutions.ca/HouseOfCards/images/reply.png\"/></a>
                                 </div>
                             </div>
                         </div>";
@@ -130,7 +131,7 @@
                                     ".$reply->getPostedBy()->getUserGroup()->getUserGroup()."
                                 </div>
                                 <div class=\"comment_reply_user_info_image\">
-                                    <img alt ='img' src=\"https://goldenagesolutions.ca/HouseOfCards/images/beans.jpg\">
+                                    <img src=\"https://goldenagesolutions.ca/HouseOfCards/images/beans.jpg\"/>
                                 </div>
                                 <div class=\"comment_reply_user_info_username\">
                                     <a href=\"\">".$reply->getPostedBy()->getUsername()."</a>
@@ -172,7 +173,7 @@
             $view .="<li><a href=\"https://goldenagesolutions.ca/HouseOfCards/wikipage.php?entry=".$game[0]."\">".$game[1]."</a></li>";
         }                   
         $view .= "
-                            </ul>
+                            <ul>
                         </div>
                     </div>
                     <div id=\"pageInfo\"> 
@@ -200,7 +201,7 @@
             $view .="<li><a href=\"https://goldenagesolutions.ca/HouseOfCards/wikipage.php?entry=".$game[0]."\">".$game[1]."</a></li>";
         }                   
         $view .= "
-                            </ul>
+                            <ul>
                         </div>
                     </div>
                     <div id=\"pageInfo\">
@@ -228,7 +229,7 @@
             $view .="<li><a href=\"https://goldenagesolutions.ca/HouseOfCards/wikipage.php?entry=".$game[0]."\">".$game[1]."</a></li>";
         }                   
         $view .= "
-                            </ul>
+                            <ul>
                         </div>
                     </div>
                     <div id=\"pageInfo\">
@@ -248,10 +249,10 @@
                         <table id='wiki_table'>
                             <tr class='wiki_table_row'>
                                 <td id='wiki_table_title' colspan='2' >
-                                    ". $wikiPage->getGameName() ." <img alt ='img' src=\"https://goldenagesolutions.ca/HouseOfCards/images/star2.png\" style=\"vertical-align:middle;height:20px;width:120px;\">
+                                    ". $wikiPage->getGameName() ." <img src=\"https://goldenagesolutions.ca/HouseOfCards/images/star2.png\" style=\"vertical-align:middle;height:20px;width:120px;\"/>
                                 </td>
                             </tr>
-                            <tr class='wiki_table_row'>
+                            <tr class='wiki_table_row' colspan=2>
                                 <td class='wiki_table_data_left'>
                                     # of Players :
                                 </td>
@@ -259,7 +260,7 @@
                                     ".$wikiPage->getMinPlayers()." - ".$wikiPage->getMaxPlayers()."
                                 </td>
                             </tr>
-                            <tr class='wiki_table_row'>
+                            <tr class='wiki_table_row' colspan=2>
                                 <td class='wiki_table_data_left'>
                                     Required Items :
                                 </td>
@@ -267,7 +268,7 @@
                                     ".$wikiPage->getRequiredItems()."
                                 </td>
                             </tr>
-                            <tr class='wiki_table_row'>
+                            <tr class='wiki_table_row'colspan=2>
                                 <td class='wiki_table_data_left'>
                                     Objective :
                                 </td>
@@ -283,7 +284,7 @@
                                     ".$wikiPage->getSetUp()."
                                 </td>
                             </tr>
-                            <tr class='wiki_table_row'>
+                            <tr class='wiki_table_row' colspan=2>
                                 <td class='wiki_table_data_left'>
                                     Play :
                                 </td>
@@ -291,7 +292,7 @@
                                     ".$wikiPage->getGamePlay()."
                                 </td>
                             </tr>
-                            <tr class='wiki_table_row'>
+                            <tr class='wiki_table_row' colspan=2>
                                 <td class='wiki_table_data_left'>
                                     Rules :
                                 </td>
@@ -311,7 +312,7 @@
             $view .="<li><a href=\"https://goldenagesolutions.ca/HouseOfCards/wikipage.php?entry=".$game[0]."\">".$game[1]."</a></li>";
         }                   
         $view .= "
-                            </ul>
+                            <ul>
                         </div>
                     </div>
                     <div id=\"pageInfo\">
@@ -319,7 +320,7 @@
                     </div>
                     <div id=\"wikiComments\">
                         <div id=\"commentHeader\">
-                            Discussion Board <a href=\"\"><input type='button' id='newCommentButton' value='Add Comment' />
+                            Discussion Board <a href=\"\"><img style=\"position: absolute; bottom: 0; right: 0; height:30px; width:30px;\" src=\"https://goldenagesolutions.ca/HouseOfCards/images/reply.png\"/></a>
                         </div>";
         if($wikiPage->getComments() == null || sizeof($wikiPage->getComments()) == 0) {
             $view .= "No comments have been posted yet.";
@@ -332,7 +333,7 @@
                                     ".$comment->getPostedBy()->getUserGroup()->getUserGroup()."
                                 </div>
                                 <div class=\"comment_user_info_image\">
-                                    <img alt ='img' src=\"https://goldenagesolutions.ca/HouseOfCards/images/beans.jpg\">
+                                    <img src=\"https://goldenagesolutions.ca/HouseOfCards/images/beans.jpg\"/>
                                 </div>
                                 <div class=\"comment_user_info_username\">
                                     <a href=\"userpage.php?ID=".$comment->getPostedBy()->getUserID()."\">".$comment->getPostedBy()->getUsername()."</a>
@@ -340,9 +341,9 @@
                             </div>
                             <div class=\"comment_content_container\">
                                 <div class=\"comment_content_header\">
-                                    #<span style='display:none' class='comment-span-ID'>".$comment->getCommentID()."</span>".$comment->getPositionID()." Posted on <i>".$comment->getPostedOn()->generateDateTimeString()."</i><input type='button' class='commentReplyButton' commenthead='".$comment->getCommentID()."' value='Reply' />
+                                    #<span style='display:none' class='comment-span-ID'>".$comment->getCommentID()."</span>".$comment->getPositionID()." Posted on <i>".$comment->getPostedOn()->generateDateTimeString()."</i><input type='button' class='replyButton' value='Reply' />
                                 </div>
-                                <div class=\"comment_content_main\">
+                                <div style=\"position:relative\" class=\"comment_content_main\">
                                     ".$comment->getContent()."
                                 </div>
                             </div>
@@ -356,7 +357,7 @@
                                     ".$reply->getPostedBy()->getUserGroup()->getUserGroup()."
                                 </div>
                                 <div class=\"comment_reply_user_info_image\">
-                                    <img alt ='img' src=\"https://goldenagesolutions.ca/HouseOfCards/images/beans.jpg\"/>
+                                    <img src=\"https://goldenagesolutions.ca/HouseOfCards/images/beans.jpg\"/>
                                 </div>
                                 <div class=\"comment_reply_user_info_username\">
                                     <a href=\"userpage.php?ID=".$reply->getPostedBy()->getUserID()."\">".$reply->getPostedBy()->getUsername()."</a>
@@ -373,56 +374,25 @@
                         </div>        
                         ";
             }
-            $view .= "
-            <div class=\"commentReplyPost\" comment=\"reply\" commentid=\"".$comment->getCommentID()."\">
-                <div class=\"comment_reply_container\">
-                    <div class=\"comment_reply_user_info_container\">
-                        <div class=\"comment_reply_user_info_group\">
-                            ".$user->getUserGroup()->getUserGroup()."
-                        </div>
-                        <div class=\"comment_reply_user_info_image\">
-                            <img alt ='img' src=\"https://goldenagesolutions.ca/HouseOfCards/images/beans.jpg\"/>
-                        </div>
-                        <div class=\"comment_reply_user_info_username\">
-                            <a href=\"userpage.php?ID=".$user->getUserID()."\">".$user->getUsername()."</a>
-                        </div>
-                    </div>
-                    <div class=\"comment_reply_content_container\">
-                        <div class=\"comment_reply_content_header\">
-                            Post a new Comment Reply
-                        </div>
-                        <div style=\"position:relative\" class=\"comment_reply_content_main\">
-                            <form id='frm-comment-reply-".$comment->getCommentID()."'>
-                                <input style='display:none' name='comment-reply-post-id-".$comment->getCommentID()."' id='comment-reply-post-id-".$comment->getCommentID()."' type='text' value='".$comment->getCommentID()."' />
-                                <textarea class='auto-resize-textarea' name='comment-reply-content-post-".$comment->getCommentID()."' id='comment-reply-content-post-".$comment->getCommentID()."'
-                                placeholder='Your comment Reply here'></textarea>
-                                <input type='button' class='publishCommentReplyButton' comment-reply-button-id='".$comment->getCommentID()."' value='Reply' />
-                                <div id='comment-message'>Comment Reply added successfully.</div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div> ";
-            //comment "specific" block ends
         }
         $view .= "
-        <div id=\"newCommentSection\" class=\"comment_container\">
+        <div class=\"comment_container\">
             <div class=\"comment_user_info_container\">
                 <div class=\"comment_user_info_group\">
                     ".$user->getUserGroup()->getUserGroup()."
                 </div>
                 <div class=\"comment_user_info_image\">
-                    <img alt ='img' src=\"https://goldenagesolutions.ca/HouseOfCards/images/beans.jpg\">
+                    <img src=\"https://goldenagesolutions.ca/HouseOfCards/images/beans.jpg\"/>
                 </div>
                 <div class=\"comment_user_info_username\">
                     <a href=\"\">".$user->getUsername()."</a>
                 </div>
             </div>
-            <div class=\"comment_content_container\">
+            <div style=\"position:relative\" class=\"comment_content_container\">
                 <div class=\"comment_content_header\">
                     <i>Post a new Comment.</i>
                 </div>
-                <div  class=\"comment_content_main\">
+                <div style=\"position:relative\" class=\"comment_content_main\">
                     <form id='frm-comment'>
                         <input style='display:none' name='comment-entryID-post' id='comment-entryID-post' type='text' value='".$wikiPage->getEntryID()."' />
                         <textarea class='auto-resize-textarea' name='comment-content-post' id='comment-content-post'
@@ -460,7 +430,7 @@
             $view .="<li><a href=\"https://goldenagesolutions.ca/HouseOfCards/userpage.php?ID=".$user[0]."\">".$user[1]."</a></li>";
         }                   
         $view .= "
-                            </ul>
+                            <ul>
                         </div>
                     </div>
                     <div id=\"pageInfo\"> 
@@ -488,7 +458,7 @@
             $view .="<li><a href=\"https://goldenagesolutions.ca/HouseOfCards/userpage.php?ID=".$user[0]."\">".$user[1]."</a></li>";
         }                   
         $view .= "
-                            </ul>
+                            <ul>
                         </div>
                     </div>
                     <div id=\"pageInfo\">
@@ -516,7 +486,7 @@
             $view .="<li><a href=\"https://goldenagesolutions.ca/HouseOfCards/userpage.php?ID=".$user[0]."\">".$user[1]."</a></li>";
         }                   
         $view .= "
-                            </ul>
+                            <ul>
                         </div>
                     </div>
                     <div id=\"pageInfo\">
@@ -536,11 +506,11 @@
                     <div id=\"wikiContent\">
                         <table id='wiki_table'>
                             <tr class='wiki_table_row'>
-                                <td id='wiki_table_title' >
+                                <td id='wiki_table_title' colspan='2' >
                                     ". $user->getUsername() ."
                                 </td>
                             </tr>
-                            <tr class='wiki_table_row'>
+                            <tr class='wiki_table_row' colspan=2>
                                 <td class='wiki_table_data_left'>
                                     First Name :
                                 </td>
@@ -548,7 +518,7 @@
                                     ".$user->getFirstName()."
                                 </td>
                             </tr>
-                            <tr class='wiki_table_row'>
+                            <tr class='wiki_table_row' colspan=2>
                                 <td class='wiki_table_data_left'>
                                     Last Name :
                                 </td>
@@ -556,7 +526,7 @@
                                     ".$user->getLastName()."
                                 </td>
                             </tr>
-                            <tr class='wiki_table_row'>
+                            <tr class='wiki_table_row'colspan=2>
                                 <td class='wiki_table_data_left'>
                                     User Type :
                                 </td>
@@ -572,12 +542,20 @@
                                     ".$favourites."
                                 </td>
                             </tr>
-                            <tr class='wiki_table_row'>
+                            <tr class='wiki_table_row' colspan=2>
                                 <td class='wiki_table_data_left'>
                                     Rated Games :
                                 </td>
                                 <td class='wiki_table_data_right'>
                                     ".$ratings."
+                                </td>
+                            </tr>
+                            <tr class='wiki_table_row' colspan=2>
+                                <td class='wiki_table_data_left'>
+                                    Rules :
+                                </td>
+                                <td class='wiki_table_data_right'>
+                                    ".$user->getFirstName()."                                     
                                 </td>
                             </tr>
                         </table>
@@ -593,7 +571,7 @@
             $view .="<li><a href=\"https://goldenagesolutions.ca/HouseOfCards/userpage.php?ID=".$user[0]."\">".$user[1]."</a></li>";
         }
         $view .= "
-                            </ul>
+                            <ul>
                         </div>
                     </div>
                     <div id=\"pageInfo\">
