@@ -1,9 +1,9 @@
 <?php
     //Author            : Apostolos Scondrianis
     //Date Created      : 12-02-2023
-    //Last Edited     	: 08-03-2023
+    //Last Edited     	: 16-02-2023
     //Filename          : wikipage.php
-    //Version           : 1.2
+    //Version           : 1.1
     include('controller/connectDB.php');
     include('controller/header.php');
     include('controller/left-menu.php');
@@ -27,12 +27,8 @@
                             //entryID is a zero or positive integer
                             $entry = WikiEntry::fetchWikiEntry($db, intval($_GET['entry']));
                             if($entry != null) {
-                                if(isset($_SESSION['username']) && isset($_SESSION['password'])) {
-                                    echo generateWikiPageLoggedInUser($entry, User::fetchUserByUsername($db, $_SESSION['username']),getGameList(WikiEntry::fetchWikiEntries($db)));
-                                } else {
-                                    //entry exists, print information
-                                    echo generateWikiPageGuestUser($entry, getGameList(WikiEntry::fetchWikiEntries($db)));
-                                }
+                                //entry exists, print information
+                                echo generateWikiPageGuestUser($entry, getGameList(WikiEntry::fetchWikiEntries($db)));
                             } else {
                                 //entry returned null, i.e., it does not exist.
                                 echo generateWikiPageNotExist(getGameList(WikiEntry::fetchWikiEntries($db)));
