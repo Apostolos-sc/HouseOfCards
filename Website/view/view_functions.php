@@ -809,4 +809,58 @@
         </div>";  
         return $view;
     }
+    function generateLoginPage(string $message) : string {
+        $view = 
+            "<div id=\"card-game-body\">
+                <div id=\"wikiTitle\">
+                    Login Page
+                </div>
+                <div id=\"wikiContent\">
+                    <table id='wiki_table'>
+                        <tr class='wiki_table_row'>
+                            <td class='wiki_table_data_left' id='wiki_table_title' colspan='2' >
+                                Login
+                            </td>
+                        </tr>
+                        <form action='login.php' method='post'>
+                        <tr class='wiki_table_row'>
+                            <td class='wiki_table_data_left'>
+                                Username :
+                            </td>
+                            <td class='wiki_table_data_right'>
+                                <input class='input-fields' onfocus=\"this.value=''\" name='username' type='text' value='Enter Username' />
+                            </td>
+                        </tr>
+                        <tr class='wiki_table_row'>
+                            <td class='wiki_table_data_left'>
+                                Password :
+                            </td>
+                            <td class='wiki_table_data_right'>
+                                <input class='input-fields' onfocus=\"this.value=''\" name='password' type='password' value='password' />
+                            </td>
+                        </tr>
+                        <tr class='wiki_table_row'>
+                            <td class='wiki_table_data' colspan='2'>
+                                <input type ='submit' class='submit-inputs' value='Login' />
+                            </td>
+                        </tr>
+                        </form>
+                    </table>
+                </div>
+                <div id=\"wikiNav\">
+                    <div id=\"wikiNavTitle\">
+                        <span style=\"visibility:hidden\">testtesttest</span>
+                    </div>
+                    <div id=\"wikiNavContent\">
+                        <span style=\"visibility:hidden\">testtesttest</span>
+                    </div>
+                </div>
+                <div id=\"pageInfo\">
+                    ".$message."
+                </div>
+                <div id=\"wikiComments\">
+                </div>
+            </div>";
+        return $view;
+    }
 ?>

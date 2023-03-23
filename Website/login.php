@@ -7,7 +7,15 @@
     //Version           : 1.1
     $GLOBALS["title"] = "Welcome to House of Cards Wiki - Login";
     include 'controller/connectDB.php';
-
+    include('model/favourite.php');
+    include('model/user.php');
+    include('model/wikientry.php');
+    include('model/rating.php');
+    include('model/comment.php');
+    include('model/CommentReply.php');
+    include('model/userType.php');
+    include('model/date.php');
+    include ('view/view_functions.php');
     if(isset($_SESSION['username']) && isset($_SESSION['password'])) {
         header("Location: index.php");
         exit();
@@ -16,8 +24,10 @@
     if(isset($_POST['username']) && isset($_POST['password'])) {
         //$_POST['username'] represents account ID only for this page.
         $process = true;
+        $uname = $_POST['username'];
+        $pass = $_POST['password'];
         $stmt = $db->connection->prepare('SELECT * FROM users WHERE users.username = ? AND users.password = ?');
-        $stmt->bind_param('ss', $_POST['username'], $_POST['password']); // 's' specifies the variable type => 'string'
+        $stmt->bind_param('ss', $uname, $pass); // 's' specifies the variable type => 'string'
     
         $stmt->execute();
         $result = $stmt->get_result();
@@ -45,43 +55,11 @@
                                 echo "You have successfully logged in.";
                                 header("Location: index.php");
                             } else {
-                                echo "You cannot login with the given credentials. Please try again.";
+                                $message = "You cannot login with the given credentials. Please try again.";
+                                echo generateLoginPage($message);
                             }
                         } else {
-                            echo "
-                                <table id='table_players'>
-                                <tr class='table_players_row'>
-                                    <td class='table_players_data' id='table_players_title' colspan='2' >
-                                        Login
-                                    </td>
-                                </tr>
-                                <form action='login.php' method='post'>
-                                <tr class='table_players_row'>
-                                    
-                                    <td class='table_players_data'>
-                                        Username :
-                                    </td>
-                                    <td class='table_players_data'>
-                                        <input class='input-fields' onfocus=\"this.value=''\" name='username' type='text' value='Enter Username' />
-                                    </td>
-                                </tr>
-                                <tr class='table_players_row'>
-                                    <td class='table_players_data'>
-                                        Password :
-                                    </td>
-                                    <td class='table_players_data'>
-                                        <input class='input-fields' onfocus=\"this.value=''\" name='password' type='password' value='password' />
-                                    </td>
-                                </tr>
-
-                                <tr class='table_players_row'>
-                                    <td class='table_players_data' colspan='2'>
-                                        <input type ='submit' class='submit-inputs' value='Login' />
-                                    </td>
-                                </tr>
-                                </form>
-                            </table>
-                            ";
+                            echo generateLoginPage("");
                         }
                         ?>
                     </div>

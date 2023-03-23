@@ -197,7 +197,7 @@ a:hover {
 /*wiki page css */
 /* wiki game content table */
 #wiki_table {
-    border: 1px solid #333333;
+    border: 1px solid #000000;
     border-collapse: collapse;
     margin-left: auto;
     margin-right: auto;
@@ -210,14 +210,14 @@ a:hover {
     font-size: 20px;
     background-color:#333333;
     color:#CCCCCC;
-    border: 1px solid #333333;
+    border: 1px solid #000000;
 }
 .wiki_table_row_data {
     width:500px;
-    border: 1px solid #333333;
+    border: 1px solid #000000;
 }
 .wiki_table_data_left {
-    border: 1px solid #333333;
+    border: 1px solid #000000;
     margin: 0;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -225,7 +225,7 @@ a:hover {
     font-size: 16px;
 }
 .wiki_table_data_right {
-    border: 1px solid #333333;
+    border: 1px solid #000000;
     margin: 0;
     padding-top: 5px;
     padding-bottom: 5px;
