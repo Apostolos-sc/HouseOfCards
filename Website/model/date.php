@@ -78,7 +78,7 @@
         }
 
         public function generateDateTimeString() {
-            $date_time = $this->day."/".$this->month."/".$this->year." - ".$this->hours.":".$this->minutes.":".$this->seconds;
+            $date_time = $this->day."-".$this->month."-".$this->year." - ".$this->hours.":".$this->minutes.":".$this->seconds;
             return $date_time;
         }
 
@@ -88,7 +88,17 @@
         }
 
         public function generateDateString() {
-            $date = "".$this->day."/".$this->month."/".$this->year;
+            if($this->month < 10) {
+                $month = "0".$this->month;
+            } else {
+                $month = "".$this->month;
+            }
+            if($this->day < 10) {
+                $day = "0".$this->day;
+            } else {
+                $day = "".$this->day;
+            }
+            $date = "".$this->year."-".$month."-".$month;
             return $date;
         }
     }

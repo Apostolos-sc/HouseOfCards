@@ -62,7 +62,7 @@ Version      : 1.2
 	border-radius: 4px;
 	cursor: pointer; 
 }
-.input-row {
+.-row {
 	margin-bottom: 20px;
 }
 textarea {
@@ -473,9 +473,23 @@ a:hover {
 .input-fields {
     background-color:#CCCCCC;
     border: 1px solid #000000;
-    color: #000000;
+    color: #333333;
     text-align: center;
     margin: 5px;
+    height: 20px;
+    width: 200px;
+}
+.input-password-field {
+    background-color:#CCCCCC;
+    border: 1px solid #000000;
+    color: #333333;
+    text-align: center;
+    height: 20px;
+    width: 200px;
+}
+.password_container {
+    margin: 5px;
+    height: 20px;
 }
 .submit-inputs {
     background-color:#CCCCCC;

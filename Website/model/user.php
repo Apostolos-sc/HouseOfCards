@@ -45,7 +45,7 @@
             $this->userGroup = $userGroup;
         }
 
-        public function setFname(String $fname) {
+        public function setFirstName(String $fname) {
             $this->firstName = $fname;
         }
 
@@ -178,6 +178,32 @@
                     $user = new User($row['id'], $userType, $row['fname'], $row['lname'], $row['email'], 
                                                 $row['username'], $row['password'], $dob, $favourites);
                     return $user;
+                }
+            } else {
+                //db object is not connected. Return Null.
+                return null;
+            }
+        }
+
+        public static function updateUser(Database $dbConnection, User $user) : ?bool {
+            //request a user by username, returns null if not found
+            if($dbConnection->is_connected()) {
+                $id = $user->getUserID();
+                $email = $user->getEmail();
+                $fname = $user->getFirstName();
+                $lname = $user->getLastName();
+                $password = $user->getPassword();
+                $dob = $user->getDOB()->generateDateString();
+                $stmt = $dbConnection->connection->prepare('UPDATE users SET email = ?, fname = ?, lname = ?, password = ?, dob = ? WHERE id = ?');
+                $stmt->bind_param('sssssi', $email, $fname, $lname, $password, $dob, $id);
+                $stmt->execute();
+                if($stmt->num_rows == 0) {
+                    //no result. Return null
+                    return false;
+                } else {
+                    //fetch associatively a row. Use $row to get the data needed. Only one user should be found.
+                    //usernames should also be unique
+                    return true;
                 }
             } else {
                 //db object is not connected. Return Null.

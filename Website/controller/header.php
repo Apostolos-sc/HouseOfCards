@@ -13,6 +13,8 @@
 <html>
     <head>
         <link rel="stylesheet" href="controller/theme.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
         <script src="controller/jquery-3.2.1.min.js"></script>
         <link rel="icon" type="image/png" href="https://goldenagesolutions.ca/HouseOfCards/images/cardgame.png">
         <title>
