@@ -22,7 +22,36 @@ Version      : 1.2
 	border-radius: 4px;
 	cursor: pointer;
 }
-.replyButton {
+.publishCommentReplyButton {
+    padding: 10px 20px;
+	background: #333333;
+    margin-bottom: 15px;
+    margin-left: 5%;
+	border: #CCCCCC 1px solid;
+	color: #CCCCCC;
+	font-size: 0.9em;
+	width: 100px;
+	border-radius: 4px;
+	cursor: pointer;
+}
+#newCommentButton {
+    position: absolute;
+    right: 10px;
+    bottom: 6px;
+    margin: auto;
+	padding: 5px 10px;
+	background: #515151;
+    margin-left: 5%;
+	border: #CCCCCC 1px solid;
+	color: #CCCCCC;
+	font-size: 0.8em;
+	border-radius: 4px;
+	cursor: pointer;
+}
+#newCommentSection {
+    display:none;
+}
+.commentReplyButton {
     padding: 5px 10px;
 	background: #333333;
     margin-left: 5%;
@@ -44,6 +73,7 @@ textarea {
     border: #000000 1px solid;
     resize: none;
     width: 90%;
+    min-height: 100px;
     margin-left: 5%;
     margin-bottom: 15px;
     -webkit-box-sizing: border-box;
@@ -93,7 +123,6 @@ body {
     margin-bottom:20px;
     width: 100%;
     text-align: center;
-
 }
 /*right menu*/
 .right {
@@ -316,7 +345,6 @@ a:hover {
 .comment_content_container {
     flex:1;
     align-self: flex-start;
-
     height: auto;
     min-height: 200px;
 }
@@ -336,6 +364,9 @@ a:hover {
 }
 /*Comment css Section ends*/
 /*Comment Reply css Section starts */
+.commentReplyPost {
+    display: none;
+}
 .comment_reply_container {
     display: flex;
     margin-top: 5px;
