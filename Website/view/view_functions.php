@@ -691,11 +691,6 @@
             </div>
             <div id=\"wikiContent\">
                 <form id=\"edit_profile\" action='".htmlspecialchars($_SERVER['PHP_SELF '])."' method='post'>
-                ";
-        if(!empty($message)) {
-            $view .= $message;
-        }
-        $view .="
                     <table id='wiki_table'>
                         <tr class='wiki_table_row_data'>
                             <td id='wiki_table_title' colspan='2' >
@@ -803,6 +798,7 @@
                 </div>
             </div>
             <div id=\"pageInfo\">
+                ".$message."
             </div>
             <div id=\"wikiComments\">
             </div>

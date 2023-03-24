@@ -33,6 +33,8 @@
                                 $user = User::fetchUserByID($db, $ID);
                                 echo generateEditProfileView($user, "");
                             } else {
+                                $regex = '/^(?!(?:(?:\x22?\x5C[\x00-\x7E]\x22?)|(?:\x22?[^\x5C\x22]\x22?)){255,})(?!(?:(?:\x22?\x5C[\x00-\x7E]\x22?)|(?:\x22?[^\x5C\x22]\x22?)){65,}@)(?:(?:[\x21\x23-\x27\x2A\x2B\x2D\x2F-\x39\x3D\x3F\x5E-\x7E]+)|(?:\x22(?:[\x01-\x08\x0B\x0C\x0E-\x1F\x21\x23-\x5B\x5D-\x7F]|(?:\x5C[\x00-\x7F]))*\x22))(?:\.(?:(?:[\x21\x23-\x27\x2A\x2B\x2D\x2F-\x39\x3D\x3F\x5E-\x7E]+)|(?:\x22(?:[\x01-\x08\x0B\x0C\x0E-\x1F\x21\x23-\x5B\x5D-\x7F]|(?:\x5C[\x00-\x7F]))*\x22)))*@(?:(?:(?!.*[^.]{64,})(?:(?:(?:xn--)?[a-z0-9]+(?:-[a-z0-9]+)*\.){1,126}){1,}(?:(?:[a-z][a-z0-9]*)|(?:(?:xn--)[a-z0-9]+))(?:-[a-z0-9]+)*)|(?:\[(?:(?:IPv6:(?:(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){7})|(?:(?!(?:.*[a-f0-9][:\]]){7,})(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,5})?::(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,5})?)))|(?:(?:IPv6:(?:(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){5}:)|(?:(?!(?:.*[a-f0-9]:){5,})(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,3})?::(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,3}:)?)))?(?:(?:25[0-5])|(?:2[0-4][0-9])|(?:1[0-9]{2})|(?:[1-9]?[0-9]))(?:\.(?:(?:25[0-5])|(?:2[0-4][0-9])|(?:1[0-9]{2})|(?:[1-9]?[0-9]))){3}))\]))$/iD';                                if(preg_match($regex, $email));
+                                $message = "";
                                 $ID = $_SESSION['userID'];
                                 $password = $_POST['password'];
                                 $repeat_password = $_POST['repeat_password'];
@@ -43,31 +45,31 @@
                                 $dob = $_POST['date'];
                                 $user = User::fetchUserByID($db, $ID);
                                 if(empty($password) || empty($repeat_password) || empty($email) || empty($repeat_email) || empty($fname) || empty($lname) || empty($dob)) { 
-                                    $message = "One or more fields are empty!";
-                                } else {
-                                    if(strlen($password) < 8 || strlen($repeat_password) < 8) {
-                                        $message = "Password and Password repeat must be greater than 8 characters!\n";
-                                    } else {
-                                        if(strcmp($password, $repeat_password) == 0) {
-                                            if(strcmp($email, $repeat_email) == 0) {
-                                                
-                                                $user->setPassword($password);
-                                                $user->setEmail($email);
-                                                $user->setFirstName($fname);
-                                                $user->setLastName($lname);
-                                                $date_arr = explode ("-", $dob);
-                                                $user->getDOB()->setYear($date_arr[0]);
-                                                $user->getDOB()->setMonth($date_arr[1]);
-                                                $user->getDOB()->setDay($date_arr[2]);
-                                                $entry = User::updateUser($db, $user);
-                                                $message = "Successful update!";
-                                            } else {
-                                                $message = "Emails do not match!";
-                                            }
-                                        } else {
-                                            $message = "Passwords do not match!";
-                                        }
-                                    }
+                                    $message .= "One or more fields are empty!</br>";
+                                }
+                                if(!preg_match($regex, $email)) {
+                                    $message .= "Invalid email provided.</br>";
+                                }
+                                if(strlen($password) < 8 || strlen($repeat_password) < 8) {
+                                        $message .= "Password and Password repeat must be greater than 8 characters!</br>";
+                                }
+                                if(!strcmp($password, $repeat_password) == 0) {
+                                    $message .= "Passwords do not match!</br>";
+                                }
+                                if(!strcmp($email, $repeat_email) == 0) {
+                                    $message .= "Emails do not match!</br>";
+                                }
+                                if(empty($message)) {          
+                                    $user->setPassword($password);
+                                    $user->setEmail($email);
+                                    $user->setFirstName($fname);
+                                    $user->setLastName($lname);
+                                    $date_arr = explode ("-", $dob);
+                                    $user->getDOB()->setYear($date_arr[0]);
+                                    $user->getDOB()->setMonth($date_arr[1]);
+                                    $user->getDOB()->setDay($date_arr[2]);
+                                    $entry = User::updateUser($db, $user);
+                                    $message = "Successful update!";
                                 }
                                 echo generateEditProfileView($user, $message);
                             }
