@@ -197,12 +197,37 @@
                 $stmt = $dbConnection->connection->prepare('UPDATE users SET email = ?, fname = ?, lname = ?, password = ?, dob = ? WHERE id = ?');
                 $stmt->bind_param('sssssi', $email, $fname, $lname, $password, $dob, $id);
                 $stmt->execute();
-                if($stmt->num_rows == 0) {
+                if($stmt->affected_rows == 0) {
                     //no result. Return null
                     return false;
                 } else {
-                    //fetch associatively a row. Use $row to get the data needed. Only one user should be found.
-                    //usernames should also be unique
+                    //successfully updated
+                    return true;
+                }
+            } else {
+                //db object is not connected. Return Null.
+                return null;
+            }
+        }
+
+        //Every class needs an insert function!
+        public static function insertUser(Database $dbConnection, User $user) : ?bool {
+            if($dbConnection->is_connected()) {
+                $username = $user->getUsername();
+                $userAccessLevel = $user->getUserGroup()->getAccessLevel();
+                $email = $user->getEmail();
+                $fname = $user->getFirstName();
+                $lname = $user->getLastName();
+                $password = $user->getPassword();
+                $dob = $user->getDOB()->generateDateString();
+                $stmt = $dbConnection->connection->prepare('INSERT INTO users (username, email, userAccessLevel, fname, lname, password, dob) VALUES(?, ?, ?, ?, ?, ?, ?)');
+                $stmt->bind_param('ssissss', $username, $email, $userAccessLevel, $fname, $lname, $password, $dob);
+                $stmt->execute();
+                if($stmt->affected_rows == 0) {
+                    //no row affected
+                    return false;
+                } else {
+                    //successful insert of user.
                     return true;
                 }
             } else {

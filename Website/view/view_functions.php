@@ -809,6 +809,204 @@
         </div>";  
         return $view;
     }
+    function generateRegisterPage(string $message) : string {
+        $view = "
+        <div id=\"card-game-body\">
+            <div id=\"wikiTitle\">
+                Register Page
+            </div>
+            <div id=\"wikiContent\">
+                <form id=\"register\" action='".htmlspecialchars($_SERVER['PHP_SELF '])."' method='post'>
+                ";
+        $view .="
+                    <table id='wiki_table'>
+                        <tr class='wiki_table_row_data'>
+                            <td id='wiki_table_title' colspan='2' >
+                                Register
+                            </td>
+                        </tr>
+                        <tr class='wiki_table_row_data'>
+                            <td class='wiki_table_data_left'>
+                                Username :
+                            </td>
+                            <td class='wiki_table_data_right'>
+                            <input class='input-password-field' name='username' type='text' id=\"username\" value='' />
+                            </td>
+                        </tr>
+                        <tr class='wiki_table_row_data'>
+                            <td class='wiki_table_data_left'>
+                                Password :
+                            </td>
+                            <td class='wiki_table_data_right'>
+                                <div class=\"password_container\" style=\"position:relative;\">
+                                    <input class='input-password-field' name='password' type='password' id=\"password\" value='' />
+                                    <i class=\"fas fa-eye-slash\" style=\"color: #333333; cursor:pointer; position:absolute; margin-top:4px; margin-left:-25px;\" id=\"eye\"></i>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class='wiki_table_row_data'>
+                            <td class='wiki_table_data_left'>
+                                Repeat Password :
+                            </td>
+                            <td class='wiki_table_data_right'>
+                                <div class=\"password_container\" style=\"position:relative;\">
+                                    <input class='input-password-field' name='repeat_password' id=\"repeat_password\" type='password' value='' />
+                                    <i class=\"fas fa-eye-slash\" style=\"color: #333333; cursor:pointer; position:absolute; margin-top:4px; margin-left:-25px;\" id=\"repeat_eye\"></i>
+                                </div>
+                            </td>
+                        </tr>   
+                        <tr class='wiki_table_row_data'>
+                            <td class='wiki_table_data_left'>
+                                Email :
+                            </td>
+                            <td class='wiki_table_data_right'>
+                                <div class=\"password_container\" style=\"position:relative;\">
+                                    <input class='input-password-field' name='email' id=\"email\" type='text' value='' />
+                                    <i class=\"fas fa-times-circle\" style=\"color: #333333; cursor:pointer; position:absolute; margin-top:4px; margin-left:-25px;\" id=\"email_check\"></i>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class='wiki_table_row_data'>
+                            <td class='wiki_table_data_left'>
+                                Repeat Email :
+                            </td>
+                            <td class='wiki_table_data_right'>
+                                <div class=\"password_container\" style=\"position:relative;\">
+                                    <input class='input-password-field' name='repeat_email' id=\"repeat_email\" type='text' value='' />
+                                    <i class=\"fas fa-times-circle\" style=\"color: #333333; cursor:pointer; position:absolute; margin-top:4px; margin-left:-25px;\" id=\"repeat_email_check\"></i>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class='wiki_table_row_data'>
+                            <td class='wiki_table_data_left'>
+                                First Name :
+                            </td>
+                            <td class='wiki_table_data_right'>
+                                <input class='input-fields' name='first_name' id='first_name' 'type='text' value='' />
+                            </td>
+                        </tr>
+                        <tr class='wiki_table_row_data'>
+                            <td class='wiki_table_data_left'>
+                                Last Name :
+                            </td>
+                            <td class='wiki_table_data_right'>
+                                <input class='input-fields' name='last_name' id='last_name' type='text' value='' />
+                            </td>
+                        </tr>  
+                        <tr class='wiki_table_row_data'>
+                            <td class='wiki_table_data_left'>
+                                Date of Birth :
+                            </td>
+                            <td class='wiki_table_data_right'>
+                                <input class ='input-fields' name='date' type='date' value='' min='1940-01-01' max='2009-12-31' />
+                            </td>
+                        </tr>
+                        <tr class='wiki_table_row_data'>
+                            <td class='table_players_data' colspan='2'>
+                                <input type ='submit' class='submit-inputs' value='Register' />
+                            </td>
+                        </tr>          
+                    </table>
+                </form>
+            </div>
+            <div id=\"wikiNav\">
+                <div id=\"wikiNavTitle\">
+                    <span style=\"visibility:hidden\">testtesttest</span>
+                </div>
+                <div id=\"wikiNavContent\">
+                    <span style=\"visibility:hidden\">testtesttest</span>
+                </div>
+            </div>
+            <div id=\"pageInfo\">
+                ".$message."
+            </div>
+            <div id=\"wikiComments\">
+            </div>
+        </div>";  
+        return $view;
+    }
+    function generateSuccessfulRegisterPage(User $user) : string {
+        $view = "
+        <div id=\"card-game-body\">
+            <div id=\"wikiTitle\">
+                Register Page
+            </div>
+            <div id=\"wikiContent\">
+                <table id='wiki_table'>
+                    <tr class='wiki_table_row_data'>
+                        <td id='wiki_table_title' colspan='2' >
+                            Register
+                        </td>
+                    </tr>
+                    <tr class='wiki_table_row_data'>
+                        <td class='wiki_table_data_left'>
+                            Username :
+                        </td>
+                        <td class='wiki_table_data_right'>
+                            ".$user->getUsername()."
+                        </td>
+                    </tr>
+                    <tr class='wiki_table_row_data'>
+                        <td class='wiki_table_data_left'>
+                            Password :
+                        </td>
+                        <td class='wiki_table_data_right'>
+                            <div class=\"password_container\" style=\"position:relative;\">
+                                <input class='input-password-field' name='password' type='password' id=\"password\" value='".$user->getPassword()."' />
+                                <i class=\"fas fa-eye-slash\" style=\"color: #333333; cursor:pointer; position:absolute; margin-top:4px; margin-left:-25px;\" id=\"eye\"></i>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class='wiki_table_row_data'>
+                        <td class='wiki_table_data_left'>
+                            Email :
+                        </td>
+                        <td class='wiki_table_data_right'>
+                            ".$user->getEmail()."
+                        </td>
+                    </tr>
+                    <tr class='wiki_table_row_data'>
+                        <td class='wiki_table_data_left'>
+                            First Name :
+                        </td>
+                        <td class='wiki_table_data_right'>
+                            ".$user->getFirstName()."
+                        </td>
+                    </tr>
+                    <tr class='wiki_table_row_data'>
+                        <td class='wiki_table_data_left'>
+                            Last Name :
+                        </td>
+                        <td class='wiki_table_data_right'>
+                            ".$user->getLastName()."
+                        </td>
+                    </tr>  
+                    <tr class='wiki_table_row_data'>
+                        <td class='wiki_table_data_left'>
+                            Date of Birth :
+                        </td>
+                        <td class='wiki_table_data_right'>
+                            ".$user->getDOB()->generateDateString()."
+                        </td>
+                    </tr>       
+                </table>
+            </div>
+            <div id=\"wikiNav\">
+                <div id=\"wikiNavTitle\">
+                    <span style=\"visibility:hidden\">testtesttest</span>
+                </div>
+                <div id=\"wikiNavContent\">
+                    <span style=\"visibility:hidden\">testtesttest</span>
+                </div>
+            </div>
+            <div id=\"pageInfo\">
+                You have successfully registered!
+            </div>
+            <div id=\"wikiComments\">
+            </div>
+        </div>";  
+        return $view;
+    }
     function generateLoginPage(string $message) : string {
         $view = 
             "<div id=\"card-game-body\">
