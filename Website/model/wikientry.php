@@ -287,5 +287,33 @@
                 return null;
             }
         }
+        public static function insertWikiEntry(Database $dbConnection, WikiEntry $entry) : ?bool {
+            if($dbConnection->is_connected()) {
+                $name = $entry->getGameName();
+                $min = $entry->getMinPlayers();
+                $max = $entry->getMaxPlayers();
+                $obj = $entry->getObjective();
+                $set = $entry->getSetUp();
+                $play = $entry->getGamePlay();
+                $items = $entry->getRequiredItems();
+                $gameRules = $entry->getRules();
+                $ID = $entry->getLastEditedBy()->getUserID();
+                $date = $entry->getLastEditedOn()->generateDateString();
+                $time = $entry->getLastEditedOn()->generateTimeString();
+                $stmt = $dbConnection->connection->prepare('INSERT INTO wikiEntry (gameName, requiredItems, objective, setUp, gamePlay, rules, lastEditedBy, LastEditedDate, LastEditedTime, minPlayer, maxPlayer) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
+                $stmt->bind_param('ssssssissii',$name, $items, $obj, $set, $play, $gameRules, $ID, $date, $time, $min, $max);
+                $stmt->execute();
+                if($stmt->affected_rows == 0) {
+                    //no row affected
+                    return false;
+                } else {
+                    //successful insert of user.
+                    return true;
+                }
+            } else {
+                //db object is not connected. Return Null.
+                return null;
+            }
+        }
     }
 ?>

@@ -66,7 +66,7 @@ Version      : 1.2
 	margin-bottom: 20px;
 }
 textarea {
-    background-color:CCCCCC;
+    background-color: #CCCCCC;
     color: #333333;
     padding: 10px;
     border-radius: 5px;
@@ -96,10 +96,12 @@ body {
     margin-left: 20px;
     margin-right: 20px;
     min-height: 100px;
+    border-radius: 5px;
 }
 /* Header div */
 #web-header {
     padding: 20px;
+    border-radius: 5px;
     font-size: 30px;
     font-weight: bold;
 }
@@ -108,15 +110,18 @@ body {
     margin-left: 20px;
     grid-area: left-menu;
     border:1px solid #000000;
+    border-radius: 5px;
 }
 /*center grid area */
 .center {
+    border-radius: 5px;
     grid-area: main;
     border:1px solid #000000;
     min-height:  70vh;
 }
 /* content div in the center area */
 #center-content {
+    border-radius: 5px;
     margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
@@ -126,12 +131,14 @@ body {
 }
 /*right menu*/
 .right {
+    border-radius: 5px;
     grid-area: right-menu;
     border:1px solid #000000;
     margin-right: 20px;
 }
 /* footer area */
 .bottom {
+    border-radius: 5px;
     grid-area: footer;
     border:1px solid #000000;
     margin-top: 20px;
@@ -471,6 +478,7 @@ a:hover {
     margin-bottom: 5px;
 }
 .input-fields {
+    border-radius: 5px;
     background-color:#CCCCCC;
     border: 1px solid #000000;
     color: #333333;
@@ -482,6 +490,7 @@ a:hover {
 .input-password-field {
     background-color:#CCCCCC;
     border: 1px solid #000000;
+    border-radius: 5px;
     color: #333333;
     text-align: center;
     height: 20px;
@@ -494,6 +503,7 @@ a:hover {
 .submit-inputs {
     background-color:#CCCCCC;
     color: #000000;
+    border-radius: 5px;
     text-align: center;
     width: 140px;
 }

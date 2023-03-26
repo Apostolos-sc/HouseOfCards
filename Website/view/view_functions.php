@@ -1,16 +1,10 @@
 <?php
     //Author            : Apostolos Scondrianis
     //Date Created      : 16-02-2023
-    //Last Edited By    : Alexander Sembrat
-    //Last Edited On    : 19-03-2023
+    //Last Edited By    : Apostolos Scondrianis
+    //Last Edited On    : 24-03-2023
     //Filename          : view_functions.php
-    //Version           : 0.2 - User Page view functions
-    
-    //There are some more edits that need to be done on the php classes when you guys finish them.
-    //I forgot that php passes objects by reference. There it's okay instead of holding the id's of users
-    //to simply hold the object itself in the classes where we store "userID" such as the Comment class.
-
-    //Function that generates the View of a Wiki Page for the Guest Users
+    //Version           : 1.0
     
     function generateWikiPageGuestUser(WikiEntry $wikiPage, Array $gameList): string {
         $view = "<div id=\"card-game-body\">
@@ -1055,6 +1049,208 @@
                 <div id=\"wikiComments\">
                 </div>
             </div>";
+        return $view;
+    }
+    function generateCreateWikiPageView(string $message) : string {
+        $view = "<div id=\"card-game-body\">
+                    <div id=\"wikiTitle\">
+                        Administration Panel
+                    </div>
+                    <div id=\"wikiContent\">
+                        <form id=\"createWikiEntry\" action=\"createpage.php\" method=\"post\">
+                            <table id='wiki_table'>
+                                <tr class='wiki_table_row'>
+                                    <td id='wiki_table_title' colspan='2' >
+                                        Create Wiki Page Entry
+                                    </td>
+                                </tr>
+                                <tr class='wiki_table_row' >
+                                    <td class='wiki_table_data_left'>
+                                        Game Name :
+                                    </td>
+                                    <td class='wiki_table_data_right'>
+                                    <input class='input-password-field' name='gameName' type='text' id=\"gameName\" value='' />
+                                    </td>
+                                </tr>
+                                <tr class='wiki_table_row' >
+                                    <td class='wiki_table_data_left'>
+                                        # of Minimum Players :
+                                    </td>
+                                    <td class='wiki_table_data_right'>
+                                        <input class='input-password-field' name='minPlayers' type='text' id=\"minPlayers\" value='' />
+                                    </td>
+                                </tr>
+                                <tr class='wiki_table_row' >
+                                    <td class='wiki_table_data_left'>
+                                        # of Maximum Players :
+                                    </td>
+                                    <td class='wiki_table_data_right'>
+                                        <input class='input-password-field' name='maxPlayers' type='text' id=\"maxPlayers\" value='' />
+                                    </td>
+                                </tr>
+                                <tr class='wiki_table_row' >
+                                    <td class='wiki_table_data_left'>
+                                        Required Items :
+                                    </td>
+                                    <td class='wiki_table_data_right'>
+                                    <textarea class='auto-resize-textarea' name='requiredItems' id='requiredItems'
+                                    placeholder='Required Items Description Here'></textarea>
+                                    </td>
+                                </tr>
+                                <tr class='wiki_table_row'>
+                                    <td class='wiki_table_data_left'>
+                                        Objective :
+                                    </td>
+                                    <td class='wiki_table_data_right'>
+                                        <textarea class='auto-resize-textarea' name='objective' id='objective'
+                                        placeholder='Objective Description Here'></textarea>
+                                    </td>
+                                </tr>
+                                <tr class='wiki_table_row'>
+                                    <td class='wiki_table_data_left'>
+                                        Set Up :
+                                    </td>
+                                    <td class='wiki_table_data_right'>
+                                        <textarea class='auto-resize-textarea' name='setUp' id='setUp'
+                                        placeholder='Set Up Description Here'></textarea>
+                                    </td>
+                                </tr>
+                                <tr class='wiki_table_row'>
+                                    <td class='wiki_table_data_left'>
+                                        Play :
+                                    </td>
+                                    <td class='wiki_table_data_right'>
+                                        <textarea class='auto-resize-textarea' name='gamePlay' id='gamePlay'
+                                        placeholder='Game Play Description Here'></textarea>
+                                    </td>
+                                </tr>
+                                <tr class='wiki_table_row'>
+                                    <td class='wiki_table_data_left'>
+                                        Rules :
+                                    </td>
+                                    <td class='wiki_table_data_right'>
+                                        <textarea class='auto-resize-textarea' name='rules' id='rules'
+                                        placeholder='Rules Desciption Here'></textarea>                               
+                                    </td>
+                                </tr>
+                                <tr class='wiki_table_row'>
+                                    <td class='wiki_table_data_left' colspan='2'>
+                                        <input type ='submit' class='submit-inputs' value='Create Page' />
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
+                    <div id=\"wikiNav\">
+                        <div id=\"wikiNavTitle\">
+                            <span style=\"visibility:hidden\">testtesttest</span>
+                        </div>
+                        <div id=\"wikiNavContent\">
+                            <span style=\"visibility:hidden\">testtesttest</span>
+                        </div>
+                    </div>
+                    <div id=\"pageInfo\">
+                        ".$message."
+                    </div>
+                    <div id=\"wikiComments\">
+                    </div>
+                </div>
+                ";
+        return $view;
+    }
+
+    function generateSuccessfulCreateWikiPageView(WikiEntry $entry) : string {
+        $view = "<div id=\"card-game-body\">
+                    <div id=\"wikiTitle\">
+                        Administration Panel
+                    </div>
+                    <div id=\"wikiContent\">
+                        <table id='wiki_table'>
+                            <tr class='wiki_table_row'>
+                                <td id='wiki_table_title' colspan='2' >
+                                    Create Wiki Page Entry
+                                </td>
+                            </tr>
+                            <tr class='wiki_table_row' >
+                                <td class='wiki_table_data_left'>
+                                    Game Name :
+                                </td>
+                                <td class='wiki_table_data_right'>
+                                    ".$entry->getGameName()."
+                                </td>
+                            </tr>
+                            <tr class='wiki_table_row' >
+                                <td class='wiki_table_data_left'>
+                                    # of Minimum Players :
+                                </td>
+                                <td class='wiki_table_data_right'>
+                                    ".$entry->getMinPlayers()."
+                                </td>
+                            </tr>
+                            <tr class='wiki_table_row' >
+                                <td class='wiki_table_data_left'>
+                                    # of Maximum Players :
+                                </td>
+                                <td class='wiki_table_data_right'>
+                                    ".$entry->getMaxPlayers()."
+                                </td>
+                            </tr>
+                            <tr class='wiki_table_row' >
+                                <td class='wiki_table_data_left'>
+                                    Required Items :
+                                </td>
+                                <td class='wiki_table_data_right'>
+                                    ".$entry->getRequiredItems()."
+                                </td>
+                            </tr>
+                            <tr class='wiki_table_row'>
+                                <td class='wiki_table_data_left'>
+                                    Objective :
+                                </td>
+                                <td class='wiki_table_data_right'>
+                                    ".$entry->getObjective()."
+                                </td>
+                            </tr>
+                            <tr class='wiki_table_row'>
+                                <td class='wiki_table_data_left'>
+                                    Set Up :
+                                </td>
+                                <td class='wiki_table_data_right'>
+                                    ".$entry->getSetUp()."
+                                </td>
+                            </tr>
+                            <tr class='wiki_table_row'>
+                                <td class='wiki_table_data_left'>
+                                    Play :
+                                </td>
+                                <td class='wiki_table_data_right'>
+                                    ".$entry->getGamePlay()."
+                                </td>
+                            </tr>
+                            <tr class='wiki_table_row'>
+                                <td class='wiki_table_data_left'>
+                                    Rules :
+                                </td>
+                                <td class='wiki_table_data_right'>
+                                    ".$entry->getRules()."                              
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id=\"wikiNav\">
+                        <div id=\"wikiNavTitle\">
+                            <span style=\"visibility:hidden\">testtesttest</span>
+                        </div>
+                        <div id=\"wikiNavContent\">
+                            <span style=\"visibility:hidden\">testtesttest</span>
+                        </div>
+                    </div>
+                    <div id=\"pageInfo\">
+                        Successful Creation of the wiki entry!
+                    </div>
+                    <div id=\"wikiComments\">
+                    </div>
+                </div>";
         return $view;
     }
 ?>

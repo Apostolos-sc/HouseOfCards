@@ -32,7 +32,7 @@
                                         Administrator Panel
                                     </div>                    
                                     <div class='menu-content'>
-                                        <a href=''>Create Wiki Entry</a><br/>
+                                        <a href='createpage.php'>Create Wiki Entry</a><br/>
                                         <a href=''>Edit User</a><br>
                                     </div>
                                     ";
