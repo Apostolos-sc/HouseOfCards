@@ -98,7 +98,7 @@
             } else {
                 $day = "".$this->day;
             }
-            $date = "".$this->year."-".$month."-".$month;
+            $date = "".$this->year."-".$month."-".$day;
             return $date;
         }
     }

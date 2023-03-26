@@ -30,15 +30,22 @@
                         <?php
                             $ID = $_SESSION['userID'];
                             $user = User::fetchUserByID($db, $ID);
-                            foreach($user->getFavourites() as $fav){
-                                $favourites = $favourites . WikiEntry::fetchWikiEntry($db,$fav->getEntryID())->getGameName() . "<br>";  //THIS WILL FAIL FOR SAYMA BECAUSE SHE HAS A GAME FAVOURITED WHICH DOES NOT EXIST
-                                //$favourites = $favourites . WikiEntry::fetchWikiEntry($db,1)->getGameName() . "<br>";
+                            if(!empty($user->getFavourites())) {
+                                foreach($user->getFavourites() as $fav){
+                                    $favourites = $favourites . WikiEntry::fetchWikiEntry($db,$fav->getEntryID())->getGameName() . "<br>";  //THIS WILL FAIL FOR SAYMA BECAUSE SHE HAS A GAME FAVOURITED WHICH DOES NOT EXIST
+                                    //$favourites = $favourites . WikiEntry::fetchWikiEntry($db,1)->getGameName() . "<br>";
+                                }
+                            } else {
+                                $favourites = "";
                             }
                             $userRatings = Rating::fetchRatingsByUserID($db,$user->getUserID());
-                            $ratings = "";
-                            foreach($userRatings as $rating){
-                                $ratings = $ratings . WikiEntry::fetchWikiEntry($db,$rating->getEntryId())->getGameName() . " " . $rating->getRating() . "/5" . "<br>";
-                                //$ratings = $ratings . WikiEntry::fetchWikiEntry($db,1)->getGameName() . " " . 1 . "/5" . "<br>";
+                            if(!empty($userRatings)) {
+                                foreach($userRatings as $rating){
+                                    $ratings = $ratings . WikiEntry::fetchWikiEntry($db,$rating->getEntryId())->getGameName() . " " . $rating->getRating() . "/5" . "<br>";
+                                    //$ratings = $ratings . WikiEntry::fetchWikiEntry($db,1)->getGameName() . " " . 1 . "/5" . "<br>";
+                                }
+                            } else {
+                                $ratings = "";
                             }
                             echo generateProfileView($user, $favourites, $ratings);
                         ?>
