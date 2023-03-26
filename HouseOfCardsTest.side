@@ -1,0 +1,2658 @@
+{
+  "id": "7ae8af3b-bd18-40d7-9e4f-36c8dc55eca4",
+  "version": "2.0",
+  "name": "HouseOfCardsTest",
+  "url": "https://goldenagesolutions.ca/HouseOfCards/index.php",
+  "tests": [{
+    "id": "18c2c414-4e5b-40d3-9898-d5217d1fc65e",
+    "name": "1.1 CheckTitleHeader",
+    "commands": [{
+      "id": "002a65e6-b8ef-4905-b406-a3556dc77c13",
+      "comment": "",
+      "command": "//CheckMainElements",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "5c8816da-c4b1-4d8a-bd8e-ebed19e2c048",
+      "comment": "",
+      "command": "//testid: 1.1",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b32e6bd3-78a5-41e0-a04c-132daec682b2",
+      "comment": "",
+      "command": "//description: Ensure web page is accessed correctly by checking all elements of the main page",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e30608bb-e31c-4646-9fac-4b1d09198562",
+      "comment": "",
+      "command": "open",
+      "target": "https://goldenagesolutions.ca/HouseOfCards/index.php",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b6e92c3d-a355-4b56-9dee-68a45529d26d",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "974x681",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "48165d36-67a0-433c-8ee7-29145a36527d",
+      "comment": "",
+      "command": "//note: title should read \"Welcome to House of Cards Wiki\"",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d988c359-199c-4669-b906-1c131273b7c5",
+      "comment": "",
+      "command": "verifyTitle",
+      "target": "Welcome to House Cards Wiki",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7f7c0eee-262b-45d3-9ffd-2509f41c634a",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "id=web-header",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "89a558f4-462f-480c-8472-09ffab70da08",
+      "comment": "",
+      "command": "verifyText",
+      "target": "id=center-content",
+      "targets": [],
+      "value": "Welcome to House of Cards. Learn about your favorite card games."
+    }, {
+      "id": "9b7ff9a0-e79f-4efd-bc1e-5fa034216152",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "css=.left",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "03d4d429-2dc5-4217-862c-b79e420ce44a",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "css=.right",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "68b93e70-08c0-4e6d-9a00-eb5936328939",
+    "name": "3.1 RegisterValid",
+    "commands": [{
+      "id": "758a08bf-6fde-481f-be8d-173db2b59d6b",
+      "comment": "",
+      "command": "//RegisterValid",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e8157064-8fc5-48de-8f2a-2f81cac60cfc",
+      "comment": "",
+      "command": "//testid: 3.1",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f4eebdff-d246-4b4d-b788-48a470135019",
+      "comment": "",
+      "command": "//description: tests creating a new account with all valid parameters",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "66b83954-b506-43ce-9bcd-66bed2499497",
+      "comment": "",
+      "command": "open",
+      "target": "https://goldenagesolutions.ca/HouseOfCards/index.php",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f2ab4c80-1050-41c3-84cc-0ee4decdb25f",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "974x680",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6641df0b-d2f4-41d5-82b6-69cab3fdf91c",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Register",
+      "targets": [
+        ["linkText=Register", "linkText"],
+        ["css=.menu-content:nth-child(4) > a:nth-child(3)", "css:finder"],
+        ["xpath=//a[contains(text(),'Register')]", "xpath:link"],
+        ["xpath=//a[contains(@href, 'register.php')]", "xpath:href"],
+        ["xpath=//div[4]/a[2]", "xpath:position"],
+        ["xpath=//a[contains(.,'Register')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "04011346-5f8a-4955-8208-2054f04342c3",
+      "comment": "",
+      "command": "click",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[2]/td[2]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "84f05e65-b4fb-4c33-8cfe-e8c36a067df9",
+      "comment": "",
+      "command": "note: username must be changed every time this test is run to avoid creating duplicate usernames",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c6f64612-9c9d-48c5-9158-1531032c2bda",
+      "comment": "",
+      "command": "type",
+      "target": "id=username",
+      "targets": [],
+      "value": "testuser1234"
+    }, {
+      "id": "2fbf9c9e-2c1f-4f48-9169-2ea2f1197d03",
+      "comment": "",
+      "command": "click",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[3]/td[2]/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "68b308b9-a105-421a-b7d5-6708af2749fd",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[3]/td[2]/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "abcdABCD1234!@#$"
+    }, {
+      "id": "b40f03b9-bf59-4d66-9f48-2d1dbc19bf0c",
+      "comment": "",
+      "command": "click",
+      "target": "id=repeat_password",
+      "targets": [
+        ["id=repeat_password", "id"],
+        ["name=repeat_password", "name"],
+        ["css=#repeat_password", "css:finder"],
+        ["xpath=//input[@id='repeat_password']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[4]/td[2]/div/input", "xpath:idRelative"],
+        ["xpath=//tr[4]/td[2]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6eddb1b8-9c35-46e8-a2c6-edfe12cd1a95",
+      "comment": "",
+      "command": "type",
+      "target": "id=repeat_password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[3]/td[2]/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "abcdABCD1234!@#$"
+    }, {
+      "id": "22e155ab-3f21-43f2-8cb4-eb9b64764c03",
+      "comment": "",
+      "command": "click",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[5]/td[2]/div/input", "xpath:idRelative"],
+        ["xpath=//tr[5]/td[2]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7667f772-648d-4e36-9f0e-654efdf5d701",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[5]/td[2]/div/input", "xpath:idRelative"],
+        ["xpath=//tr[5]/td[2]/div/input", "xpath:position"]
+      ],
+      "value": "testuser4952431@gmail.com"
+    }, {
+      "id": "622a143f-330e-45b4-b879-bf7fca7788b9",
+      "comment": "",
+      "command": "click",
+      "target": "id=repeat_email",
+      "targets": [
+        ["id=repeat_email", "id"],
+        ["name=repeat_email", "name"],
+        ["css=#repeat_email", "css:finder"],
+        ["xpath=//input[@id='repeat_email']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[6]/td[2]/div/input", "xpath:idRelative"],
+        ["xpath=//tr[6]/td[2]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5122e2e2-3693-4169-acbe-20e3c1e69ea9",
+      "comment": "",
+      "command": "type",
+      "target": "id=repeat_email",
+      "targets": [
+        ["id=repeat_email", "id"],
+        ["name=repeat_email", "name"],
+        ["css=#repeat_email", "css:finder"],
+        ["xpath=//input[@id='repeat_email']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[6]/td[2]/div/input", "xpath:idRelative"],
+        ["xpath=//tr[6]/td[2]/div/input", "xpath:position"]
+      ],
+      "value": "testuser4952431@gmail.com"
+    }, {
+      "id": "e6a62aa9-de56-4b41-ade0-1a936f5eb54d",
+      "comment": "",
+      "command": "click",
+      "target": "id=first_name",
+      "targets": [
+        ["id=first_name", "id"],
+        ["name=first_name", "name"],
+        ["css=#first_name", "css:finder"],
+        ["xpath=//input[@id='first_name']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[7]/td[2]/input", "xpath:idRelative"],
+        ["xpath=//tr[7]/td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "96fdedff-8cb0-4e99-b84f-f61082d54994",
+      "comment": "",
+      "command": "type",
+      "target": "id=first_name",
+      "targets": [
+        ["id=first_name", "id"],
+        ["name=first_name", "name"],
+        ["css=#first_name", "css:finder"],
+        ["xpath=//input[@id='first_name']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[7]/td[2]/input", "xpath:idRelative"],
+        ["xpath=//tr[7]/td[2]/input", "xpath:position"]
+      ],
+      "value": "Test"
+    }, {
+      "id": "9835e4ab-0fa9-4ffe-b0c7-c5ee0e618c73",
+      "comment": "",
+      "command": "click",
+      "target": "id=last_name",
+      "targets": [
+        ["id=last_name", "id"],
+        ["name=last_name", "name"],
+        ["css=#last_name", "css:finder"],
+        ["xpath=//input[@id='last_name']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[8]/td[2]/input", "xpath:idRelative"],
+        ["xpath=//tr[8]/td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7d7cf08a-4003-4480-b19b-4031729818ad",
+      "comment": "",
+      "command": "type",
+      "target": "id=last_name",
+      "targets": [
+        ["id=last_name", "id"],
+        ["name=last_name", "name"],
+        ["css=#last_name", "css:finder"],
+        ["xpath=//input[@id='last_name']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[8]/td[2]/input", "xpath:idRelative"],
+        ["xpath=//tr[8]/td[2]/input", "xpath:position"]
+      ],
+      "value": "User"
+    }, {
+      "id": "311f9f7d-f957-4da1-b181-1c63956fc119",
+      "comment": "",
+      "command": "click",
+      "target": "name=date",
+      "targets": [
+        ["name=date", "name"],
+        ["css=.wiki_table_row_data:nth-child(9) .input-fields", "css:finder"],
+        ["xpath=//input[@name='date']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[9]/td[2]/input", "xpath:idRelative"],
+        ["xpath=//tr[9]/td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6d93f785-91bc-4066-8cb4-cc4b2336c1f3",
+      "comment": "",
+      "command": "type",
+      "target": "name=date",
+      "targets": [
+        ["name=date", "name"],
+        ["css=.wiki_table_row_data:nth-child(9) .input-fields", "css:finder"],
+        ["xpath=//input[@name='date']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[9]/td[2]/input", "xpath:idRelative"],
+        ["xpath=//tr[9]/td[2]/input", "xpath:position"]
+      ],
+      "value": "2009-12-31"
+    }, {
+      "id": "1d774679-12b3-4fca-b615-4e6349c7b263",
+      "comment": "",
+      "command": "click",
+      "target": "css=.submit-inputs",
+      "targets": [
+        ["css=.submit-inputs", "css:finder"],
+        ["xpath=//input[@value='Register']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[10]/td/input", "xpath:idRelative"],
+        ["xpath=//tr[10]/td/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0537aab5-a415-4d41-a454-583659397905",
+      "comment": "",
+      "command": "assertText",
+      "target": "id=pageInfo",
+      "targets": [
+        ["id=pageInfo", "id"],
+        ["css=#pageInfo", "css:finder"],
+        ["xpath=//div[@id='pageInfo']", "xpath:attributes"],
+        ["xpath=//div[@id='card-game-body']/div[4]", "xpath:idRelative"],
+        ["xpath=//div/div[4]", "xpath:position"]
+      ],
+      "value": "You have successfully registered!"
+    }]
+  }, {
+    "id": "160e083a-6de6-48a8-9b89-f2f03fdf72af",
+    "name": "3.2 RegisterUsernameTaken",
+    "commands": [{
+      "id": "88660f53-8097-45ee-8e5e-fbf8392853f1",
+      "comment": "",
+      "command": "//RegisterUsernameTaken",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6775f93c-3d36-4e73-8ec4-0201dc2b240f",
+      "comment": "",
+      "command": "//testid: 3.2",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e51cedd6-5bd0-4988-bc70-96d05c3de967",
+      "comment": "",
+      "command": "//description: tests creating a new account with a taken username",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f1995a77-f923-4ae8-b9f7-aee7d7802967",
+      "comment": "",
+      "command": "open",
+      "target": "https://goldenagesolutions.ca/HouseOfCards/index.php",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2224e99f-c198-4508-bb5a-ac4d5a8a3e1e",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "974x680",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f4590f86-f657-4cc9-9532-b35a6dce9fbf",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Register",
+      "targets": [
+        ["linkText=Register", "linkText"],
+        ["css=.menu-content:nth-child(4) > a:nth-child(3)", "css:finder"],
+        ["xpath=//a[contains(text(),'Register')]", "xpath:link"],
+        ["xpath=//a[contains(@href, 'register.php')]", "xpath:href"],
+        ["xpath=//div[4]/a[2]", "xpath:position"],
+        ["xpath=//a[contains(.,'Register')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "7615bb8d-a728-467e-b294-e4795206edfd",
+      "comment": "",
+      "command": "click",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[2]/td[2]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "34f0e747-a5a3-409d-b0d4-ae914d1fb532",
+      "comment": "",
+      "command": "type",
+      "target": "id=username",
+      "targets": [],
+      "value": "adminjamie"
+    }, {
+      "id": "1fdb9b40-858e-4b96-af46-40d5b9ebbdde",
+      "comment": "",
+      "command": "click",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[3]/td[2]/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d1c71b92-83bb-4df8-8e32-79369d1abca1",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[3]/td[2]/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "abcdABCD1234!@#$"
+    }, {
+      "id": "14538c10-2b6e-4df6-84f9-0a415dfd83d6",
+      "comment": "",
+      "command": "click",
+      "target": "id=repeat_password",
+      "targets": [
+        ["id=repeat_password", "id"],
+        ["name=repeat_password", "name"],
+        ["css=#repeat_password", "css:finder"],
+        ["xpath=//input[@id='repeat_password']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[4]/td[2]/div/input", "xpath:idRelative"],
+        ["xpath=//tr[4]/td[2]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1f3c0cca-1173-4ff9-8791-1dabf9e08139",
+      "comment": "",
+      "command": "type",
+      "target": "id=repeat_password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[3]/td[2]/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "abcdABCD1234!@#$"
+    }, {
+      "id": "39733b50-31fe-4c2b-8637-215073330c6a",
+      "comment": "",
+      "command": "click",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[5]/td[2]/div/input", "xpath:idRelative"],
+        ["xpath=//tr[5]/td[2]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0bc5363f-4d03-4943-82da-cd2925733359",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[5]/td[2]/div/input", "xpath:idRelative"],
+        ["xpath=//tr[5]/td[2]/div/input", "xpath:position"]
+      ],
+      "value": "testuser4952431@gmail.com"
+    }, {
+      "id": "ee792d67-34a5-4a92-9a10-96c5e1e0263a",
+      "comment": "",
+      "command": "click",
+      "target": "id=repeat_email",
+      "targets": [
+        ["id=repeat_email", "id"],
+        ["name=repeat_email", "name"],
+        ["css=#repeat_email", "css:finder"],
+        ["xpath=//input[@id='repeat_email']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[6]/td[2]/div/input", "xpath:idRelative"],
+        ["xpath=//tr[6]/td[2]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "deaf3522-449a-4640-b3e7-4269f62dd8bc",
+      "comment": "",
+      "command": "type",
+      "target": "id=repeat_email",
+      "targets": [
+        ["id=repeat_email", "id"],
+        ["name=repeat_email", "name"],
+        ["css=#repeat_email", "css:finder"],
+        ["xpath=//input[@id='repeat_email']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[6]/td[2]/div/input", "xpath:idRelative"],
+        ["xpath=//tr[6]/td[2]/div/input", "xpath:position"]
+      ],
+      "value": "testuser4952431@gmail.com"
+    }, {
+      "id": "38ecbf80-ea1b-47ec-aae3-e12e20b006a8",
+      "comment": "",
+      "command": "click",
+      "target": "id=first_name",
+      "targets": [
+        ["id=first_name", "id"],
+        ["name=first_name", "name"],
+        ["css=#first_name", "css:finder"],
+        ["xpath=//input[@id='first_name']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[7]/td[2]/input", "xpath:idRelative"],
+        ["xpath=//tr[7]/td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f9577ed7-0617-4625-a458-cdd0159f1e3e",
+      "comment": "",
+      "command": "type",
+      "target": "id=first_name",
+      "targets": [
+        ["id=first_name", "id"],
+        ["name=first_name", "name"],
+        ["css=#first_name", "css:finder"],
+        ["xpath=//input[@id='first_name']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[7]/td[2]/input", "xpath:idRelative"],
+        ["xpath=//tr[7]/td[2]/input", "xpath:position"]
+      ],
+      "value": "Test"
+    }, {
+      "id": "9b392e5a-e4bb-44b8-ab66-28b63edffe1c",
+      "comment": "",
+      "command": "click",
+      "target": "id=last_name",
+      "targets": [
+        ["id=last_name", "id"],
+        ["name=last_name", "name"],
+        ["css=#last_name", "css:finder"],
+        ["xpath=//input[@id='last_name']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[8]/td[2]/input", "xpath:idRelative"],
+        ["xpath=//tr[8]/td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0997586b-2186-449f-a6f3-e34e0c8fac64",
+      "comment": "",
+      "command": "type",
+      "target": "id=last_name",
+      "targets": [
+        ["id=last_name", "id"],
+        ["name=last_name", "name"],
+        ["css=#last_name", "css:finder"],
+        ["xpath=//input[@id='last_name']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[8]/td[2]/input", "xpath:idRelative"],
+        ["xpath=//tr[8]/td[2]/input", "xpath:position"]
+      ],
+      "value": "User"
+    }, {
+      "id": "cc0ecf18-e15d-4b14-8d30-ccebedac21eb",
+      "comment": "",
+      "command": "click",
+      "target": "name=date",
+      "targets": [
+        ["name=date", "name"],
+        ["css=.wiki_table_row_data:nth-child(9) .input-fields", "css:finder"],
+        ["xpath=//input[@name='date']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[9]/td[2]/input", "xpath:idRelative"],
+        ["xpath=//tr[9]/td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "52815657-5cd2-471a-961d-0fcd74508739",
+      "comment": "",
+      "command": "type",
+      "target": "name=date",
+      "targets": [
+        ["name=date", "name"],
+        ["css=.wiki_table_row_data:nth-child(9) .input-fields", "css:finder"],
+        ["xpath=//input[@name='date']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[9]/td[2]/input", "xpath:idRelative"],
+        ["xpath=//tr[9]/td[2]/input", "xpath:position"]
+      ],
+      "value": "2009-12-31"
+    }, {
+      "id": "ec55e913-d339-4446-996b-ad5701926fe6",
+      "comment": "",
+      "command": "click",
+      "target": "css=.submit-inputs",
+      "targets": [
+        ["css=.submit-inputs", "css:finder"],
+        ["xpath=//input[@value='Register']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[10]/td/input", "xpath:idRelative"],
+        ["xpath=//tr[10]/td/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ac5ba74a-672f-498a-9f31-e17bcdd42063",
+      "comment": "",
+      "command": "assertText",
+      "target": "id=pageInfo",
+      "targets": [
+        ["id=pageInfo", "id"],
+        ["css=#pageInfo", "css:finder"],
+        ["xpath=//div[@id='pageInfo']", "xpath:attributes"],
+        ["xpath=//div[@id='card-game-body']/div[4]", "xpath:idRelative"],
+        ["xpath=//div[4]", "xpath:position"]
+      ],
+      "value": "Username is already taken!"
+    }]
+  }, {
+    "id": "7dc86588-5c57-439b-9c63-c590a8dc4532",
+    "name": "3.3 RegisterUsernameShort",
+    "commands": [{
+      "id": "5467d749-f39a-4676-a318-4b3b9fc0019f",
+      "comment": "",
+      "command": "//RegisterUsernameShort",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ed3c5931-a80e-4f09-838f-ac15d70bed6f",
+      "comment": "",
+      "command": "//testid: 3.3",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "32e2c713-4c94-47d4-95b5-da3376171827",
+      "comment": "",
+      "command": "//description: tests creating a new account with a username less than 10 characters",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ba056be2-f9b6-411b-a50c-3fc257036cd5",
+      "comment": "",
+      "command": "open",
+      "target": "https://goldenagesolutions.ca/HouseOfCards/index.php",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "59219f48-8f0e-4d32-992d-cdb92fbb3f94",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "974x680",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "93d7064c-e4f9-474f-921c-f8acadaa1c4a",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Register",
+      "targets": [
+        ["linkText=Register", "linkText"],
+        ["css=.menu-content:nth-child(4) > a:nth-child(3)", "css:finder"],
+        ["xpath=//a[contains(text(),'Register')]", "xpath:link"],
+        ["xpath=//a[contains(@href, 'register.php')]", "xpath:href"],
+        ["xpath=//div[4]/a[2]", "xpath:position"],
+        ["xpath=//a[contains(.,'Register')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "fc7e712d-04ee-467b-a79c-1dc87279d78e",
+      "comment": "",
+      "command": "click",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[2]/td[2]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f24df26c-ab8d-4f41-9116-713954e39f20",
+      "comment": "",
+      "command": "type",
+      "target": "id=username",
+      "targets": [],
+      "value": "testuser"
+    }, {
+      "id": "b063ae53-5041-4e94-859a-d5dc09b19624",
+      "comment": "",
+      "command": "click",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[3]/td[2]/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4b7efeca-7c69-4c08-831a-0c4eb52f06e0",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[3]/td[2]/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "abcdABCD1234!@#$"
+    }, {
+      "id": "1dbf42d4-47bb-4a1a-ba52-f46e3fd0b034",
+      "comment": "",
+      "command": "click",
+      "target": "id=repeat_password",
+      "targets": [
+        ["id=repeat_password", "id"],
+        ["name=repeat_password", "name"],
+        ["css=#repeat_password", "css:finder"],
+        ["xpath=//input[@id='repeat_password']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[4]/td[2]/div/input", "xpath:idRelative"],
+        ["xpath=//tr[4]/td[2]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "cd37cfeb-b221-4d8e-95eb-2fe389695f58",
+      "comment": "",
+      "command": "type",
+      "target": "id=repeat_password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[3]/td[2]/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "abcdABCD1234!@#$"
+    }, {
+      "id": "7b12f931-3fd5-4b22-927a-9cbb068e9dcf",
+      "comment": "",
+      "command": "click",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[5]/td[2]/div/input", "xpath:idRelative"],
+        ["xpath=//tr[5]/td[2]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2fa478c6-7d41-48e4-9266-0326ad283ec6",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[5]/td[2]/div/input", "xpath:idRelative"],
+        ["xpath=//tr[5]/td[2]/div/input", "xpath:position"]
+      ],
+      "value": "testuser4952431@gmail.com"
+    }, {
+      "id": "75c4a2fb-2f15-47d1-9285-2e48e5e8ab02",
+      "comment": "",
+      "command": "click",
+      "target": "id=repeat_email",
+      "targets": [
+        ["id=repeat_email", "id"],
+        ["name=repeat_email", "name"],
+        ["css=#repeat_email", "css:finder"],
+        ["xpath=//input[@id='repeat_email']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[6]/td[2]/div/input", "xpath:idRelative"],
+        ["xpath=//tr[6]/td[2]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "06d2a4a4-0428-49e2-b15b-2c2d24c39cdb",
+      "comment": "",
+      "command": "type",
+      "target": "id=repeat_email",
+      "targets": [
+        ["id=repeat_email", "id"],
+        ["name=repeat_email", "name"],
+        ["css=#repeat_email", "css:finder"],
+        ["xpath=//input[@id='repeat_email']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[6]/td[2]/div/input", "xpath:idRelative"],
+        ["xpath=//tr[6]/td[2]/div/input", "xpath:position"]
+      ],
+      "value": "testuser4952431@gmail.com"
+    }, {
+      "id": "edbe59dc-89fc-418f-bb08-edc3e143b18c",
+      "comment": "",
+      "command": "click",
+      "target": "id=first_name",
+      "targets": [
+        ["id=first_name", "id"],
+        ["name=first_name", "name"],
+        ["css=#first_name", "css:finder"],
+        ["xpath=//input[@id='first_name']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[7]/td[2]/input", "xpath:idRelative"],
+        ["xpath=//tr[7]/td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "613f7b2e-002d-499c-827a-b43cc73ff4ba",
+      "comment": "",
+      "command": "type",
+      "target": "id=first_name",
+      "targets": [
+        ["id=first_name", "id"],
+        ["name=first_name", "name"],
+        ["css=#first_name", "css:finder"],
+        ["xpath=//input[@id='first_name']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[7]/td[2]/input", "xpath:idRelative"],
+        ["xpath=//tr[7]/td[2]/input", "xpath:position"]
+      ],
+      "value": "Test"
+    }, {
+      "id": "07e7f8e0-3c9b-48a8-9a3c-52ce7d168f25",
+      "comment": "",
+      "command": "click",
+      "target": "id=last_name",
+      "targets": [
+        ["id=last_name", "id"],
+        ["name=last_name", "name"],
+        ["css=#last_name", "css:finder"],
+        ["xpath=//input[@id='last_name']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[8]/td[2]/input", "xpath:idRelative"],
+        ["xpath=//tr[8]/td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b474b73e-9fe0-4568-940a-5bb4efbc0b60",
+      "comment": "",
+      "command": "type",
+      "target": "id=last_name",
+      "targets": [
+        ["id=last_name", "id"],
+        ["name=last_name", "name"],
+        ["css=#last_name", "css:finder"],
+        ["xpath=//input[@id='last_name']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[8]/td[2]/input", "xpath:idRelative"],
+        ["xpath=//tr[8]/td[2]/input", "xpath:position"]
+      ],
+      "value": "User"
+    }, {
+      "id": "ab28cc82-0842-4f9d-b209-48ddc66a606e",
+      "comment": "",
+      "command": "click",
+      "target": "name=date",
+      "targets": [
+        ["name=date", "name"],
+        ["css=.wiki_table_row_data:nth-child(9) .input-fields", "css:finder"],
+        ["xpath=//input[@name='date']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[9]/td[2]/input", "xpath:idRelative"],
+        ["xpath=//tr[9]/td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a1b06417-27e9-4195-a677-19a86fee6d54",
+      "comment": "",
+      "command": "type",
+      "target": "name=date",
+      "targets": [
+        ["name=date", "name"],
+        ["css=.wiki_table_row_data:nth-child(9) .input-fields", "css:finder"],
+        ["xpath=//input[@name='date']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[9]/td[2]/input", "xpath:idRelative"],
+        ["xpath=//tr[9]/td[2]/input", "xpath:position"]
+      ],
+      "value": "2009-12-31"
+    }, {
+      "id": "68a62a4e-c085-49a9-8c29-fda3ac3e6f5a",
+      "comment": "",
+      "command": "click",
+      "target": "css=.submit-inputs",
+      "targets": [
+        ["css=.submit-inputs", "css:finder"],
+        ["xpath=//input[@value='Register']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[10]/td/input", "xpath:idRelative"],
+        ["xpath=//tr[10]/td/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c6f2a854-8a95-42d5-9080-777cba185956",
+      "comment": "",
+      "command": "assertText",
+      "target": "id=pageInfo",
+      "targets": [
+        ["id=pageInfo", "id"],
+        ["css=#pageInfo", "css:finder"],
+        ["xpath=//div[@id='pageInfo']", "xpath:attributes"],
+        ["xpath=//div[@id='card-game-body']/div[4]", "xpath:idRelative"],
+        ["xpath=//div[4]", "xpath:position"]
+      ],
+      "value": "Username must be at least 10 characters long."
+    }]
+  }, {
+    "id": "1e49262d-593a-4249-a6cd-ab074c8d75a6",
+    "name": "3.4 RegisterPasswordShort",
+    "commands": [{
+      "id": "637948cc-6f14-494c-aaf2-131f288fa916",
+      "comment": "",
+      "command": "//RegisterPasswordShort",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "595d7ead-a7fc-4721-a275-cc42945ba96f",
+      "comment": "",
+      "command": "//testid: 3.4",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "90b74653-38a8-4de7-9e31-0a69e366a0f8",
+      "comment": "",
+      "command": "//description: tests creating a new account with a password less than 8 characters",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "50b610ec-5041-491c-a564-6b624e767224",
+      "comment": "",
+      "command": "open",
+      "target": "https://goldenagesolutions.ca/HouseOfCards/index.php",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "58ff63cd-60b2-4d4a-b362-331eb77426d9",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "974x680",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "aa0f0ac5-19b7-441b-8c2f-4311971e396d",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Register",
+      "targets": [
+        ["linkText=Register", "linkText"],
+        ["css=.menu-content:nth-child(4) > a:nth-child(3)", "css:finder"],
+        ["xpath=//a[contains(text(),'Register')]", "xpath:link"],
+        ["xpath=//a[contains(@href, 'register.php')]", "xpath:href"],
+        ["xpath=//div[4]/a[2]", "xpath:position"],
+        ["xpath=//a[contains(.,'Register')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "88eeef74-e796-4142-a3ab-08ef22c221d0",
+      "comment": "",
+      "command": "click",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[2]/td[2]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "10ea258d-a6af-4e0f-9873-e5e1a3d97e5b",
+      "comment": "",
+      "command": "type",
+      "target": "id=username",
+      "targets": [],
+      "value": "testuser4321"
+    }, {
+      "id": "f8b7c402-50e4-4647-864a-294d7bfb2fee",
+      "comment": "",
+      "command": "click",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[3]/td[2]/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d55a2f98-29df-4a7e-a08b-2f0cd3e69f54",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[3]/td[2]/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "abcd123"
+    }, {
+      "id": "8e3185ca-a155-4a50-94a1-fec2bfdfcca4",
+      "comment": "",
+      "command": "click",
+      "target": "id=repeat_password",
+      "targets": [
+        ["id=repeat_password", "id"],
+        ["name=repeat_password", "name"],
+        ["css=#repeat_password", "css:finder"],
+        ["xpath=//input[@id='repeat_password']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[4]/td[2]/div/input", "xpath:idRelative"],
+        ["xpath=//tr[4]/td[2]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "39e683eb-ec53-43de-a75d-fa7a518dcee7",
+      "comment": "",
+      "command": "type",
+      "target": "id=repeat_password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[3]/td[2]/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "abcd123"
+    }, {
+      "id": "66322e4c-8810-4a2c-86a7-35fcab1791b7",
+      "comment": "",
+      "command": "click",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[5]/td[2]/div/input", "xpath:idRelative"],
+        ["xpath=//tr[5]/td[2]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f6d4f1bf-e168-4660-ab66-ef7b8a03cf2d",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[5]/td[2]/div/input", "xpath:idRelative"],
+        ["xpath=//tr[5]/td[2]/div/input", "xpath:position"]
+      ],
+      "value": "testuser4952431@gmail.com"
+    }, {
+      "id": "f910d37c-a8d2-4dd9-b755-502fbb3e9637",
+      "comment": "",
+      "command": "click",
+      "target": "id=repeat_email",
+      "targets": [
+        ["id=repeat_email", "id"],
+        ["name=repeat_email", "name"],
+        ["css=#repeat_email", "css:finder"],
+        ["xpath=//input[@id='repeat_email']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[6]/td[2]/div/input", "xpath:idRelative"],
+        ["xpath=//tr[6]/td[2]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a025dd66-49a2-4ad0-a6aa-fdc93de15838",
+      "comment": "",
+      "command": "type",
+      "target": "id=repeat_email",
+      "targets": [
+        ["id=repeat_email", "id"],
+        ["name=repeat_email", "name"],
+        ["css=#repeat_email", "css:finder"],
+        ["xpath=//input[@id='repeat_email']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[6]/td[2]/div/input", "xpath:idRelative"],
+        ["xpath=//tr[6]/td[2]/div/input", "xpath:position"]
+      ],
+      "value": "testuser4952431@gmail.com"
+    }, {
+      "id": "a05934e6-4409-4e6f-87fd-35d170b181d0",
+      "comment": "",
+      "command": "click",
+      "target": "id=first_name",
+      "targets": [
+        ["id=first_name", "id"],
+        ["name=first_name", "name"],
+        ["css=#first_name", "css:finder"],
+        ["xpath=//input[@id='first_name']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[7]/td[2]/input", "xpath:idRelative"],
+        ["xpath=//tr[7]/td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "72820edf-5947-405c-b501-21a886d9f9b2",
+      "comment": "",
+      "command": "type",
+      "target": "id=first_name",
+      "targets": [
+        ["id=first_name", "id"],
+        ["name=first_name", "name"],
+        ["css=#first_name", "css:finder"],
+        ["xpath=//input[@id='first_name']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[7]/td[2]/input", "xpath:idRelative"],
+        ["xpath=//tr[7]/td[2]/input", "xpath:position"]
+      ],
+      "value": "Test"
+    }, {
+      "id": "06591162-f1ca-44f1-a1d0-77a3142f5cb8",
+      "comment": "",
+      "command": "click",
+      "target": "id=last_name",
+      "targets": [
+        ["id=last_name", "id"],
+        ["name=last_name", "name"],
+        ["css=#last_name", "css:finder"],
+        ["xpath=//input[@id='last_name']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[8]/td[2]/input", "xpath:idRelative"],
+        ["xpath=//tr[8]/td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "bb0f1fdc-cf1e-45bb-a27c-ea123ea11cec",
+      "comment": "",
+      "command": "type",
+      "target": "id=last_name",
+      "targets": [
+        ["id=last_name", "id"],
+        ["name=last_name", "name"],
+        ["css=#last_name", "css:finder"],
+        ["xpath=//input[@id='last_name']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[8]/td[2]/input", "xpath:idRelative"],
+        ["xpath=//tr[8]/td[2]/input", "xpath:position"]
+      ],
+      "value": "User"
+    }, {
+      "id": "37810ee6-fbf7-41f0-bd11-b1c97f222b86",
+      "comment": "",
+      "command": "click",
+      "target": "name=date",
+      "targets": [
+        ["name=date", "name"],
+        ["css=.wiki_table_row_data:nth-child(9) .input-fields", "css:finder"],
+        ["xpath=//input[@name='date']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[9]/td[2]/input", "xpath:idRelative"],
+        ["xpath=//tr[9]/td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "72440b45-e4ce-4fe0-ada8-1a2668de33e3",
+      "comment": "",
+      "command": "type",
+      "target": "name=date",
+      "targets": [
+        ["name=date", "name"],
+        ["css=.wiki_table_row_data:nth-child(9) .input-fields", "css:finder"],
+        ["xpath=//input[@name='date']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[9]/td[2]/input", "xpath:idRelative"],
+        ["xpath=//tr[9]/td[2]/input", "xpath:position"]
+      ],
+      "value": "2009-12-31"
+    }, {
+      "id": "44b3a300-c82b-4168-915a-441e1ab8c7de",
+      "comment": "",
+      "command": "click",
+      "target": "css=.submit-inputs",
+      "targets": [
+        ["css=.submit-inputs", "css:finder"],
+        ["xpath=//input[@value='Register']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[10]/td/input", "xpath:idRelative"],
+        ["xpath=//tr[10]/td/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4ae75d27-ece8-4df9-9cfe-3fbb503c6735",
+      "comment": "",
+      "command": "assertText",
+      "target": "id=pageInfo",
+      "targets": [
+        ["id=pageInfo", "id"],
+        ["css=#pageInfo", "css:finder"],
+        ["xpath=//div[@id='pageInfo']", "xpath:attributes"],
+        ["xpath=//div[@id='card-game-body']/div[4]", "xpath:idRelative"],
+        ["xpath=//div[4]", "xpath:position"]
+      ],
+      "value": "Password and Password repeat must be greater than 8 characters!"
+    }]
+  }, {
+    "id": "48982ff3-b67c-487c-b81a-544fc934789b",
+    "name": "4.1 ValidLogin",
+    "commands": [{
+      "id": "a01993ae-4361-4803-819f-48b889995d06",
+      "comment": "",
+      "command": "//ValidLogin",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ce410e9e-214d-4281-9afb-e9de84506a4d",
+      "comment": "",
+      "command": "//testid: 4.1",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2410b9a0-ec43-4de9-a60c-0aadaf03c0e7",
+      "comment": "",
+      "command": "//description: tests a user logging in with valid login credentials",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "cdeb7269-d3a1-4835-906c-a1eea6a01f5b",
+      "comment": "",
+      "command": "open",
+      "target": "https://goldenagesolutions.ca/HouseOfCards/index.php",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "fc59a776-1a00-41f3-8f10-7f25d1be2e0f",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "974x680",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b15a0ab4-2f2b-447b-8b8f-f203a32500c6",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Login",
+      "targets": [
+        ["linkText=Login", "linkText"],
+        ["css=.menu-content:nth-child(4) > a:nth-child(1)", "css:finder"],
+        ["xpath=//a[contains(text(),'Login')]", "xpath:link"],
+        ["xpath=//a[contains(@href, 'login.php')]", "xpath:href"],
+        ["xpath=//div[4]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Login')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "82b53aee-de36-4af1-8978-2746bd957b9a",
+      "comment": "",
+      "command": "click",
+      "target": "name=username",
+      "targets": [
+        ["name=username", "name"],
+        ["css=.wiki_table_row:nth-child(3) .input-fields", "css:finder"],
+        ["xpath=//input[@name='username']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[2]/td[2]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5af0483b-ea14-4fab-94bb-556ae49d31ab",
+      "comment": "",
+      "command": "type",
+      "target": "name=username",
+      "targets": [
+        ["name=username", "name"],
+        ["css=.wiki_table_row:nth-child(3) .input-fields", "css:finder"],
+        ["xpath=//input[@name='username']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[2]/td[2]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "normaluser"
+    }, {
+      "id": "d965e1d1-ecf3-46b9-90f8-5af27fd4b312",
+      "comment": "",
+      "command": "click",
+      "target": "name=password",
+      "targets": [
+        ["name=password", "name"],
+        ["css=.wiki_table_row:nth-child(4) .input-fields", "css:finder"],
+        ["xpath=//input[@name='password']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[3]/td[2]/input", "xpath:idRelative"],
+        ["xpath=//tr[3]/td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c7a18501-9709-4ec5-b0c7-34bdd4400436",
+      "comment": "",
+      "command": "type",
+      "target": "name=password",
+      "targets": [
+        ["name=password", "name"],
+        ["css=.wiki_table_row:nth-child(4) .input-fields", "css:finder"],
+        ["xpath=//input[@name='password']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[3]/td[2]/input", "xpath:idRelative"],
+        ["xpath=//tr[3]/td[2]/input", "xpath:position"]
+      ],
+      "value": "password"
+    }, {
+      "id": "b1f8f9a4-f91f-4d84-aa8c-6ac7d9ac4e52",
+      "comment": "",
+      "command": "click",
+      "target": "css=.submit-inputs",
+      "targets": [
+        ["css=.submit-inputs", "css:finder"],
+        ["xpath=//input[@value='Login']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[4]/td/input", "xpath:idRelative"],
+        ["xpath=//tr[4]/td/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d9293bc7-ef5d-4114-8ab1-46f723e2ddf6",
+      "comment": "",
+      "command": "assertText",
+      "target": "id=center-content",
+      "targets": [
+        ["id=center-content", "id"],
+        ["css=#center-content", "css:finder"],
+        ["xpath=//div[@id='center-content']", "xpath:attributes"],
+        ["xpath=//div[3]/div[3]/div", "xpath:position"]
+      ],
+      "value": "You have successfully logged in."
+    }]
+  }, {
+    "id": "f3a95229-e7dd-4959-b4c5-249533946fe3",
+    "name": "4.5 LoginLogout",
+    "commands": [{
+      "id": "2c448f50-c9ad-4b84-bca5-92de09d6eee7",
+      "comment": "",
+      "command": "//LoginLogout",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "495f14d0-0ec5-48c7-91ef-2ff39b0ec1c0",
+      "comment": "",
+      "command": "//testid: 4.5",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "086ded4e-dedc-4a1a-99ba-02c9ff830658",
+      "comment": "",
+      "command": "//description: tests a user logging out",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d7fc4faf-caa7-4cd6-87fc-f37341432a21",
+      "comment": "",
+      "command": "open",
+      "target": "https://goldenagesolutions.ca/HouseOfCards/index.php",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d117c4a3-538a-4d19-bf90-504df21ad9e1",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "974x680",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7a79d318-c515-4d3c-a095-a8b09d0b3c11",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Login",
+      "targets": [
+        ["linkText=Login", "linkText"],
+        ["css=.menu-content:nth-child(4) > a:nth-child(1)", "css:finder"],
+        ["xpath=//a[contains(text(),'Login')]", "xpath:link"],
+        ["xpath=//a[contains(@href, 'login.php')]", "xpath:href"],
+        ["xpath=//div[4]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Login')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "38159998-a058-4e30-a5ee-1411c6f60e42",
+      "comment": "",
+      "command": "click",
+      "target": "name=username",
+      "targets": [
+        ["name=username", "name"],
+        ["css=.wiki_table_row:nth-child(3) .input-fields", "css:finder"],
+        ["xpath=//input[@name='username']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[2]/td[2]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8d264346-15ef-4196-8c16-bb9411593d3c",
+      "comment": "",
+      "command": "type",
+      "target": "name=username",
+      "targets": [
+        ["name=username", "name"],
+        ["css=.wiki_table_row:nth-child(3) .input-fields", "css:finder"],
+        ["xpath=//input[@name='username']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[2]/td[2]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "normaluser"
+    }, {
+      "id": "6447e111-f29e-4007-947c-0c3d15f830a1",
+      "comment": "",
+      "command": "click",
+      "target": "name=password",
+      "targets": [
+        ["name=password", "name"],
+        ["css=.wiki_table_row:nth-child(4) .input-fields", "css:finder"],
+        ["xpath=//input[@name='password']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[3]/td[2]/input", "xpath:idRelative"],
+        ["xpath=//tr[3]/td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6211317c-a484-4765-a67e-a1d451669324",
+      "comment": "",
+      "command": "type",
+      "target": "name=password",
+      "targets": [
+        ["name=password", "name"],
+        ["css=.wiki_table_row:nth-child(4) .input-fields", "css:finder"],
+        ["xpath=//input[@name='password']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[3]/td[2]/input", "xpath:idRelative"],
+        ["xpath=//tr[3]/td[2]/input", "xpath:position"]
+      ],
+      "value": "password"
+    }, {
+      "id": "b3a51d43-57b9-4398-b967-e72411f34e6b",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Logout",
+      "targets": [
+        ["linkText=Logout", "linkText"],
+        ["css=.right a:nth-child(1)", "css:finder"],
+        ["xpath=//a[contains(text(),'Logout')]", "xpath:link"],
+        ["xpath=//a[contains(@href, 'logout.php')]", "xpath:href"],
+        ["xpath=//div[4]/div[4]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Logout')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "e86436d6-2ef2-4c12-8eec-f4fe3a23bd38",
+      "comment": "",
+      "command": "click",
+      "target": "css=.submit-inputs",
+      "targets": [
+        ["css=.submit-inputs", "css:finder"],
+        ["xpath=//input[@value='Login']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[4]/td/input", "xpath:idRelative"],
+        ["xpath=//tr[4]/td/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "883f4bb3-cee6-4e4b-adb5-1ef575630252",
+      "comment": "",
+      "command": "assertText",
+      "target": "id=center-content",
+      "targets": [
+        ["id=center-content", "id"],
+        ["css=#center-content", "css:finder"],
+        ["xpath=//div[@id='center-content']", "xpath:attributes"],
+        ["xpath=//div[3]/div[3]/div", "xpath:position"]
+      ],
+      "value": "You have successfully logged out. Go to main page."
+    }]
+  }, {
+    "id": "5cf6c8e9-323d-464d-8459-ec3ab807b8fb",
+    "name": "12.1 SelectGamePage",
+    "commands": [{
+      "id": "57d7c542-5940-4e51-9ddf-710060fc4610",
+      "comment": "",
+      "command": "//SelectGamePage",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a1f82ab9-0d09-4db8-9c8d-1d81f86a0259",
+      "comment": "",
+      "command": "//testid: 12.1",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "aaf8949f-8ae4-4b98-9297-5374a15ef5b0",
+      "comment": "",
+      "command": "//description: tests a user selecting a page",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "96ed78ec-92c8-4bb5-9c78-8ff6523cfb5e",
+      "comment": "",
+      "command": "open",
+      "target": "https://goldenagesolutions.ca/HouseOfCards/index.php",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e9c140ed-3af6-4891-886f-1348db4df810",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "974x680",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b76d56ff-db9c-4179-be18-938049bfe520",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=View Card Games",
+      "targets": [
+        ["linkText=View Card Games", "linkText"],
+        ["css=.menu-content:nth-child(2) > a:nth-child(1)", "css:finder"],
+        ["xpath=//a[contains(text(),'View Card Games')]", "xpath:link"],
+        ["xpath=//a[@href='http://goldenagesolutions.ca/HouseOfCards/wikipage.php']", "xpath:href"],
+        ["xpath=//a", "xpath:position"],
+        ["xpath=//a[contains(.,'View Card Games')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "ed2b7318-cb05-426e-aabc-98569ad9c53a",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Go Fish",
+      "targets": [
+        ["linkText=Go Fish", "linkText"],
+        ["css=li:nth-child(1) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Go Fish')]", "xpath:link"],
+        ["xpath=//div[@id='wikiNavContent']/ul/li/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'https://goldenagesolutions.ca/HouseOfCards/wikipage.php?entry=0')]", "xpath:href"],
+        ["xpath=//li/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Go Fish')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "fafe0146-54c8-46d8-a596-e2226e11bfbd",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "id=wikiContent",
+      "targets": [
+        ["id=wikiContent", "id"],
+        ["css=#wikiContent", "css:finder"],
+        ["xpath=//div[@id='wikiContent']", "xpath:attributes"],
+        ["xpath=//div[@id='card-game-body']/div[2]", "xpath:idRelative"],
+        ["xpath=//div[3]/div/div/div[2]", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "1f2d706c-419f-45e0-a0a4-6053a6052125",
+    "name": "13.1 ViewGamePage",
+    "commands": [{
+      "id": "34aed780-6b24-42ec-925c-01f795ba3ae0",
+      "comment": "",
+      "command": "//ViewGamePage",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "aa71dc9a-efdd-4f07-b0f5-86bff7fe8629",
+      "comment": "",
+      "command": "//testid: 13.1",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2b799c95-5bd7-4eb1-9767-da6394d3dfe3",
+      "comment": "",
+      "command": "//description: verifies elements on game page",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f7395804-97c8-4901-b5b3-4de9402b033e",
+      "comment": "",
+      "command": "open",
+      "target": "https://goldenagesolutions.ca/HouseOfCards/index.php",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d9ba11a6-c858-49d8-bddf-ac7e12732a29",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "974x680",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2f5acf66-abdd-44de-8db5-97f91ddc08fc",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=View Card Games",
+      "targets": [
+        ["linkText=View Card Games", "linkText"],
+        ["css=.menu-content:nth-child(2) > a:nth-child(1)", "css:finder"],
+        ["xpath=//a[contains(text(),'View Card Games')]", "xpath:link"],
+        ["xpath=//a[@href='http://goldenagesolutions.ca/HouseOfCards/wikipage.php']", "xpath:href"],
+        ["xpath=//a", "xpath:position"],
+        ["xpath=//a[contains(.,'View Card Games')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "009ea9c3-015c-4e32-9ba0-8e2c413f1514",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Go Fish",
+      "targets": [
+        ["linkText=Go Fish", "linkText"],
+        ["css=li:nth-child(1) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Go Fish')]", "xpath:link"],
+        ["xpath=//div[@id='wikiNavContent']/ul/li/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'https://goldenagesolutions.ca/HouseOfCards/wikipage.php?entry=0')]", "xpath:href"],
+        ["xpath=//li/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Go Fish')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "00a69a06-cc79-49cb-a063-ddaef8919ce7",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "id=wikiContent",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d92bbac6-2b83-4ed6-a1af-d1585c394cda",
+      "comment": "",
+      "command": "verifyText",
+      "target": "id=wiki_table_title",
+      "targets": [
+        ["id=wiki_table_title", "id"],
+        ["css=#wiki_table_title", "css:finder"],
+        ["xpath=//td[@id='wiki_table_title']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr/td", "xpath:idRelative"],
+        ["xpath=//td", "xpath:position"],
+        ["xpath=//td[contains(.,'Go Fish ')]", "xpath:innerText"]
+      ],
+      "value": "Go Fish"
+    }, {
+      "id": "a5b958a4-2f0f-48ed-8b79-15547e7f1263",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=.wiki_table_row:nth-child(2) > .wiki_table_data_right",
+      "targets": [
+        ["css=.wiki_table_row:nth-child(2) > .wiki_table_data_right", "css:finder"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[2]/td[2]", "xpath:idRelative"],
+        ["xpath=//td[2]", "xpath:position"],
+        ["xpath=//td[contains(.,'2 - 5')]", "xpath:innerText"]
+      ],
+      "value": "2 - 5"
+    }, {
+      "id": "99d3e09b-1557-4ff9-9aa0-2d8ea2ae0906",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=.wiki_table_row:nth-child(3) > .wiki_table_data_right",
+      "targets": [
+        ["css=.wiki_table_row:nth-child(2) > .wiki_table_data_right", "css:finder"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[2]/td[2]", "xpath:idRelative"],
+        ["xpath=//td[2]", "xpath:position"],
+        ["xpath=//td[contains(.,'2 - 5')]", "xpath:innerText"]
+      ],
+      "value": "52 card deck"
+    }, {
+      "id": "8e670d53-6101-4c09-8cd3-3785e1ccaef1",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=.wiki_table_row:nth-child(4) > .wiki_table_data_right",
+      "targets": [
+        ["css=.wiki_table_row:nth-child(2) > .wiki_table_data_right", "css:finder"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[2]/td[2]", "xpath:idRelative"],
+        ["xpath=//td[2]", "xpath:position"],
+        ["xpath=//td[contains(.,'2 - 5')]", "xpath:innerText"]
+      ],
+      "value": "To win, a player must have the most sets of four matching number cards."
+    }, {
+      "id": "533a9f6d-1631-4722-ac84-628d4f332be5",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=.wiki_table_row:nth-child(5) > .wiki_table_data_right",
+      "targets": [
+        ["css=.wiki_table_row:nth-child(2) > .wiki_table_data_right", "css:finder"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[2]/td[2]", "xpath:idRelative"],
+        ["xpath=//td[2]", "xpath:position"],
+        ["xpath=//td[contains(.,'2 - 5')]", "xpath:innerText"]
+      ],
+      "value": "Deal seven cards (2-3 players) to each player or five cards (4-5 players), then place rest of the deck is placed between all players with additional room for placing the matching sets of cards."
+    }, {
+      "id": "16dc1eed-04fd-43b4-af95-b0c6383561c4",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=.wiki_table_row:nth-child(6) > .wiki_table_data_right",
+      "targets": [
+        ["css=.wiki_table_row:nth-child(2) > .wiki_table_data_right", "css:finder"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[2]/td[2]", "xpath:idRelative"],
+        ["xpath=//td[2]", "xpath:position"],
+        ["xpath=//td[contains(.,'2 - 5')]", "xpath:innerText"]
+      ],
+      "value": "During a players turn, the player may ask another player if they have a card, specifying the number. The player who was asked must give all cards of the number specified to the player who asked. If they do not have any cards of the specified number, they must say \"\"Gold Fish\"\", and the player who asked must draw a card from the deck. If a player does recieve one or more cards of that they asked for, their turn continues and they can ask any player for cards of a specific number again./nWhen a player obtains all four cards of a number, they must place the set of cards face up in front of them for other players to see. The game ends when all thirteen sets of cards are placed face up, and the player with the most sets wins."
+    }, {
+      "id": "ea928740-d92f-4f03-9ad2-f35cf95816c1",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=.wiki_table_row:nth-child(7) > .wiki_table_data_right",
+      "targets": [
+        ["css=.wiki_table_row:nth-child(2) > .wiki_table_data_right", "css:finder"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[2]/td[2]", "xpath:idRelative"],
+        ["xpath=//td[2]", "xpath:position"],
+        ["xpath=//td[contains(.,'2 - 5')]", "xpath:innerText"]
+      ],
+      "value": "The cards rank from ace (high) to two (low). Suits are not important for this game."
+    }]
+  }, {
+    "id": "55339b44-c335-40d2-960d-59665c415baa",
+    "name": "14.1 SearchLowercase",
+    "commands": [{
+      "id": "fa0a232f-be75-4523-ade5-ac95202f9bd6",
+      "comment": "",
+      "command": "//SearchLowercase",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b2188472-dee3-44d6-89dc-9527c64ce19f",
+      "comment": "",
+      "command": "//testid: 14.1",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "831db5d4-8a09-4073-88b2-d38d83b24fdb",
+      "comment": "",
+      "command": "//description: test user searching for a valid game in lowercase",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "264eabb6-da0b-4700-b1cb-dd37207dcbd5",
+      "comment": "",
+      "command": "open",
+      "target": "https://goldenagesolutions.ca/HouseOfCards/index.php",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7a755168-93f8-44b2-98fb-5678541c6779",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "974x680",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6545c40f-4220-4edf-a568-7446be2098b2",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Search a Card Game",
+      "targets": [
+        ["linkText=Search a Card Game", "linkText"],
+        ["css=.menu-content:nth-child(2) > a:nth-child(3)", "css:finder"],
+        ["xpath=//a[contains(text(),'Search a Card Game')]", "xpath:link"],
+        ["xpath=//a[@href='http://goldenagesolutions.ca/HouseOfCards/search.php']", "xpath:href"],
+        ["xpath=//a[2]", "xpath:position"],
+        ["xpath=//a[contains(.,'Search a Card Game')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "9bbe08a6-cbbc-44d0-8d46-a2955b2e9d1b",
+      "comment": "",
+      "command": "click",
+      "target": "name=gameName",
+      "targets": [
+        ["name=gameName", "name"],
+        ["css=.input-fields", "css:finder"],
+        ["xpath=//input[@name='gameName']", "xpath:attributes"],
+        ["xpath=//div[@id='center-content']/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b36bebbe-d9e0-4a83-a508-517db32f947e",
+      "comment": "",
+      "command": "type",
+      "target": "name=gameName",
+      "targets": [
+        ["name=gameName", "name"],
+        ["css=.input-fields", "css:finder"],
+        ["xpath=//input[@name='gameName']", "xpath:attributes"],
+        ["xpath=//div[@id='center-content']/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "blackjack"
+    }, {
+      "id": "7d90dc95-75d0-443c-845e-5e028aaf276d",
+      "comment": "",
+      "command": "click",
+      "target": "css=.submit-inputs",
+      "targets": [
+        ["css=.submit-inputs", "css:finder"],
+        ["xpath=//input[@value='Search']", "xpath:attributes"],
+        ["xpath=//div[@id='center-content']/form/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0309bd19-075a-4818-9ba9-9dfe75ed5d33",
+      "comment": "",
+      "command": "assertText",
+      "target": "id=wiki_table_title",
+      "targets": [
+        ["id=wiki_table_title", "id"],
+        ["css=#wiki_table_title", "css:finder"],
+        ["xpath=//td[@id='wiki_table_title']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr/td", "xpath:idRelative"],
+        ["xpath=//td", "xpath:position"],
+        ["xpath=//td[contains(.,'Blackjack ')]", "xpath:innerText"]
+      ],
+      "value": "Blackjack"
+    }]
+  }, {
+    "id": "c3a22991-af48-4a8a-8a78-a0d66dd5f675",
+    "name": "14.4 SearchInvalid",
+    "commands": [{
+      "id": "6ba361d8-4d09-4c9d-a2cd-c56ceb5ab962",
+      "comment": "",
+      "command": "//SearchInvalid",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d1085e35-844a-4b50-87da-a3fb916e8bc6",
+      "comment": "",
+      "command": "//testid: 14.4",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a5787ebe-a442-4552-b333-c0664e481e6a",
+      "comment": "",
+      "command": "//description: test user searching for an invalid game",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "aa5daab5-c7b6-4f44-9a9c-4d125d5141fe",
+      "comment": "",
+      "command": "open",
+      "target": "https://goldenagesolutions.ca/HouseOfCards/index.php",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e6b5a9ac-af4b-4272-a81a-a6843b6a2ffd",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "974x680",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f2e947a0-bfad-4bea-a8d3-51562408206e",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Search a Card Game",
+      "targets": [
+        ["linkText=Search a Card Game", "linkText"],
+        ["css=.menu-content:nth-child(2) > a:nth-child(3)", "css:finder"],
+        ["xpath=//a[contains(text(),'Search a Card Game')]", "xpath:link"],
+        ["xpath=//a[@href='http://goldenagesolutions.ca/HouseOfCards/search.php']", "xpath:href"],
+        ["xpath=//a[2]", "xpath:position"],
+        ["xpath=//a[contains(.,'Search a Card Game')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "ea5354d8-d823-4546-b7cb-46bfe52c6455",
+      "comment": "",
+      "command": "click",
+      "target": "name=gameName",
+      "targets": [
+        ["name=gameName", "name"],
+        ["css=.input-fields", "css:finder"],
+        ["xpath=//input[@name='gameName']", "xpath:attributes"],
+        ["xpath=//div[@id='center-content']/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4f51797c-770c-4aae-8d39-3f5c2704ba6e",
+      "comment": "",
+      "command": "type",
+      "target": "name=gameName",
+      "targets": [
+        ["name=gameName", "name"],
+        ["css=.input-fields", "css:finder"],
+        ["xpath=//input[@name='gameName']", "xpath:attributes"],
+        ["xpath=//div[@id='center-content']/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "jack black"
+    }, {
+      "id": "987da348-49cc-48d1-acb6-7809730e56cb",
+      "comment": "",
+      "command": "click",
+      "target": "css=.submit-inputs",
+      "targets": [
+        ["css=.submit-inputs", "css:finder"],
+        ["xpath=//input[@value='Search']", "xpath:attributes"],
+        ["xpath=//div[@id='center-content']/form/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1627d624-c78e-4888-9812-78e1ba168cd9",
+      "comment": "",
+      "command": "//note: text assert doesn't work here",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b6a2f5b9-e8b7-4475-bb08-1f48d6a6a777",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "id=center-content",
+      "targets": [
+        ["id=center-content", "id"],
+        ["css=#center-content", "css:finder"],
+        ["xpath=//div[@id='center-content']", "xpath:attributes"],
+        ["xpath=//div[3]/div[3]/div", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "3ee6c55a-7062-4e8f-bb99-1f4f602dfeca",
+    "name": "15.1 VerifyComments",
+    "commands": [{
+      "id": "d338d2a9-e535-45e5-828f-285e720aef1a",
+      "comment": "",
+      "command": "open",
+      "target": "https://goldenagesolutions.ca/HouseOfCards/index.php",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "fadddde5-d21f-4bd6-922e-250d515871b0",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "974x680",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c9f20b6b-7275-48b0-9ab9-bdfbc38437df",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=View Card Games",
+      "targets": [
+        ["linkText=View Card Games", "linkText"],
+        ["css=.menu-content:nth-child(2) > a:nth-child(1)", "css:finder"],
+        ["xpath=//a[contains(text(),'View Card Games')]", "xpath:link"],
+        ["xpath=//a[@href='http://goldenagesolutions.ca/HouseOfCards/wikipage.php']", "xpath:href"],
+        ["xpath=//a", "xpath:position"],
+        ["xpath=//a[contains(.,'View Card Games')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "91d4bf16-622d-4c6a-9ace-a0fb7327fc45",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Go Fish",
+      "targets": [
+        ["linkText=Go Fish", "linkText"],
+        ["css=li:nth-child(1) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Go Fish')]", "xpath:link"],
+        ["xpath=//div[@id='wikiNavContent']/ul/li/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'https://goldenagesolutions.ca/HouseOfCards/wikipage.php?entry=0')]", "xpath:href"],
+        ["xpath=//li/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Go Fish')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "46c7a8f5-544b-45b8-9e8a-5e90c15af146",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "id=wikiComments",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "edb4a250-2059-4ef9-9407-6264907662ae",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=.comment_container:nth-child(2) .comment_content_main",
+      "targets": [
+        ["css=.comment_container:nth-child(2) .comment_content_main", "css:finder"],
+        ["xpath=//div[@id='wikiComments']/div[2]/div[2]/div[2]", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div[2]", "xpath:position"]
+      ],
+      "value": "I am testing here."
+    }]
+  }, {
+    "id": "41af7783-60f7-4a17-ad7c-238ebaa95437",
+    "name": "18.1 VerifyDateTimeGame",
+    "commands": [{
+      "id": "c2d8f51f-000a-4d10-9705-e5afe78e689e",
+      "comment": "",
+      "command": "//VerifyDateTimeGame",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6a159393-0311-438e-9684-a47ff4fec2e9",
+      "comment": "",
+      "command": "//testid: 18.1",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "0ba4c325-474d-42ea-af82-521e986f0919",
+      "comment": "",
+      "command": "//description: checks that appropriate date and time are added to edited game pages",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d8f5a7fd-84d3-4dd5-9611-6a251a66d5f9",
+      "comment": "",
+      "command": "open",
+      "target": "https://goldenagesolutions.ca/HouseOfCards/index.php",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "54bab883-f880-489b-ba26-1f2cb6ff486a",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "974x680",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "78591bf8-cf12-467f-8e76-91f866a09bd1",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=View Card Games",
+      "targets": [
+        ["linkText=View Card Games", "linkText"],
+        ["css=.menu-content:nth-child(2) > a:nth-child(1)", "css:finder"],
+        ["xpath=//a[contains(text(),'View Card Games')]", "xpath:link"],
+        ["xpath=//a[@href='http://goldenagesolutions.ca/HouseOfCards/wikipage.php']", "xpath:href"],
+        ["xpath=//a", "xpath:position"],
+        ["xpath=//a[contains(.,'View Card Games')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "59a3ef2f-c91a-4037-9c6c-d942ed23ebcb",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Go Fish",
+      "targets": [
+        ["linkText=Go Fish", "linkText"],
+        ["css=li:nth-child(1) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Go Fish')]", "xpath:link"],
+        ["xpath=//div[@id='wikiNavContent']/ul/li/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'https://goldenagesolutions.ca/HouseOfCards/wikipage.php?entry=0')]", "xpath:href"],
+        ["xpath=//li/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Go Fish')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "143edfa9-5497-4a77-ae31-f8dea19cf15c",
+      "comment": "",
+      "command": "//note: this probably shouldn't say 2009",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "90470449-095e-449a-88e1-b25789ac89c7",
+      "comment": "",
+      "command": "assertText",
+      "target": "id=pageInfo",
+      "targets": [
+        ["id=pageInfo", "id"],
+        ["css=#pageInfo", "css:finder"],
+        ["xpath=//div[@id='pageInfo']", "xpath:attributes"],
+        ["xpath=//div[@id='card-game-body']/div[4]", "xpath:idRelative"],
+        ["xpath=//div[4]", "xpath:position"]
+      ],
+      "value": "Last Edit By : adminnick - Last Edit On : 17-1-2009 - 15:15:15"
+    }]
+  }, {
+    "id": "3a7357bf-39a8-4fef-bf7f-5c7c4f412043",
+    "name": "16.1 PostComment",
+    "commands": [{
+      "id": "dbcca33e-7103-42de-ac92-95cd90c612b3",
+      "comment": "",
+      "command": "//PostComment",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f9ee5411-7c9f-4429-ba2a-bfd5de6f982e",
+      "comment": "",
+      "command": "//testid: 16.1",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "43773b91-4790-4df9-881b-9bebc09f3a99",
+      "comment": "",
+      "command": "//description: tests a user posting a comment",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ff3c4f78-7c79-4d8c-ac42-cccc34e3bfd1",
+      "comment": "",
+      "command": "open",
+      "target": "https://goldenagesolutions.ca/HouseOfCards/index.php",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d3a53d6a-7df5-4974-bcba-c49d7e6a05c9",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "974x680",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e2f000a2-f59a-4b6a-9638-43d1cebf0a09",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Login",
+      "targets": [
+        ["linkText=Login", "linkText"],
+        ["css=.menu-content:nth-child(4) > a:nth-child(1)", "css:finder"],
+        ["xpath=//a[contains(text(),'Login')]", "xpath:link"],
+        ["xpath=//a[contains(@href, 'login.php')]", "xpath:href"],
+        ["xpath=//div[4]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Login')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "af5f1cf5-b9fd-49e4-8222-5442b2aec603",
+      "comment": "",
+      "command": "click",
+      "target": "name=username",
+      "targets": [
+        ["name=username", "name"],
+        ["css=.wiki_table_row:nth-child(3) .input-fields", "css:finder"],
+        ["xpath=//input[@name='username']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[2]/td[2]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d5cfe318-4741-403b-98b2-52311f497237",
+      "comment": "",
+      "command": "type",
+      "target": "name=username",
+      "targets": [
+        ["name=username", "name"],
+        ["css=.wiki_table_row:nth-child(3) .input-fields", "css:finder"],
+        ["xpath=//input[@name='username']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[2]/td[2]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "normaluser"
+    }, {
+      "id": "83b41cbb-7819-4417-9324-c96141a25184",
+      "comment": "",
+      "command": "click",
+      "target": "name=password",
+      "targets": [
+        ["name=password", "name"],
+        ["css=.wiki_table_row:nth-child(4) .input-fields", "css:finder"],
+        ["xpath=//input[@name='password']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[3]/td[2]/input", "xpath:idRelative"],
+        ["xpath=//tr[3]/td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5457e6a1-5000-424a-a5ce-5243726d2f18",
+      "comment": "",
+      "command": "type",
+      "target": "name=password",
+      "targets": [
+        ["name=password", "name"],
+        ["css=.wiki_table_row:nth-child(4) .input-fields", "css:finder"],
+        ["xpath=//input[@name='password']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[3]/td[2]/input", "xpath:idRelative"],
+        ["xpath=//tr[3]/td[2]/input", "xpath:position"]
+      ],
+      "value": "password"
+    }, {
+      "id": "79ebd90d-65d0-4677-93e2-20986e8199ba",
+      "comment": "",
+      "command": "click",
+      "target": "css=.submit-inputs",
+      "targets": [
+        ["css=.submit-inputs", "css:finder"],
+        ["xpath=//input[@value='Login']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[4]/td/input", "xpath:idRelative"],
+        ["xpath=//tr[4]/td/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "91b74531-4051-4f88-9d9e-5ab03b64c5aa",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=View Card Games",
+      "targets": [
+        ["linkText=View Card Games", "linkText"],
+        ["css=.menu-content:nth-child(2) > a:nth-child(1)", "css:finder"],
+        ["xpath=//a[contains(text(),'View Card Games')]", "xpath:link"],
+        ["xpath=//a[@href='http://goldenagesolutions.ca/HouseOfCards/wikipage.php']", "xpath:href"],
+        ["xpath=//a", "xpath:position"],
+        ["xpath=//a[contains(.,'View Card Games')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "9576c841-06cd-4e63-979e-88b0ca83da4e",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Blackjack",
+      "targets": [
+        ["linkText=Blackjack", "linkText"],
+        ["css=li:nth-child(2) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Blackjack')]", "xpath:link"],
+        ["xpath=//div[@id='wikiNavContent']/ul/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'https://goldenagesolutions.ca/HouseOfCards/wikipage.php?entry=1')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Blackjack')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "e77ee413-ffee-4dc0-9bca-966c2235bbdc",
+      "comment": "",
+      "command": "click",
+      "target": "id=newCommentButton",
+      "targets": [
+        ["id=newCommentButton", "id"],
+        ["css=#newCommentButton", "css:finder"],
+        ["xpath=//input[@id='newCommentButton']", "xpath:attributes"],
+        ["xpath=//div[@id='commentHeader']/a/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "10e27fd9-ca49-4e31-8d8c-6773b86da1b6",
+      "comment": "",
+      "command": "click",
+      "target": "id=comment-content-post",
+      "targets": [
+        ["id=comment-content-post", "id"],
+        ["name=comment-content-post", "name"],
+        ["css=#comment-content-post", "css:finder"],
+        ["xpath=//textarea[@id='comment-content-post']", "xpath:attributes"],
+        ["xpath=//form[@id='frm-comment']/textarea", "xpath:idRelative"],
+        ["xpath=//div[19]/div[2]/div[2]/form/textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d7f6b7eb-210f-4520-8d66-74dba971d087",
+      "comment": "",
+      "command": "type",
+      "target": "id=comment-content-post",
+      "targets": [
+        ["id=comment-content-post", "id"],
+        ["name=comment-content-post", "name"],
+        ["css=#comment-content-post", "css:finder"],
+        ["xpath=//textarea[@id='comment-content-post']", "xpath:attributes"],
+        ["xpath=//form[@id='frm-comment']/textarea", "xpath:idRelative"],
+        ["xpath=//div[19]/div[2]/div[2]/form/textarea", "xpath:position"]
+      ],
+      "value": "I like jack black."
+    }, {
+      "id": "608607be-8b6c-4dee-bb7c-e4479e8cfbf0",
+      "comment": "",
+      "command": "click",
+      "target": "id=commentButton",
+      "targets": [
+        ["id=commentButton", "id"],
+        ["css=#commentButton", "css:finder"],
+        ["xpath=//input[@id='commentButton']", "xpath:attributes"],
+        ["xpath=//form[@id='frm-comment']/input[2]", "xpath:idRelative"],
+        ["xpath=//div[19]/div[2]/div[2]/form/input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "793cb3af-01b7-4def-8f73-7eabc2b37fa5",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=.comment_container:nth-child(20) .comment_content_main",
+      "targets": [
+        ["css=.comment_container:nth-child(20) .comment_content_main", "css:finder"],
+        ["xpath=//div[@id='wikiComments']/div[19]/div[2]/div[2]", "xpath:idRelative"],
+        ["xpath=//div[19]/div[2]/div[2]", "xpath:position"]
+      ],
+      "value": "I like jack black."
+    }]
+  }, {
+    "id": "2d218723-69ee-49f9-aaa2-b877afc61004",
+    "name": "17.1 PostCommentReply",
+    "commands": [{
+      "id": "913480ee-8c20-4b6b-bec6-d8f1af151da4",
+      "comment": "",
+      "command": "//PostCommentReply",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2ff75d2f-d8e3-4ecf-a732-42641d4580c6",
+      "comment": "",
+      "command": "//testid: 17.1",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "201c4f1f-367f-4cfa-92ec-42baabc4ca71",
+      "comment": "",
+      "command": "//description: tests a user posting a comment reply",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "11bd9a9a-d9a2-4902-8020-2c1b8819250e",
+      "comment": "",
+      "command": "open",
+      "target": "https://goldenagesolutions.ca/HouseOfCards/index.php",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "21b80391-9754-4560-a915-a08e7d195399",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "974x680",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "5fd811ce-489c-413e-9e22-4e55ec6e3948",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Login",
+      "targets": [
+        ["linkText=Login", "linkText"],
+        ["css=.menu-content:nth-child(4) > a:nth-child(1)", "css:finder"],
+        ["xpath=//a[contains(text(),'Login')]", "xpath:link"],
+        ["xpath=//a[contains(@href, 'login.php')]", "xpath:href"],
+        ["xpath=//div[4]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Login')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f81e8386-d959-4b6d-9c82-05985a87a5b4",
+      "comment": "",
+      "command": "click",
+      "target": "name=username",
+      "targets": [
+        ["name=username", "name"],
+        ["css=.wiki_table_row:nth-child(3) .input-fields", "css:finder"],
+        ["xpath=//input[@name='username']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[2]/td[2]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0b966746-3e92-46f6-9ddb-24596adf2048",
+      "comment": "",
+      "command": "type",
+      "target": "name=username",
+      "targets": [
+        ["name=username", "name"],
+        ["css=.wiki_table_row:nth-child(3) .input-fields", "css:finder"],
+        ["xpath=//input[@name='username']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[2]/td[2]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "normaluser"
+    }, {
+      "id": "20ad362d-66d1-408a-a62d-c14c6954b0c1",
+      "comment": "",
+      "command": "click",
+      "target": "name=password",
+      "targets": [
+        ["name=password", "name"],
+        ["css=.wiki_table_row:nth-child(4) .input-fields", "css:finder"],
+        ["xpath=//input[@name='password']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[3]/td[2]/input", "xpath:idRelative"],
+        ["xpath=//tr[3]/td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e66dbedf-a06a-4396-96b0-0f4bf8d0306f",
+      "comment": "",
+      "command": "type",
+      "target": "name=password",
+      "targets": [
+        ["name=password", "name"],
+        ["css=.wiki_table_row:nth-child(4) .input-fields", "css:finder"],
+        ["xpath=//input[@name='password']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[3]/td[2]/input", "xpath:idRelative"],
+        ["xpath=//tr[3]/td[2]/input", "xpath:position"]
+      ],
+      "value": "password"
+    }, {
+      "id": "dd02b1e5-553b-4c2b-bfcf-2a88bf36e23d",
+      "comment": "",
+      "command": "click",
+      "target": "css=.submit-inputs",
+      "targets": [
+        ["css=.submit-inputs", "css:finder"],
+        ["xpath=//input[@value='Login']", "xpath:attributes"],
+        ["xpath=//table[@id='wiki_table']/tbody/tr[4]/td/input", "xpath:idRelative"],
+        ["xpath=//tr[4]/td/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a8f79897-7334-4e4f-b1cc-fb1500d41107",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=View Card Games",
+      "targets": [
+        ["linkText=View Card Games", "linkText"],
+        ["css=.menu-content:nth-child(2) > a:nth-child(1)", "css:finder"],
+        ["xpath=//a[contains(text(),'View Card Games')]", "xpath:link"],
+        ["xpath=//a[@href='http://goldenagesolutions.ca/HouseOfCards/wikipage.php']", "xpath:href"],
+        ["xpath=//a", "xpath:position"],
+        ["xpath=//a[contains(.,'View Card Games')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "820d49bb-38ac-4218-9302-fef1ecb777d2",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Blackjack",
+      "targets": [
+        ["linkText=Blackjack", "linkText"],
+        ["css=li:nth-child(2) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Blackjack')]", "xpath:link"],
+        ["xpath=//div[@id='wikiNavContent']/ul/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'https://goldenagesolutions.ca/HouseOfCards/wikipage.php?entry=1')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Blackjack')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "a443a69c-7692-4848-97e2-e729f0de8770",
+      "comment": "",
+      "command": "click",
+      "target": "css=.comment_container:nth-child(8) .commentReplyButton",
+      "targets": [
+        ["css=.comment_container:nth-child(8) .commentReplyButton", "css:finder"],
+        ["xpath=(//input[@value='Reply'])[3]", "xpath:attributes"],
+        ["xpath=//div[@id='wikiComments']/div[7]/div[2]/div/input", "xpath:idRelative"],
+        ["xpath=//div[7]/div[2]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8d33f5a2-f8f1-45d2-ae5a-6b1f15a14959",
+      "comment": "",
+      "command": "click",
+      "target": "id=comment-reply-content-post-1",
+      "targets": [
+        ["id=comment-reply-content-post-1", "id"],
+        ["name=comment-reply-content-post-1", "name"],
+        ["css=#comment-reply-content-post-1", "css:finder"],
+        ["xpath=//textarea[@id='comment-reply-content-post-1']", "xpath:attributes"],
+        ["xpath=//form[@id='frm-comment-reply-1']/textarea", "xpath:idRelative"],
+        ["xpath=//div[10]/div/div[2]/div[2]/form/textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "cc9af407-5186-4157-a93a-e2d3d4e044e9",
+      "comment": "",
+      "command": "type",
+      "target": "id=comment-reply-content-post-1",
+      "targets": [
+        ["id=comment-reply-content-post-1", "id"],
+        ["name=comment-reply-content-post-1", "name"],
+        ["css=#comment-reply-content-post-1", "css:finder"],
+        ["xpath=//textarea[@id='comment-reply-content-post-1']", "xpath:attributes"],
+        ["xpath=//form[@id='frm-comment-reply-1']/textarea", "xpath:idRelative"],
+        ["xpath=//div[10]/div/div[2]/div[2]/form/textarea", "xpath:position"]
+      ],
+      "value": "even cooler than jack black"
+    }, {
+      "id": "8edcf03b-4ee0-4d6e-93f9-8b610ebd731c",
+      "comment": "",
+      "command": "click",
+      "target": "css=#frm-comment-reply-1 > .publishCommentReplyButton",
+      "targets": [
+        ["css=#frm-comment-reply-1 > .publishCommentReplyButton", "css:finder"],
+        ["xpath=(//input[@value='Reply'])[4]", "xpath:attributes"],
+        ["xpath=//form[@id='frm-comment-reply-1']/input[2]", "xpath:idRelative"],
+        ["xpath=//div[10]/div/div[2]/div[2]/form/input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6718975f-e544-4a0d-be77-9ee2c1735205",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.comment_reply_container:nth-child(11) .comment_reply_content_main",
+      "targets": [
+        ["css=.comment_reply_container:nth-child(11) .comment_reply_content_main", "css:finder"],
+        ["xpath=//div[@id='wikiComments']/div[10]/div[2]/div[2]", "xpath:idRelative"],
+        ["xpath=//div[10]/div[2]/div[2]", "xpath:position"]
+      ],
+      "value": "even cooler than jack black"
+    }]
+  }, {
+    "id": "bdb2e26d-8cf9-4121-a7ea-e53627702b04",
+    "name": "19.1 VerifyDateTimeComment",
+    "commands": [{
+      "id": "18851641-e661-4574-94fa-495c27e4f48c",
+      "comment": "",
+      "command": "//VerifyDateTimeComment",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ef6928ed-e15e-48de-a36d-8975bfb479cd",
+      "comment": "",
+      "command": "//testid: 19.1",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2f35b1ba-5414-4900-8743-494dba649179",
+      "comment": "",
+      "command": "//description: checks that appropriate date and time are added to new comments",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "97279964-5217-43f5-bfc4-4bbf82ad89f3",
+      "comment": "",
+      "command": "open",
+      "target": "https://goldenagesolutions.ca/HouseOfCards/index.php",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "45851fbe-3013-4c15-977e-79e19727d9e6",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "974x680",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "293f5645-d8a5-40e3-aa5f-fb18ee211aaa",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=View Card Games",
+      "targets": [
+        ["linkText=View Card Games", "linkText"],
+        ["css=.menu-content:nth-child(2) > a:nth-child(1)", "css:finder"],
+        ["xpath=//a[contains(text(),'View Card Games')]", "xpath:link"],
+        ["xpath=//a[@href='http://goldenagesolutions.ca/HouseOfCards/wikipage.php']", "xpath:href"],
+        ["xpath=//a", "xpath:position"],
+        ["xpath=//a[contains(.,'View Card Games')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "69cb980c-01fa-4128-9e8f-daa46d122559",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Go Fish",
+      "targets": [
+        ["linkText=Go Fish", "linkText"],
+        ["css=li:nth-child(1) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Go Fish')]", "xpath:link"],
+        ["xpath=//div[@id='wikiNavContent']/ul/li/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'https://goldenagesolutions.ca/HouseOfCards/wikipage.php?entry=0')]", "xpath:href"],
+        ["xpath=//li/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Go Fish')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "9bda0f85-a7aa-41c4-9ac5-4f18bf893678",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.comment_container:nth-child(2) .comment_content_header",
+      "targets": [
+        ["css=.comment_container:nth-child(2) .comment_content_header", "css:finder"],
+        ["xpath=//div[@id='wikiComments']/div[2]/div[2]/div", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div", "xpath:position"]
+      ],
+      "value": "I am testing here."
+    }]
+  }],
+  "suites": [{
+    "id": "fd081ec6-9cc8-4889-8077-a41aba0004d4",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["18c2c414-4e5b-40d3-9898-d5217d1fc65e"]
+  }],
+  "urls": ["https://goldenagesolutions.ca/HouseOfCards/index.php"],
+  "plugins": []
+}
