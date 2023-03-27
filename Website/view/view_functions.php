@@ -608,7 +608,7 @@
         return $view;
     }
 
-    function generateProfileView(User $user, string $favourites, string $ratings): string {
+    function generateProfileView(User $user, Array $wikientries, string $ratings): string {
         $view = "
                 <div id=\"card-game-body\">
                         <div id=\"wikiTitle\">
@@ -670,13 +670,34 @@
                                 </td>
                             </tr>
                             <tr class='wiki_table_row_data'>
-                                <td class='wiki_table_data_left'>
+                                <td class='wiki_table_data_left' colspan='2'>
                                     Favourites :
                                 </td>
-                                <td class='wiki_table_data_right'>
-                                    ".$favourites."
-                                </td>
-                            </tr>
+                            </tr> ";
+                            $favourites = $user->getFavourites();
+                            if(!empty($favourites)) {
+                                foreach($favourites as $favID => $favourite) {
+                                    $view .="
+                                    <tr>
+                                        <td class='wiki_table_data_left'>
+                                            ".$wikientries[($favourite->getEntryID())]->getGameName()."
+                                        </td>
+                                        <td class='wiki_table_data_right'>
+                                            <input type='button' class='favourite' entryID='".$favourite->getEntryID()."' value='Remove Favourite' />
+                                        </td>
+                                    </tr>    
+                                    ";
+                                }
+                            }else {
+                                $view .= "
+                                        <tr class='wiki_table_row_data'>
+                                            <td class='wiki_table_data_left' colspan='2'>
+                                                You have not favourited any games yet!
+                                            </td>
+                                        </tr> ";
+                            }
+
+                        $view .= "
                             <tr class='wiki_table_row_data'>
                                 <td class='wiki_table_data_left'>
                                     Ratings
