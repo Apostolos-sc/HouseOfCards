@@ -293,6 +293,32 @@
                                     ".$wikiPage->getRules()."                                     
                                 </td>
                             </tr>
+                            <tr class='wiki_table_row'>
+                                <td class='wiki_table_data_left'>
+                                    Favourite This Game :
+                                </td>
+                                <td class='wiki_table_data_right'>
+                                    ";
+        if(!empty($user->getFavourites())) {
+            if(array_key_exists($wikiPage->getEntryID(), $user->getFavourites())) {
+                $view .= "<input type='button' id='favourite' entryID='".$wikiPage->getEntryID()."' value='Remove Favourite' />";
+            } else {
+                $view .= "<input type='button' id='favourite' entryID='".$wikiPage->getEntryID()."' value='Favourite' />";
+            }
+        } else {
+            $view .= "<input type='button' id='favourite' entryID='".$wikiPage->getEntryID()."' value='Favourite' />";
+        }   
+        $view .= "<span style='hidden;margin-left: 15px;' id='result_favourite'></span>                                
+                                </td>
+                            </tr>
+                            <tr class='wiki_table_row'>
+                            <td class='wiki_table_data_left'>
+                                Rate This Game :
+                            </td>
+                            <td class='wiki_table_data_right'>
+                            <img alt ='img' src=\"https://goldenagesolutions.ca/HouseOfCards/images/star2.png\" style=\"vertical-align:middle;height:20px;width:120px;\">
+                            </td>
+                        </tr>
                         </table>
                     </div>
                     <div id=\"wikiNav\">
@@ -313,7 +339,7 @@
                     </div>
                     <div id=\"wikiComments\">
                         <div id=\"commentHeader\">
-                            Discussion Board <a href=\"\"><input type='button' id='newCommentButton' value='Add Comment' />
+                            Discussion Board <input type='button' id='newCommentButton' value='Add Comment' />
                         </div>";
         if($wikiPage->getComments() == null || sizeof($wikiPage->getComments()) == 0) {
             $view .= "No comments have been posted yet.";

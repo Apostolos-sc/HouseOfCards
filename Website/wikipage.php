@@ -123,36 +123,59 @@
                             }
                         });
                     });
+                    $('#favourite').on('click', favouriteFunction);
+                    function favouriteFunction(e) {
+                        e.preventDefault();
+                        var entryID = $(this).attr('entryID');
+                        var button = $(this);
+                        button.off('click');
+                        if($(this).val() === 'Favourite') {
+                            $.ajax({
+                                url: "favouriteAdd.php",
+                                data: {"entryID": entryID},
+                                type: 'post',
+                                success: function (response){
+                                    if (response) {
+                                        $('#result_favourite').text('Successful Update!');
+                                        $("#result_favourite").fadeIn();
+                                        $("#result_favourite").fadeOut(2000);
+                                    } else {
+                                        $('#result_favourite').text('Failed to Update!');
+                                        $("#result_favourite").fadeIn();
+                                        $("#result_favourite").fadeOut(2000);
+                                    }
+                                }
+                            }).always(function() {
+                                button.val('Remove Favourite');
+                                button.on('click', favouriteFunction);
+                            });
+                        } else {
+                            $.ajax({
+                                url: "favouriteRemove.php",
+                                data: {"entryID": entryID},
+                                type: 'post',
+                                success: function (response){
+                                    if (response) {
+                                        $('#result_favourite').text('Successful Update!');
+                                        $("#result_favourite").fadeIn();
+                                        $("#result_favourite").fadeOut(2000);
+                                    } else {
+                                        $('#result_favourite').text('Failed to Update!');
+                                        $("#result_favourite").fadeIn();
+                                        $("#result_favourite").fadeOut(2000);
+                                    }
+                                }
+                            }).always(function() {
+                                button.val('Favourite');
+                                button.on('click', favouriteFunction);
+                            });
+                        }
+                    };
+                    $( "#dialog" ).dialog({
+                        autoOpen: false,  
+                    });
                 </script>
 <?php
     include 'controller/right-menu.php';
     include 'controller/footer.php';
-    /*
-                        $(".publishCommentReplyButton").click(function (e) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        e.stopImmediatePropagation();
-                        var comID = $(this).attr('comment-reply-button-id');
-                        var comment_reply_content_post = $('#comment-reply-content-post-'+ comID +'').val();
-
-                        alert(comment_reply_content_post);
-                    });
-                            $.ajax({
-                            url: "commentReplyAdd.php",
-                            data: {"comment-content-reply-post": comment_reply_content_post,
-                                   "comment-ID": comID},
-                            type: 'post',
-                            success: function (response)
-                            {
-                                if (response)
-                                {
-                                    location.reload();
-                                } else
-                                {
-                                    alert("Failed to add comment reply !");
-                                    return false;
-                                }
-                            }
-                        });
-                        */
 ?>

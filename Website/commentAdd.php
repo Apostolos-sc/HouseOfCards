@@ -1,7 +1,10 @@
 <?php
-/**
- * This script is to add the comment to database.
- */
+    //Author            : Apostolos Scondrianis
+    //Date Created      : 19-03-2023
+    //Last Edited By    : Apostolos Scondrianis
+    //Last Edited     	: 28-03-2023
+    //Filename          : commentAdd.php
+    //Version           : 1.0
     session_start();
     include('controller/connectDB.php');
     include('model/favourite.php');
@@ -15,7 +18,6 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_SESSION["username"])) {
         echo "test";
         if(ctype_digit(strval($_POST['comment-entryID-post']))) {
-            echo $db->is_connected();
             $entryID = intval($_POST['comment-entryID-post']);
             $wikientry = WikiEntry::fetchWikiEntry($db,  $entryID);
             if($wikientry != null) {

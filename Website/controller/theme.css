@@ -3,7 +3,7 @@ Author       : Apostolos Scondrianis
 Date Created : 12-02-2023
 Last Edited  : 08-03-2023
 Filename     : theme.css
-Version      : 1.2
+Version      : 2.0
 */
 #comment-message {
 	margin-left: 20px;
@@ -40,6 +40,26 @@ Version      : 1.2
     bottom: 6px;
     margin: auto;
 	padding: 5px 10px;
+	background: #515151;
+    margin-left: 5%;
+	border: #CCCCCC 1px solid;
+	color: #CCCCCC;
+	font-size: 0.8em;
+	border-radius: 4px;
+	cursor: pointer;
+}
+#favourite {
+    padding: 5px 10px;
+	background: #515151;
+    margin-left: 5%;
+	border: #CCCCCC 1px solid;
+	color: #CCCCCC;
+	font-size: 0.8em;
+	border-radius: 4px;
+	cursor: pointer;
+}
+#unfavourite {
+    padding: 5px 10px;
 	background: #515151;
     margin-left: 5%;
 	border: #CCCCCC 1px solid;

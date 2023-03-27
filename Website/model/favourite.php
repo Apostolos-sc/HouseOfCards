@@ -1,10 +1,10 @@
 <?php
     //Author            : Carter Marcelo
     //Date Created      : 19-02-2023
-    //Last Edited By    : Alexander Sembrat
+    //Last Edited By    : Apostolos Scondrianis
     //Last Edited On    : 19-03-2023
     //Filename          : favourite.php
-    //Version           : 1.4
+    //Version           : 1.5
 
     //Class Favourite
     class Favourite {
@@ -37,11 +37,8 @@
             return $this->entryID;
         }
 
-        //Database Stubs
         /*
-            DB Table Schema
-            `userID` int(10) NOT NULL,
-            `entryID` int(10) NOT NULL
+            fetchFavouritesByUserID returns an array whose keys value is the entryID
         */
         public static function fetchFavouritesByUserID(Database $dbConnection, int $userID) : ?Array {
             //Query db to see which entries did a user with userID = $userID favourite
@@ -60,7 +57,7 @@
                         //create userType object from the fetched information
                         $favourite = new Favourite($row['userID'], $row['entryID']);
                         //add the userType to the favourites array
-                        $favourites[] = $favourite;
+                        $favourites[$row['entryID']] = $favourite;
                     }
                     return $favourites;
                 }
@@ -92,6 +89,40 @@
                 }
             } else {
                 //database connection provided is invalid, return null
+                return null;
+            }
+        }
+
+        public static function insertFavourite($dbConnection, Favourite $favourite) : ?bool {
+            if($dbConnection->is_connected()) {
+                $uID = $favourite->getUserID();
+                $eID = $favourite->getEntryID();
+                $stmt = $dbConnection->connection->prepare('INSERT INTO Favourite (userID, entryID) VALUES (?, ?)');
+                $stmt->bind_param('ii', $uID, $eID);
+                $stmt->execute();
+                if($stmt->affected_rows > 0 ) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                return null;
+            }
+        }
+
+        public static function deleteFavourite($dbConnection, Favourite $favourite) : ?bool {
+            if($dbConnection->is_connected()) {
+                $uID = $favourite->getUserID();
+                $eID = $favourite->getEntryID();
+                $stmt = $dbConnection->connection->prepare('DELETE FROM Favourite WHERE userID=? AND entryID = ?');
+                $stmt->bind_param('ii', $uID, $eID);
+                $stmt->execute();
+                if($stmt->affected_rows > 0 ) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
                 return null;
             }
         }

@@ -1,4 +1,10 @@
 <?php
+    //Author            : Apostolos Scondrianis
+    //Date Created      : 19-03-2023
+    //Last Edited By    : Apostolos Scondrianis
+    //Last Edited     	: 26-03-2023
+    //Filename          : commentReply.php
+    //Version           : 1.0
     session_start();
     include('controller/connectDB.php');
     include('model/favourite.php');
