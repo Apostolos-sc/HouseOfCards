@@ -171,6 +171,7 @@
                             });
                         }
                     };
+
                 </script>
 <?php
     include 'controller/right-menu.php';

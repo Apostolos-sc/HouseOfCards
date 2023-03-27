@@ -1,10 +1,10 @@
 <?php
     //Author            : Carter Marcelo
     //Date Created      : 21-02-2023
-    //Last Edited By    : Alexander Sembrat
-    //Last Edited On    : 19-03-2023
+    //Last Edited By    : Apostolos Scondrianis
+    //Last Edited On    : 27-03-2023
     //Filename          : rating.php
-    //Version           : 1.4
+    //Version           : 2.0
 
     //Class Rating
     class Rating {
@@ -82,7 +82,7 @@
                         //create Rating object from the fetched information
                         $rating = new Rating($row['id'], $row['entryID'], $row['userID'], $row['rating']);
                         //add the comment to the comment array
-                        $ratings[] = $rating;
+                        $ratings[$row['entryID']] = $rating;
                     }
                     return $ratings;
                 }
@@ -108,7 +108,7 @@
                         //create Rating object from the fetched information
                         $rating = new Rating($row['id'], $row['entryID'], $row['userID'], $row['rating']);
                         //add the comment to the comment array
-                        $ratings[] = $rating;
+                        $ratings[$row['userID']] = $rating;
                     }
                     return $ratings;
                 }

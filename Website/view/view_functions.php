@@ -307,7 +307,14 @@
             }
         } else {
             $view .= "<input type='button' id='favourite' entryID='".$wikiPage->getEntryID()."' value='Favourite' />";
-        }   
+        }
+        if(!empty($user->getRatings())) {
+            if(array_key_exists($wikiPage->getEntryID(), $user->getRatings())) {
+                $rating = $user->getRatings()[$wikiPage->getEntryID()];
+            } else {
+                $rating = 0;
+            }
+        }
         $view .= "<span style='hidden;margin-left: 15px;' id='result_favourite'></span>                                
                                 </td>
                             </tr>
@@ -316,7 +323,7 @@
                                 Rate This Game :
                             </td>
                             <td class='wiki_table_data_right'>
-                            <img alt ='img' src=\"https://goldenagesolutions.ca/HouseOfCards/images/star2.png\" style=\"vertical-align:middle;height:20px;width:120px;\">
+                      
                             </td>
                         </tr>
                         </table>

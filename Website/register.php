@@ -65,8 +65,9 @@
                                 }
                                 if(empty($message)) {
                                     $favourites = [];
+                                    $ratings = [];
                                     $date_arr = explode ("-", $dob);
-                                    $user = new User(-1, new UserType(3, "User"), $fname, $lname, $email, $username, $password, new Date($date_arr[2], $date_arr[1], $date_arr[0], 0, 0, 0), $favourites);
+                                    $user = new User(-1, new UserType(3, "User"), $fname, $lname, $email, $username, $password, new Date($date_arr[2], $date_arr[1], $date_arr[0], 0, 0, 0), $favourites, $ratings);
                                     $success = User::insertUser($db, $user);
                                     if($success) {
                                         echo generateSuccessfulRegisterPage($user);

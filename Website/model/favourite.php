@@ -2,9 +2,9 @@
     //Author            : Carter Marcelo
     //Date Created      : 19-02-2023
     //Last Edited By    : Apostolos Scondrianis
-    //Last Edited On    : 19-03-2023
+    //Last Edited On    : 27-03-2023
     //Filename          : favourite.php
-    //Version           : 1.5
+    //Version           : 2.0
 
     //Class Favourite
     class Favourite {
@@ -83,7 +83,7 @@
                         //create Favourite object from the fetched information
                         $favourite = new Favourite($row['userID'], $row['entryID']);
                         //add the Favourite to the favourites array
-                        $favourites[] = $favourite;
+                        $favourites[$row['userID']] = $favourite;
                     }
                     return $favourites;
                 }

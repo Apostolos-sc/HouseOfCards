@@ -18,13 +18,14 @@
         private String $password;
         private Date $dob;
         private Array $favourites = []; //PHP is loosely typed
+        private Array $ratings = [];
         //Should consider if we should carry the ratings in the user for each user or if we should query the db each time
         // we need them 
 
         //Constructor
         public function __construct(int $userID, UserType $userGroup, String $firstName, String $lastName, 
                                     String $email, String $username, String $password, Date $dob,
-                                    Array $favourites) {
+                                    Array $favourites, Array $ratings) {
             $this->userID = $userID;
             $this->userGroup = $userGroup;
             $this->firstName = $firstName;
@@ -34,6 +35,7 @@
             $this->password = $password;
             $this->dob = $dob;
             $this->favourites = $favourites;
+            $this->ratings = $ratings;
         }
 
         //Setters
@@ -73,6 +75,10 @@
             $this->favourites = $favourites;
         }
 
+        public function setRatings(Array $ratings) {
+            $this->ratings = $ratings;
+        }
+
         //Getters
         public function getUserID() {
             return $this->userID;
@@ -110,6 +116,10 @@
             return $this->favourites;
         }
 
+        public function getRatings() {
+            return $this->ratings;
+        }
+
         //Database Access Function stubs
         /*
             DB Table Schema - Updated
@@ -143,8 +153,9 @@
                     $dob = new Date($date_arr[2]+0, $date_arr[1] + 0, $date_arr[0], "00"+0, "00"+0, "00" + 0);
                     //Get faovurites of the users
                     $favourites = Favourite::fetchFavouritesByUserID($dbConnection, $userID);
+                    $ratings = Rating::fetchRatingsByUserID($dbConnection, $userID);
                     $user = new User($row['id'], $userType, $row['fname'], $row['lname'], $row['email'], 
-                                                $row['username'], $row['password'], $dob, $favourites);
+                                                $row['username'], $row['password'], $dob, $favourites, $ratings);
                     return $user;
                 }
             } else {
@@ -175,8 +186,9 @@
                     $dob = new Date($date_arr[2]+0, $date_arr[1] + 0, $date_arr[0], "00"+0, "00"+0, "00" + 0);
                     //Get favourites of the user
                     $favourites = Favourite::fetchFavouritesByUserID($dbConnection, $row['id']);
+                    $ratings = Rating::fetchRatingsByUserID($dbConnection, $row['id']);
                     $user = new User($row['id'], $userType, $row['fname'], $row['lname'], $row['email'], 
-                                                $row['username'], $row['password'], $dob, $favourites);
+                                                $row['username'], $row['password'], $dob, $favourites, $ratings);
                     return $user;
                 }
             } else {
@@ -256,8 +268,9 @@
                         $dob = new Date($date_arr[2]+0, $date_arr[1] + 0, $date_arr[0], "00"+0, "00"+0, "00" + 0);
                         //Get faovurites of the users
                         $favourites = Favourite::fetchFavouritesByUserID($dbConnection, $row['id']);
+                        $ratings = Rating::fetchRatingsByUserID($dbConnection, $row['id']);
                         $user = new User($row['id'], $userType, $row['fname'], $row['lname'], $row['email'], 
-                                                    $row['username'], $row['password'], $dob, $favourites);
+                                                    $row['username'], $row['password'], $dob, $favourites, $ratings);
                         //add User object to $users array.
                         $users[] = $user;
                     }

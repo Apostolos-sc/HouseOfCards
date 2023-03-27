@@ -58,7 +58,7 @@ Version      : 2.0
 	border-radius: 4px;
 	cursor: pointer;
 }
-#unfavourite {
+.favourite {
     padding: 5px 10px;
 	background: #515151;
     margin-left: 5%;
