@@ -171,9 +171,6 @@
                             });
                         }
                     };
-                    $( "#dialog" ).dialog({
-                        autoOpen: false,  
-                    });
                 </script>
 <?php
     include 'controller/right-menu.php';

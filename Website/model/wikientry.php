@@ -2,9 +2,9 @@
     //Author            : Nicholas Lam
     //Date Created      : 12-15-2023
     //Last Edit By      : Apostolos Scondrianis
-    //Last Edited     	: 09-03-2023
+    //Last Edited     	: 27-03-2023
     //Filename          : wikientry.php
-    //Version           : 1.5
+    //Version           : 1.6
 
     //Class User
     class WikiEntry {
@@ -193,11 +193,11 @@
                         //Get ratings of the entry
                         $ratings = Rating::fetchRatingsByEntryID($dbConnection, $row['id']);
                         //get comments of the rating
-                        $comments = Comment::fetchCommentsByEntryID($dbConnection, $row['id'], $row['id']);
+                        $comments = Comment::fetchCommentsByEntryID($dbConnection, $row['id']);
                         $wikiEntry = new WikiEntry($row['id'], $row['gameName'], $row['requiredItems'], $row['objective'], 
                                                     $row['setUp'], $row['gamePlay'], $row['rules'], $date, $user, $comments, $ratings, $row['minPlayer'], $row['maxPlayer']);
                         //Add the entry to the next slot of the array. This is the fastest way to do it. Don't use "array_push" function
-                        $entries[] = $wikiEntry;
+                        $entries[$row['id']] = $wikiEntry;
                     }
                     //Done fetching rows, return array
                     return $entries;

@@ -2,9 +2,9 @@
     //Author            : Apostolos Scondrianis
     //Date Created      : 23-03-2023
     //Last Edited By    : Apostolos Scondrianis
-    //Last Edited     	: 23-03-2023
+    //Last Edited     	: 26-03-2023
     //Filename          : profile.php
-    //Version           : 1.0
+    //Version           : 1.1
     $GLOBALS["title"] = "Welcome to House of Cards Wiki - My Profile";
     include 'controller/connectDB.php';
 
@@ -30,14 +30,6 @@
                         <?php
                             $ID = $_SESSION['userID'];
                             $user = User::fetchUserByID($db, $ID);
-                            if(!empty($user->getFavourites())) {
-                                foreach($user->getFavourites() as $fav){
-                                    $favourites = $favourites . WikiEntry::fetchWikiEntry($db,$fav->getEntryID())->getGameName() . "<br>";  //THIS WILL FAIL FOR SAYMA BECAUSE SHE HAS A GAME FAVOURITED WHICH DOES NOT EXIST
-                                    //$favourites = $favourites . WikiEntry::fetchWikiEntry($db,1)->getGameName() . "<br>";
-                                }
-                            } else {
-                                $favourites = "";
-                            }
                             $userRatings = Rating::fetchRatingsByUserID($db,$user->getUserID());
                             if(!empty($userRatings)) {
                                 foreach($userRatings as $rating){
@@ -47,8 +39,33 @@
                             } else {
                                 $ratings = "";
                             }
-                            echo generateProfileView($user, $favourites, $ratings);
+                            $wikientries = WikiEntry::fetchWikiEntries($db);
+                            echo generateProfileView($user, $wikientries, $ratings);
                         ?>
+                        <script>
+                        $('.favourite').on('click', favouriteFunction);
+                            function favouriteFunction(e) {
+                                e.preventDefault();
+                                var entryID = $(this).attr('entryID');
+                                var button = $(this);
+                                button.off('click');
+                                $.ajax({
+                                    url: "favouriteRemove.php",
+                                    data: {"entryID": entryID},
+                                    type: 'post',
+                                    success: function (response){
+                                        if (response) {
+                                            button.closest("tr").remove();
+                                        } else {
+                                            alert('Failure to remove an entry!');
+                                        }
+                                    }
+                                }).always(function() {
+                                    button.closest("tr").remove();
+                                    button.on('click', favouriteFunction);
+                                });
+                            };
+                        </script>
                     </div>
                 </div>
 <?php
