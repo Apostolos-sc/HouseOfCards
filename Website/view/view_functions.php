@@ -310,10 +310,21 @@
         }
         if(!empty($user->getRatings())) {
             if(array_key_exists($wikiPage->getEntryID(), $user->getRatings())) {
-                $rating = $user->getRatings()[$wikiPage->getEntryID()];
+                $rating = $user->getRatings()[$wikiPage->getEntryID()]->getRating();
             } else {
-                $rating = 0;
+                $rating = -1;
             }
+        }
+        if(!empty($wikiPage->getRatings())) {
+            $sizeRatings = sizeof($wikiPage->getRatings());
+            $sumOfRatings = 0;
+            $ratings = $wikiPage->getRatings();
+            foreach($ratings as $element) {
+                $sumOfRatings = $sumOfRatings+($element->getRating());
+            }
+            $averageRating = $sumOfRatings/$sizeRatings;
+        } else {
+            $averageRating = "No Ratings Yet.";
         }
         $view .= "<span style='hidden;margin-left: 15px;' id='result_favourite'></span>                                
                                 </td>
@@ -323,7 +334,16 @@
                                 Rate This Game :
                             </td>
                             <td class='wiki_table_data_right'>
-                      
+                            <div class=\"rating-wrapper\" data-id=\"".$wikiPage->getEntryID()."\">
+                                <div class=\"star-wrapper\">
+                                    <i class=\"fas fa-star\"></i>
+                                    <i class=\"fas fa-star\"></i>
+                                    <i class=\"fas fa-star\"></i>
+                                    <i class=\"fas fa-star\"></i>
+                                    <i class=\"fas fa-star\"></i>
+                                    <span style='hidden;margin-left: 15px;' id='result_rating'></span>
+                                </div>
+                            </div>
                             </td>
                         </tr>
                         </table>
@@ -336,7 +356,7 @@
                             <ul style=\"list-style: none;text-align:left; margin:0; padding:0;\">";
         foreach($gameList as $game) {
             $view .="<li><a href=\"https://goldenagesolutions.ca/HouseOfCards/wikipage.php?entry=".$game[0]."\">".$game[1]."</a></li>";
-        }                   
+        }     
         $view .= "
                             </ul>
                         </div>
@@ -464,7 +484,6 @@
                     </div>
                 </div>
                 ";
-        
         return $view;
     }
     //Functions below added for View Users by Alex on March 19

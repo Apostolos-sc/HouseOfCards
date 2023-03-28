@@ -6,6 +6,8 @@
     //Filename          : rating.php
     //Version           : 2.0
 
+    //IMPORTANT NOTE : the keys of arrays are Strings!
+
     //Class Rating
     class Rating {
 
@@ -82,7 +84,7 @@
                         //create Rating object from the fetched information
                         $rating = new Rating($row['id'], $row['entryID'], $row['userID'], $row['rating']);
                         //add the comment to the comment array
-                        $ratings[$row['entryID']] = $rating;
+                        $ratings[intval($row['entryID'])] = $rating;
                     }
                     return $ratings;
                 }
@@ -108,7 +110,7 @@
                         //create Rating object from the fetched information
                         $rating = new Rating($row['id'], $row['entryID'], $row['userID'], $row['rating']);
                         //add the comment to the comment array
-                        $ratings[$row['userID']] = $rating;
+                        $ratings[intval($row['userID'])] = $rating;
                     }
                     return $ratings;
                 }
@@ -140,6 +142,40 @@
                 }
             } else {
                 //database connection provided is invalid, return null
+                return null;
+            }
+        }
+        public static function insertRating($dbConnection, Rating $rating) : ?bool {
+            if($dbConnection->is_connected()) {
+                $uID = $rating->getUserID();
+                $eID = $rating->getEntryID();
+                $ratingValue = $rating->getRating();
+                $stmt = $dbConnection->connection->prepare('INSERT INTO Rating (entryID, userID, rating) VALUES (?, ?, ?)');
+                $stmt->bind_param('iii', $eID, $uID, $ratingValue);
+                $stmt->execute();
+                if($stmt->affected_rows > 0 ) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                return null;
+            }
+        }
+
+        public static function updateRating($dbConnection, Rating $rating) : ?bool {
+            if($dbConnection->is_connected()) {
+                $ratingID = $rating->getRatingID();
+                $ratingValue = $rating->getRating();
+                $stmt = $dbConnection->connection->prepare('UPDATE Rating SET rating = ? WHERE id = ?');
+                $stmt->bind_param('ii', $ratingValue, $ratingID);
+                $stmt->execute();
+                if($stmt->affected_rows > 0 ) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
                 return null;
             }
         }

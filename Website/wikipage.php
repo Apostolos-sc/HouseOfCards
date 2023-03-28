@@ -171,7 +171,41 @@
                             });
                         }
                     };
-
+                    $("div.star-wrapper i").on("mouseover", function () {
+                        if ($(this).siblings("i.vote-recorded").length == 0) {
+                            $(this).prevAll().addBack().addClass("fas gray").removeClass("far");  
+                            $(this).nextAll().removeClass("fas gray").addClass("far");
+                        } else {
+                            $(this).next().addBack().addClass("fas gray").removeClass("vote-recorded");  
+                            $(this).prevAll().addBack().addClass("fas gray").removeClass("vote-recorded");  
+                            $(this).nextAll().removeClass("fas gray").removeClass("vote-recorded").addClass("far");
+                        }
+                    });
+                    $("div.star-wrapper i").on("click", function () {
+                        let rating = $(this).prevAll().length + 1;
+                        let postid = $(this).closest("div.rating-wrapper").data("id");
+                        if ($(this).siblings("i.vote-recorded").length == 0) {
+                            
+                            $(this).prevAll().addBack().addClass("vote-recorded");
+                            $.ajax({
+                                    url: 'rating_ajax.php',
+                                    type: 'post',
+                                    data: {"postid":postid,"rating":rating},
+                                    success: function(response){
+                                        if (response) {
+                                            $('#result_rating').text('Successful Update!');
+                                            $("#result_rating").fadeIn();
+                                            $("#result_rating").fadeOut(2000);
+                                        } else {
+                                            $('#result_rating').text('Failed to Update!');
+                                            $("#result_rating").fadeIn();
+                                            $("#result_rating").fadeOut(2000);
+                                        }
+                                    }
+                            });
+                            
+                        }
+                   });
                 </script>
 <?php
     include 'controller/right-menu.php';
