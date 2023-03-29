@@ -7,6 +7,18 @@
     //Version           : 1.0
     
     function generateWikiPageGuestUser(WikiEntry $wikiPage, Array $gameList): string {
+        if(!empty($wikiPage->getRatings())) {
+            $sizeRatings = sizeof($wikiPage->getRatings());
+            $sumOfRatings = 0;
+            $ratings = $wikiPage->getRatings();
+            foreach($ratings as $element) {
+                $sumOfRatings = $sumOfRatings+($element->getRating());
+            }
+            $averageRating = $sumOfRatings/$sizeRatings;
+        } else {
+            $averageRating = 0;
+        }
+        $percentage = $averageRating*100/5;
         $view = "<div id=\"card-game-body\">
                     <div id=\"wikiTitle\">
                     Card Games Wiki Pages
@@ -15,7 +27,17 @@
                         <table id='wiki_table'>
                             <tr class='wiki_table_row'>
                                 <td id='wiki_table_title' colspan='2' >
-                                    ". $wikiPage->getGameName() ." <img alt ='img' src=\"https://goldenagesolutions.ca/HouseOfCards/images/star2.png\" style=\"vertical-align:middle;height:20px;width:120px;\">
+                                    ". $wikiPage->getGameName() ."                                    
+                                    <div
+                                    class=\"star-rating\"
+                                    style=\"background-image: linear-gradient(
+                                        to right,
+                                        #CCCCCC 0%,
+                                        #CCCCCC ".$percentage."%,
+                                        transparent ".$percentage."%,
+                                        transparent 100%);
+                                    \"
+                                  ><!-- Don't forget to add an accessible alternative! --></div>  
                                 </td>
                             </tr>
                             <tr class='wiki_table_row' >
@@ -234,6 +256,18 @@
     }
 
     function generateWikiPageLoggedInUser(WikiEntry $wikiPage, User $user, Array $gameList): string {
+        if(!empty($wikiPage->getRatings())) {
+            $sizeRatings = sizeof($wikiPage->getRatings());
+            $sumOfRatings = 0;
+            $ratings = $wikiPage->getRatings();
+            foreach($ratings as $element) {
+                $sumOfRatings = $sumOfRatings+($element->getRating());
+            }
+            $averageRating = $sumOfRatings/$sizeRatings;
+        } else {
+            $averageRating = 0;
+        }
+        $percentage = 100*$averageRating/5;
         $view = "<div id=\"card-game-body\">
                     <div id=\"wikiTitle\">
                     Card Games Wiki Pages
@@ -242,7 +276,17 @@
                         <table id='wiki_table'>
                             <tr class='wiki_table_row'>
                                 <td id='wiki_table_title' colspan='2' >
-                                    ". $wikiPage->getGameName() ." <img alt ='img' src=\"https://goldenagesolutions.ca/HouseOfCards/images/star2.png\" style=\"vertical-align:middle;height:20px;width:120px;\">
+                                    ". $wikiPage->getGameName() ."
+                                    <div
+                                    class=\"star-rating\"
+                                    style=\"background-image: linear-gradient(
+                                        to right,
+                                        #CCCCCC 0%,
+                                        #CCCCCC ".$percentage."%,
+                                        transparent ".$percentage."%,
+                                        transparent 100%);
+                                    \"
+                                  ><!-- Don't forget to add an accessible alternative! --></div>    
                                 </td>
                             </tr>
                             <tr class='wiki_table_row'>
@@ -314,17 +358,6 @@
             } else {
                 $rating = -1;
             }
-        }
-        if(!empty($wikiPage->getRatings())) {
-            $sizeRatings = sizeof($wikiPage->getRatings());
-            $sumOfRatings = 0;
-            $ratings = $wikiPage->getRatings();
-            foreach($ratings as $element) {
-                $sumOfRatings = $sumOfRatings+($element->getRating());
-            }
-            $averageRating = $sumOfRatings/$sizeRatings;
-        } else {
-            $averageRating = "No Ratings Yet.";
         }
         $view .= "<span style='hidden;margin-left: 15px;' id='result_favourite'></span>                                
                                 </td>

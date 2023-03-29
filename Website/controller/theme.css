@@ -5,6 +5,18 @@ Last Edited  : 08-03-2023
 Filename     : theme.css
 Version      : 2.0
 */
+.star-rating::before {
+    /* What also works: "⭐⭐⭐⭐⭐" or "💛💛💛💛💛" or other characters. */
+    content: "🟊🟊🟊🟊🟊";
+}
+
+.star-rating {
+    display: inline-block;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: rgba(0, 0, 0, 0.1);
+    font-size: 20px;
+}
 div.rating-wrapper {
     display: flex;
     align-items: first baseline;

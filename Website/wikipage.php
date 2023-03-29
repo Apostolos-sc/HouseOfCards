@@ -184,25 +184,31 @@
                     $("div.star-wrapper i").on("click", function () {
                         let rating = $(this).prevAll().length + 1;
                         let postid = $(this).closest("div.rating-wrapper").data("id");
+                        var current_rating = $('#current_rating').text();
                         if ($(this).siblings("i.vote-recorded").length == 0) {
-                            
                             $(this).prevAll().addBack().addClass("vote-recorded");
-                            $.ajax({
-                                    url: 'rating_ajax.php',
-                                    type: 'post',
-                                    data: {"postid":postid,"rating":rating},
-                                    success: function(response){
-                                        if (response) {
-                                            $('#result_rating').text('Successful Update!');
-                                            $("#result_rating").fadeIn();
-                                            $("#result_rating").fadeOut(2000);
-                                        } else {
-                                            $('#result_rating').text('Failed to Update!');
-                                            $("#result_rating").fadeIn();
-                                            $("#result_rating").fadeOut(2000);
+                            if(current_rating != rating) {
+                                $.ajax({
+                                        url: 'rating_ajax.php',
+                                        type: 'post',
+                                        data: {"postid":postid,"rating":rating},
+                                        dataType: 'json',
+                                        success: function(data){
+                                            var percentage = data['averageRating']*100/5;
+                                            if (data['result']) {
+                                                $('.star-rating').css('background-image', 'linear-gradient(to right, #CCCCCC 0%,#CCCCCC '+ percentage +'%, transparent '+ percentage+'%,transparent 100%)')
+                                                $('#result_rating').text('Successful Update!');
+                                                $("#result_rating").fadeIn();
+                                                $("#result_rating").fadeOut(2000);
+                                                $('#current_rating').text(rating);
+                                            } else {
+                                                $('#result_rating').text('Failed to Update!');
+                                                $("#result_rating").fadeIn();
+                                                $("#result_rating").fadeOut(2000);
+                                            }
                                         }
-                                    }
-                            });
+                                });
+                            }
                             
                         }
                    });
