@@ -43,7 +43,7 @@
                             echo generateProfileView($user, $wikientries, $ratings);
                         ?>
                         <script>
-                        $('.favourite').on('click', favouriteFunction);
+                            $('.favourite').on('click', favouriteFunction);
                             function favouriteFunction(e) {
                                 e.preventDefault();
                                 var entryID = $(this).attr('entryID');
@@ -65,6 +65,46 @@
                                     button.on('click', favouriteFunction);
                                 });
                             };
+                            $("div.star-wrapper i").on("mouseover", function () {
+                                if ($(this).siblings("i.vote-recorded").length == 0) {
+                                    $(this).prevAll().addBack().addClass("fas gray").removeClass("far");  
+                                    $(this).nextAll().removeClass("fas gray").addClass("far");
+                                } else {
+                                    $(this).next().addBack().addClass("fas gray").removeClass("vote-recorded");  
+                                    $(this).prevAll().addBack().addClass("fas gray").removeClass("vote-recorded");  
+                                    $(this).nextAll().removeClass("fas gray").removeClass("vote-recorded").addClass("far");
+                                }
+                            });
+                            $("div.star-wrapper i").on("click", function () {
+                                let rating = $(this).prevAll().length + 1;
+                                let postid = $(this).closest("div.rating-wrapper").data("id");
+                                var current_rating = $('#current_rating_'+postid).text();
+                                if ($(this).siblings("i.vote-recorded").length == 0) {
+                                    $(this).prevAll().addBack().addClass("vote-recorded");
+                                    if(current_rating != rating) {
+                                        $.ajax({
+                                                url: 'rating_ajax.php',
+                                                type: 'post',
+                                                data: {"postid":postid,"rating":rating},
+                                                dataType: 'json',
+                                                success: function(data){
+                                                    var percentage = data['averageRating']*100/5;
+                                                    if (data['result']) {
+                                                        //$('#result_rating_'+postid).text('Successful Update!');
+                                                        //$('#result_rating_'+postid).fadeIn();
+                                                        //$('#result_rating_'+postid).fadeOut(2000);
+                                                        $('#current_rating_'+postid).text(rating);
+                                                    } else {
+                                                        $('#result_rating_'+postid).text('Failed to Update!');
+                                                        $("#result_rating_"+postid).fadeIn();
+                                                        $("#result_rating_"+postid).fadeOut(2000);
+                                                    }
+                                                }
+                                        });
+                                    }
+                                    
+                                }
+                            });
                         </script>
                     </div>
                 </div>

@@ -197,9 +197,9 @@
                                             var percentage = data['averageRating']*100/5;
                                             if (data['result']) {
                                                 $('.star-rating').css('background-image', 'linear-gradient(to right, #CCCCCC 0%,#CCCCCC '+ percentage +'%, transparent '+ percentage+'%,transparent 100%)')
-                                                $('#result_rating').text('Successful Update!');
-                                                $("#result_rating").fadeIn();
-                                                $("#result_rating").fadeOut(2000);
+                                                //$('#result_rating').text('Successful Update!');
+                                                //$("#result_rating").fadeIn();
+                                               // $("#result_rating").fadeOut(2000);
                                                 $('#current_rating').text(rating);
                                             } else {
                                                 $('#result_rating').text('Failed to Update!');

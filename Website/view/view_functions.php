@@ -384,7 +384,6 @@
             for($i = $rating; $i < 5; $i++) {
                 $view .= "<i class=\"far fa-star\"></i>";
             }
-        
         }
         $view .= "
                                     <span style='display:hidden;margin-left: 15px;' id='result_rating'></span>
@@ -769,16 +768,51 @@
                                             </td>
                                         </tr> ";
                             }
-
-                        $view .= "
+                            $view .= "
                             <tr class='wiki_table_row_data'>
-                                <td class='wiki_table_data_left'>
+                                <td class='wiki_table_data_left' colspan='2'>
                                     Ratings
                                 </td>
-                                <td class='wiki_table_data_right'>
-                                    ".$ratings."
+                            </tr>";
+                        $ratings = $user->getRatings();
+                        if(!empty($ratings)) {
+                            foreach($ratings as $ratID => $rating) {
+                                $view .= "
+                                    <tr>
+                                        <td class='wiki_table_data_left'>
+                                            ".$wikientries[($rating->getEntryID())]->getGameName()."
+                                        </td>
+                                        <td class='wiki_table_data_right'>
+                                            <div class=\"rating-wrapper\" data-id=\"".$wikientries[($rating->getEntryID())]->getEntryID()."\">
+                                                <div class=\"star-wrapper\">";
+                                        
+                                for($i = 0; $i < $rating->getRating(); $i ++) {
+                                    $view .= "
+                                                    <i class=\"fas vote-recorded fa-star\"></i>";
+                                }
+                                for($i = $rating->getRating(); $i < 5; $i++) {
+                                    $view .= "
+                                                    <i class=\"far fa-star\"></i>";
+                                }
+                                $view .= "
+                                                    <span style='display:hidden;margin-left: 15px;' id='result_rating_".$wikientries[($rating->getEntryID())]->getEntryID()."'></span>
+                                                </div>
+                                            </div>
+                                        <span style=\"display:none;\" id=\"current_rating_".$wikientries[($rating->getEntryID())]->getEntryID()."\">".$rating->getRating()."</span>";
+                                $view .= "
+                                        </td>
+                                    </tr>";
+                            }
+                        } else  {
+                            $view .= "
+                            <tr class='wiki_table_row_data'>
+                                <td class='wiki_table_data_left' colspan='2'>
+                                    You have not Rated any games yet!
                                 </td>
-                            </tr>                
+                            </tr> ";
+                        }
+                        
+                        $view .= "                    
                         </table>
                     </div>
                     <div id=\"wikiNav\">

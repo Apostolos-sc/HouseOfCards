@@ -19,7 +19,7 @@ Version      : 2.0
 }
 div.rating-wrapper {
     display: flex;
-    align-items: first baseline;
+    align-items: center baseline;
     flex-direction: column;
   }
   div.star-wrapper {
