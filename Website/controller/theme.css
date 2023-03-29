@@ -16,7 +16,7 @@ div.rating-wrapper {
     cursor: pointer;
   }
   div.star-wrapper i.gray {
-    color: #515151;
+    color: #CCCCCC;
   }
   div.star-wrapper i.vote-recorded {
     color: #000000;

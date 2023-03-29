@@ -335,15 +335,29 @@
                             </td>
                             <td class='wiki_table_data_right'>
                             <div class=\"rating-wrapper\" data-id=\"".$wikiPage->getEntryID()."\">
-                                <div class=\"star-wrapper\">
+                                <div class=\"star-wrapper\">";
+        if($rating == -1) {
+            $view .= "
                                     <i class=\"fas fa-star\"></i>
                                     <i class=\"fas fa-star\"></i>
                                     <i class=\"fas fa-star\"></i>
                                     <i class=\"fas fa-star\"></i>
-                                    <i class=\"fas fa-star\"></i>
-                                    <span style='hidden;margin-left: 15px;' id='result_rating'></span>
+                                    <i class=\"fas fa-star\"></i>";
+                                    
+        } else {
+            for($i = 0; $i < $rating; $i ++) {
+                $view .= "<i class=\"fas vote-recorded fa-star\"></i>";
+            }
+            for($i = $rating; $i < 5; $i++) {
+                $view .= "<i class=\"far fa-star\"></i>";
+            }
+        
+        }
+        $view .= "
+                                    <span style='display:hidden;margin-left: 15px;' id='result_rating'></span>
                                 </div>
                             </div>
+                            <span style=\"display:none;\" id=\"current_rating\">".$rating."</span>
                             </td>
                         </tr>
                         </table>
