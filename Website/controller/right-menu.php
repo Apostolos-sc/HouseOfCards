@@ -23,7 +23,6 @@
                                         <a href='logout.php'>Logout</a><br/>
                                         <a href='profile.php'>View My Profile</a><br>
                                         <a href='editprofile.php'>Edit My Profile</a><br>
-                                        <a href='favorites.php'>My Favorites</a><br>
                                     </div>
                                     ";
                                 if(isset($_SESSION["accessLevel"]) && $_SESSION["accessLevel"] == 1) {

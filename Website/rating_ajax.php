@@ -27,44 +27,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_SESSION["username"])) {
             $ratingObj = $user->getRatings()[$_POST['postid']];
             $ratingObj->setRating(intval($rating));
             $update = Rating::updateRating($db, $ratingObj);
-            if($update) {
-                echo true;
-            } else {
-                echo false;
-            }
         } else {
             //INSERT Rating
             $ratingObj = new Rating(-1, $eID, $uID, $rating);
             $update = Rating::insertRating($db, $ratingObj);
-            if($update) {
-                echo true;
-            } else {
-                echo false;
-            }
         }
     } else {
         //INSERT Rating
         $ratingObj = new Rating(-1, $eID, $uID, $rating);
         $update = Rating::insertRating($db, $ratingObj);
-        if($update) {
-            echo true;
-        } else {
-            echo false;
-        }
     }
-/*
-    // get average
     $wikiPage = WikiEntry::fetchWikiEntry($db, $eID);
-    $sizeRatings = sizeof($wikiPage->getRatings());
-    $sumOfRatings = 0;
     $ratings = $wikiPage->getRatings();
-    foreach($ratings as $element) {
-        $sumOfRatings = $sumOfRatings+($element->getRating());
+    if(!empty($ratings)) {
+        $sizeRatings = sizeof($wikiPage->getRatings());
+        $sumOfRatings = 0;
+        foreach($ratings as $element) {
+            $sumOfRatings = $sumOfRatings+($element->getRating());
+        }
+        $averageRating = $sumOfRatings/$sizeRatings;
+    } else {
+        $averageRating = 0;
     }
-    $averageRating = $sumOfRatings/$sizeRatings;
-    $return_arr = array("averageRating"=>$averageRating);
-
-    echo json_encode($return_arr);*/
+    $return_arr = array('averageRating'=>$averageRating, 'result'=>$update);
+    echo json_encode($return_arr);
 } else {
     header('Location: index.php');
 }
